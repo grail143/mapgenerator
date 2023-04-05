@@ -1,0 +1,226 @@
+{
+	"spritesheets": {
+		"walls": {
+			"settings": {
+				"edgemap": [
+					"transparent", // 0
+					"flat", // 1
+					"natural", // 2
+					"blend" // 3
+				],
+				"types": [
+					"straight", // 0
+					"beginning", // 1
+					"ending", // 2
+					"connector", // 3
+					"t", // 4
+					"corner", // 5
+					"+", // 6
+					"45", // 7
+					"halfarch", // 8
+					"arch", // 9
+					"x" // 10
+				]
+			},
+			"sheets": [
+				{
+					"filename": "sprites/wallssprite1.png",
+					"color": "stone_earthy",
+					"piecemap": [
+						{
+							"type": 0,
+							"width": 100,
+							"height": 70,
+							"edges": [ 2, 1, 2, 1 ],
+							"x": 0,
+							"y": 0
+						},
+						{
+							"type": 0,
+							"width": 200,
+							"height": 70,
+							"edges": [ 2, 1, 2, 1 ],
+							"x": 100,
+							"y": 0
+						},
+						{
+							"type": 1,
+							"width": 46,
+							"height": 70,
+							"edges": [ 2, 3, 2, 1 ],
+							"x": 300,
+							"y": 0
+						},
+						{
+							"type": 3,
+							"width": 34,
+							"height": 70,
+							"edges": [ 2, 3, 2, 3 ],
+							"x": 346,
+							"y": 0
+						},
+						{
+							"type": 3,
+							"width": 97,
+							"height": 70,
+							"edges": [ 2, 3, 2, 3 ],
+							"x": 379,
+							"y": 0
+						},
+						{
+							"type": 5,
+							"width": 97,
+							"height": 104,
+							"edges": [ 2, 3, 3, 2 ],
+							"x": 478,
+							"y": 0
+						},
+						{
+							"type": 0,
+							"width": 400,
+							"height": 71,
+							"edges": [ 2, 3, 2, 3 ],
+							"x": 0,
+							"y": 70
+						},
+						{
+							"type": 0,
+							"width": 600,
+							"height": 72,
+							"edges": [ 2, 1, 2, 1 ],
+							"x": 0,
+							"y": 140
+						},
+						{
+							"type": 4,
+							"width": 200,
+							"height": 136,
+							"edges": [ 2, 1, 1, 1 ],
+							"x": 209,
+							"y": 212
+						},
+						{
+							"type": 6,
+							"width": 133,
+							"height": 123,
+							"edges": [ 3, 3, 3, 3 ],
+							"x": 349,
+							"y": 212
+						},
+						{
+							"type": 5,
+							"width": 135,
+							"height": 135,
+							"edges": [ 2, 1, 1, 2 ],
+							"x": 489,
+							"y": 212
+						},
+						{
+							"type": 6,
+							"width": 200,
+							"height": 200,
+							"edges": [ 1, 1, 1, 1 ],
+							"x": 0,
+							"y": 349
+						},
+						{
+							"type": 7,
+							"width": 140,
+							"height": 113,
+							"edges": [ 2, 3, 2, 3 ],
+							"x": 209,
+							"y": 349
+						},
+						{
+							"type": 4,
+							"width": 133,
+							"height": 96,
+							"edges": [ 2, 3, 3, 3 ],
+							"x": 349,
+							"y": 349
+						},
+						{
+							"type": 8,
+							"width": 135,
+							"height": 137,
+							"edges": [ 2, 1, 1, 2 ],
+							"x": 465,
+							"y": 419
+						},
+						{
+							"type": 8,
+							"width": 334,
+							"height": 335,
+							"edges": [ 2, 1, 1, 2 ],
+							"x": 0,
+							"y": 564
+						},
+						{
+							"type": 8,
+							"width": 134,
+							"height": 134,
+							"edges": [ 2, 1, 1, 2 ],
+							"x": 466,
+							"y": 794
+						}
+					]
+				},
+				{
+					"filename": "sprites/wallssprite2.png",
+					"color": "stone_earthy",
+					"piecemap": [
+						{
+							"type": 0,
+							"width": 100,
+							"height": 100,
+							"x": 0,
+							"y": 0
+						},
+						{
+							"type": 0,
+							"width": 200,
+							"height": 100,
+							"x": 100,
+							"y": 0
+						},
+						{
+							"type": 5,
+							"width": 115,
+							"height": 115,
+							"x": 300,
+							"y": 0
+						},
+						{
+							"type": 4,
+							"width": 130,
+							"height": 115,
+							"x": 430,
+							"y": 0
+						},
+						{
+							"type": 0,
+							"width": 400,
+							"height": 100,
+							"x": 0,
+							"y": 150
+						},
+						{
+							"type": 6,
+							"width": 130,
+							"height": 130,
+							"x": 430,
+							"y": 135
+						},
+						{
+							"type": 0,
+							"width": 600,
+							"height": 100,
+							"x": 0,
+							"y": 300
+						}
+					]
+				}
+			]
+		}
+	}
+}

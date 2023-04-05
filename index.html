@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>DnD Random Map Generator</title>
+	<link rel="stylesheet" type="text/css" href="mapgenerator.css" />
+</head>
+<body>
+
+	<div class="container">
+		<div class="controls">
+			<div class="field">
+				<label for="worldWidth"># of Tiles Width</label>
+				<input type="number" value="10" min="10" max="100" id="worldWidth" onblur="enforceMinMax(this)" />
+			</div>
+			<div class="field">
+				<label for="worldHeight"># of Tiles Height</label>
+				<input type="number" value="10" min="10" max="100" id="worldHeight" onblur="enforceMinMax(this)" />
+			</div>
+			<div class="field">
+				<label for="tileWidth">Tile Width</label>
+				<input type="number" value="32" min="10" max="80" id="tileSize" onblur="enforceMinMax(this)" />
+			</div>
+			<div class="field">
+				<label for="roomInterval">Avg Max Distance Between Room Centers</label>
+				<input type="number" value="8" min="3" max="80" id="roomInterval" onblur="enforceMinMax(this)" />
+			</div>
+			<div class="field">
+				<label for="minRoom">Minimum Room Size</label>
+				<input type="number" value="3" min="1" max="78" id="minRoom" onblur="enforceMinMax(this)" />
+			</div>
+			<div class="field">
+				<label for="maxouterdoors">Max Outside Doors</label>
+				<input type="number" value="5" min="0" max="100" id="maxouterdoors" onblur="enforceMinMax(this)" />
+			</div>
+			<div class="field">
+				<label for="minouterdoors">Minimum Outside Doors</label>
+				<input type="number" value="2" min="0" max="100" id="minouterdoors" onblur="enforceMinMax(this)" />
+			</div>
+			<div class="field">
+				<label>Random Objects</label>
+				<label for="includeObstacles">
+					<input type="checkbox" id="includeObstacles" checked="checked" />
+					Include Obstacles
+				</label>
+				<label for="freqObstacles">Frequency of Obstacles</label>
+				<input type="number" value="5" min="1" max="100" id="freqObstacles" onblur="enforceMinMax(this)" />
+				<label for="includeTreasure">
+					<input type="checkbox" id="includeTreasure" checked="checked" />
+					Include Treasure
+				</label>
+				<label for="freqTreasure">Frequency of Treasure</label>
+				<input type="number" value="2" min="1" max="100" id="freqTreasure" onblur="enforceMinMax(this)" />
+				<label for="includeMonsters">
+					<input type="checkbox" id="includeMonsters" checked="checked" />
+					Include Monsters
+				</label>
+				<label for="freqMonsters">Frequency of Monsters</label>
+				<input type="number" value="12" min="1" max="100" id="freqMonsters" onblur="enforceMinMax(this)" />
+			</div>
+			<div class="field">
+				<label for="mapContext">Map Context</label>
+				<label for="contextfield">
+					<input type="radio" value="field" id="contextfield" name="mapContext" />
+					Field
+				</label>
+				<label for="contextdungeon">
+					<input type="radio" value="dungeon" id="contextdungeon" name="mapContext" checked="checked" />
+					Dungeon
+				</label>
+				<label for="contextbuilding">
+					<input type="radio" value="building" id="contextbuilding" name="mapContext" />
+					Building
+				</label>
+				<label for="contextcave">
+					<input type="radio" value="cave" id="contextcave" name="mapContext" />
+					Cave
+				</label>
+			</div>
+			<div class="field">
+				<button type="button" id="generate">New World</button>
+			</div>
+		</div>
+		<div class="mapfield">
+			<div><canvas id="gameCanvas"></canvas></div>
+		</div>
+	</div>
+	<script type="text/javascript" src="mapgenerator.js"></script>
+</body>
+</html>
+
+<!--
+* height of walls
+* hidden door
+* editor for overall design
+* blank map
+* change setting (indoor/outdoor)
+* predefined shapes
+* height requirements/restrictions
+* varying terrain
+
+-->

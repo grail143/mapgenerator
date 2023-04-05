@@ -1,0 +1,167 @@
+﻿html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*End of Reset*/
+:root {
+    --color100: #fcfcfd;
+    --color200: #f5f5fa;
+    --color300: #d6d6e7;
+    --color400: #b6b7d5;
+    --color500: #9698c3;
+    --color600: #777aaf;
+    --color700: #5a5e9a;
+    --color800: #484c7a;
+    --color900: #36395a;
+    --color1000: #23263b;
+    --colorwarn: #fcbc73;
+    --sizesm: 2px;
+    --sizem: 5px;
+    --sizel: 10px;
+    --sizexl: 15px;
+}
+
+body {
+    font-family: monospace;
+    background: var(--color1000);
+    color: var(--color100);
+    font-size: 16px;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.controls {
+    min-width: 200px;
+    height: 100vh;
+    padding: var(--sizexl);
+}
+
+.mapfield {
+    flex-grow: 1;
+}
+
+.field {
+    padding: 0.8rem var(--sizesm);
+}
+
+label {
+    display: block;
+    width: 100%;
+}
+
+
+input:not([type="radio"]):not([type="checkbox"]) {
+    font-size: inherit;
+    border-radius: var(--sizem);
+    line-height: 1.5;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 1px solid var(--color400);
+    color: var(--color500);
+    background: var(--color200);
+    display: block;
+    width: calc(100% - (2*var(--sizem)));
+    padding: var(--sizem);
+    outline: none;
+}
+
+input:hover {
+    border-color: var(--color500);
+}
+
+input:focus {
+    border-color: var(--color900);
+    background: var(--color100);
+}
+
+input[type='radio']:after {
+    width: var(--sizel);
+    height: var(--sizel);
+    border-radius: var(--sizel);
+    background-color: var(--color200);
+    content: '';
+    border: 2px solid var(--color600);
+    display: inline-block;
+    transition: background-color .17s ease, color .17s ease;
+}
+
+input[type='radio']:checked:after {
+    background-color: var(--color600);
+    border: 2px solid var(--color200);
+}
+
+input.warning {
+    background-color: var(--colorwarn) !important;
+}
+
+button {
+    display: block;
+    outline: none;
+    cursor: pointer;
+    border-radius: var(--sizesm);
+    font-size: inherit;
+    font-weight: 500;
+    line-height: 2;
+    font-family: inherit;
+    padding: var(--sizesm) var(--sizexl);
+    min-width: 60px;
+    min-height: 32px;
+    margin: 0 auto;
+    border: none;
+    color: var(--color100);
+    background-color: var(--color800);
+    transition: background-color .17s ease, color .17s ease;
+}
+
+    button:hover {
+        background-color: var(--color900);
+        color: var(--color200);
+    }

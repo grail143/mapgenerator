@@ -9,83 +9,162 @@
 <body>
 
 	<div class="container">
-		<div class="controls">
-			<div class="field">
-				<label for="worldWidth"># of Tiles Width</label>
-				<input type="number" value="10" min="10" max="100" id="worldWidth" onblur="enforceMinMax(this)" />
+		<div id="leftslidenav" class="sidebar load">
+			<div class="toggleBtns">
+				<button data-form='create' class="btn active" onclick="toggleNav('create')">&gt;</button>
+				<button data-form='editmap' class="btn" onclick="toggleNav('editmap')">&circledcirc;</button>
+				<button data-form='edittile' class="btn" onclick="toggleNav('edittile')">&centerdot;</button>
 			</div>
-			<div class="field">
-				<label for="worldHeight"># of Tiles Height</label>
-				<input type="number" value="10" min="10" max="100" id="worldHeight" onblur="enforceMinMax(this)" />
+			<div class="controls selected" id="create">
+				<div data-showif="edit" class="field">
+					You are editing a tile!
+				</div>
+				<div data-showif="view" class="field">
+					<button type="button" class="removemap btn">Remove World?</button>
+				</div>
+				<div data-showif="load" class="field">
+					<button type="button" class="generate btn">New World</button>
+				</div>
+				<div data-showif="load" class="field">
+					<label for="worldWidth"># of Tiles Width</label>
+					<input type="number" value="10" min="10" max="100" id="worldWidth" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="load" class="field">
+					<label for="worldHeight"># of Tiles Height</label>
+					<input type="number" value="10" min="10" max="100" id="worldHeight" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="load" class="field">
+					<label for="tileWidth">Tile Width</label>
+					<input type="number" value="32" min="10" max="80" id="tileSize" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="load" class="field">
+					<label for="roomInterval">Avg Max Distance Between Room Centers</label>
+					<input type="number" value="8" min="3" max="80" id="roomInterval" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="load" class="field">
+					<label for="minRoom">Minimum Room Size</label>
+					<input type="number" value="3" min="1" max="78" id="minRoom" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="load" class="field">
+					<label for="maxouterdoors">Max Outside Doors</label>
+					<input type="number" value="5" min="0" max="100" id="maxouterdoors" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="load" class="field">
+					<label for="minouterdoors">Minimum Outside Doors</label>
+					<input type="number" value="2" min="0" max="100" id="minouterdoors" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="load" class="field">
+					<label>Random Objects</label>
+					<label for="includeObstacles">
+						<input type="checkbox" id="includeObstacles" checked="checked" />
+						Include Obstacles
+					</label>
+					<label for="freqObstacles">Frequency of Obstacles</label>
+					<input type="number" value="5" min="1" max="100" id="freqObstacles" onblur="enforceMinMax(this)" />
+					<label for="includeTreasure">
+						<input type="checkbox" id="includeTreasure" checked="checked" />
+						Include Treasure
+					</label>
+					<label for="freqTreasure">Frequency of Treasure</label>
+					<input type="number" value="2" min="1" max="100" id="freqTreasure" onblur="enforceMinMax(this)" />
+					<label for="includeMonsters">
+						<input type="checkbox" id="includeMonsters" checked="checked" />
+						Include Monsters
+					</label>
+					<label for="freqMonsters">Frequency of Monsters</label>
+					<input type="number" value="12" min="1" max="100" id="freqMonsters" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="load" class="field">
+					<label for="mapContext">Map Context</label>
+					<label for="contextfield">
+						<input type="radio" value="field" id="contextfield" name="mapContext" />
+						Field
+					</label>
+					<label for="contextdungeon">
+						<input type="radio" value="dungeon" id="contextdungeon" name="mapContext" checked="checked" />
+						Dungeon
+					</label>
+					<label for="contextbuilding">
+						<input type="radio" value="building" id="contextbuilding" name="mapContext" />
+						Building
+					</label>
+					<label for="contextcave">
+						<input type="radio" value="cave" id="contextcave" name="mapContext" />
+						Cave
+					</label>
+				</div>
+				<div data-showif="load" class="field">
+					<button type="button" id="generate">New World</button>
+				</div>
 			</div>
-			<div class="field">
-				<label for="tileWidth">Tile Width</label>
-				<input type="number" value="32" min="10" max="80" id="tileSize" onblur="enforceMinMax(this)" />
+			<div class="controls" id="editmap">
+				<div data-showif="load" class="field">
+					Please start by creating a world!
+				</div>
+				<div data-showif="edit" class="field">
+					You are editing a tile. Come back when you're done!
+				</div>
+				<div data-showif="view" class="field">
+					<button type="button" class="btn save">Save</button>
+				</div>
+				<div data-showif="view" class="field">
+					<label for="worldWidth"># of Tiles Width</label>
+					<input type="number" value="10" min="10" max="100" id="worldWidth" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="view" class="field">
+					<label for="worldHeight"># of Tiles Height</label>
+					<input type="number" value="10" min="10" max="100" id="worldHeight" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="view" class="field">
+					<label for="tileWidth">Tile Width</label>
+					<input type="number" value="32" min="10" max="80" id="tileSize" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="view" class="field">
+					<label for="roomInterval">Avg Max Distance Between Room Centers</label>
+					<input type="number" value="8" min="3" max="80" id="roomInterval" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="view" class="field">
+					<label for="minRoom">Minimum Room Size</label>
+					<input type="number" value="3" min="1" max="78" id="minRoom" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="view" class="field">
+					<button type="button" class="btn save">Save</button>
+				</div>
 			</div>
-			<div class="field">
-				<label for="roomInterval">Avg Max Distance Between Room Centers</label>
-				<input type="number" value="8" min="3" max="80" id="roomInterval" onblur="enforceMinMax(this)" />
-			</div>
-			<div class="field">
-				<label for="minRoom">Minimum Room Size</label>
-				<input type="number" value="3" min="1" max="78" id="minRoom" onblur="enforceMinMax(this)" />
-			</div>
-			<div class="field">
-				<label for="maxouterdoors">Max Outside Doors</label>
-				<input type="number" value="5" min="0" max="100" id="maxouterdoors" onblur="enforceMinMax(this)" />
-			</div>
-			<div class="field">
-				<label for="minouterdoors">Minimum Outside Doors</label>
-				<input type="number" value="2" min="0" max="100" id="minouterdoors" onblur="enforceMinMax(this)" />
-			</div>
-			<div class="field">
-				<label>Random Objects</label>
-				<label for="includeObstacles">
-					<input type="checkbox" id="includeObstacles" checked="checked" />
-					Include Obstacles
-				</label>
-				<label for="freqObstacles">Frequency of Obstacles</label>
-				<input type="number" value="5" min="1" max="100" id="freqObstacles" onblur="enforceMinMax(this)" />
-				<label for="includeTreasure">
-					<input type="checkbox" id="includeTreasure" checked="checked" />
-					Include Treasure
-				</label>
-				<label for="freqTreasure">Frequency of Treasure</label>
-				<input type="number" value="2" min="1" max="100" id="freqTreasure" onblur="enforceMinMax(this)" />
-				<label for="includeMonsters">
-					<input type="checkbox" id="includeMonsters" checked="checked" />
-					Include Monsters
-				</label>
-				<label for="freqMonsters">Frequency of Monsters</label>
-				<input type="number" value="12" min="1" max="100" id="freqMonsters" onblur="enforceMinMax(this)" />
-			</div>
-			<div class="field">
-				<label for="mapContext">Map Context</label>
-				<label for="contextfield">
-					<input type="radio" value="field" id="contextfield" name="mapContext" />
-					Field
-				</label>
-				<label for="contextdungeon">
-					<input type="radio" value="dungeon" id="contextdungeon" name="mapContext" checked="checked" />
-					Dungeon
-				</label>
-				<label for="contextbuilding">
-					<input type="radio" value="building" id="contextbuilding" name="mapContext" />
-					Building
-				</label>
-				<label for="contextcave">
-					<input type="radio" value="cave" id="contextcave" name="mapContext" />
-					Cave
-				</label>
-			</div>
-			<div class="field">
-				<button type="button" id="generate">New World</button>
+			<div class="controls" id="edittile">
+				<div data-showif="load" class="field">
+					Please start by creating a world!
+				</div>
+				<div data-showif="view" class="field">
+					Please click a tile to edit.
+				</div>
+				<div data-showif="edit" class="field">
+					<button type="button" class="btn stopedit">Stop Editing</button>
+				</div>
+				<div data-showif="edit" class="field">
+					<button type="button" class="btn save">Save</button>
+				</div>
+				<div data-showif="edit" class="field">
+					<label for="tile_sprite">Sprite</label>
+					<input type="number" value="0" min="0" max="360" id="tile_sprite" onchange="map.switchSprite()" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="edit" class="field">
+					<label for="tile_rotation">Rotation<output id="tile_rotation_value" class="pull-right"></output></label>
+					<input type="range" value="0" min="0" max="360" id="tile_rotation" onchange="map.mapEditor.setRotation(this.value)" onblur="enforceMinMax(this)" />
+				</div>
+				<div data-showif="edit" class="field">
+					<button type="button" class="btn save">Save</button>
+				</div>
 			</div>
 		</div>
+		<button class="zoom in" onclick="zoom(1)">+</button>
+		<button class="zoom reset" onclick="zoom(0)">@</button>
+		<button class="zoom out" onclick="zoom(-1)">-</button>
 		<div class="mapfield">
-			<div><canvas id="gameCanvas"></canvas></div>
+			<canvas id="gameCanvas" class="zoomable" onclick="handleMouseDown(event)"></canvas>
 		</div>
 	</div>
+	<script type="text/javascript" src="menu.js"></script>
 	<script type="text/javascript" src="mapgenerator.js"></script>
 </body>
 </html>

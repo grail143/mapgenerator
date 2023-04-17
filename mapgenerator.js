@@ -721,6 +721,8 @@ class MapGenerator {
         this.monstersprites = [];
         this.obstaclesprites = [];
         this.treasuresprites = [];
+        this.selectedMonster = null;
+        this.mapEditor = null;
     }
     prepImages() {
         let imagesToLoad = {
@@ -1350,7 +1352,6 @@ class MapGenerator {
                     if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
                         spriteIndex = 0;
                     else if (spriteIndex) {
-
                         const spriteXStart = (spriteIndex % this.spriteColumns) * this.spriteWidth;
                         const spriteYStart = Math.floor(spriteIndex / this.spriteColumns) * this.spriteHeight;
                         let direction = Math.floor(Math.random() * 360);
@@ -1373,12 +1374,11 @@ class MapGenerator {
                         const obst = new Obstacle(tile, tilesprite);
 
                         this.obstaclesprites.push(obst);
-                        spriteType = obst.spritetype;
+                        spriteType = obst.sprite.spritetype;
                     }
                 } else if (rand < treasureProb && this.world[x][y] == 0) {
                     let randnum = Math.floor(Math.random() * this.treasures.numOfSprites);
                     spriteIndex = randnum % 2 ? randnum + 1 : randnum;
-                    spriteType = 3;
                     spriteWidth = 2;
                     spriteHeight = 2;
                     if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
@@ -1408,7 +1408,7 @@ class MapGenerator {
                         const treasure = new Treasure(tile, tilesprite);
 
                         this.treasuresprites.push(treasure);
-                        spriteType = treasure.spritetype;
+                        spriteType = treasure.sprite.spritetype;
                     }
                 } else if (rand < monsterProb && this.world[x][y] == 0) {
                     let monster = this.getMonster(x, y);
@@ -1533,6 +1533,106 @@ class MapGenerator {
     drawMonsters() {
         this.monstersprites.forEach(mon => mon.draw(this.ctx, this.tileSize));
     }
+    selectMonster(monster) {
+        this.selectedMonster = monster;
+    }
+    clicked(mousex, mousey) {
+        const x = Math.floor(mousex / this.tileSize);
+        const y = Math.floor(mousey / this.tileSize);
+        const canvas = document.createElement("canvas");
+        document.body.appendChild(canvas);
+        if (this.world[x][y] === 5) {
+            for (let i = 0; i < this.monstersprites.length; i++) {
+                let monster = this.monstersprites[i];
+                if (monster.tile.x === x && monster.tile.y === y) {
+                    this.selectMonster(monster);
+                    break;
+                }
+            }
+        }
+        const editCanvas = document.createElement('canvas');
+        editCanvas.width = this.canvas.width;
+        editCanvas.height = this.canvas.height;
+        editCanvas.classList.add('zoomable');
+        this.mapEditor = new MapEditor(editCanvas, this.selectedMonster, this.tileSize, x, y);
+
+    }
+    unedit() {
+        this.selectMonster(null);
+        this.mapEditor = null;
+    }
+
+}
+class MapEditor {
+    constructor(editCanvas, sprite, tileSize, x, y) {
+        this.sprite = sprite;
+        this.canvas = editCanvas;
+        this.ctx = this.canvas.getContext('2d');
+        this.tileSize = tileSize;
+        this.canvas.style.position = 'absolute';
+        this.startx = x;
+        this.starty = y;
+        document.querySelector('.mapfield').appendChild(this.canvas);
+        //zoom(5);
+        this.renderOverlay();
+        if (this.sprite) this.renderSprite();
+        else this.renderHighlight(x * tileSize, y * tileSize, tileSize, tileSize);
+    }
+    renderOverlay() {
+        this.ctx.globalCompositeOperation = 'source-over';
+        this.ctx.fillStyle = 'rgba(0,0,0, 0.5)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.fill();
+    }
+    renderHighlight(x, y, width, height) {
+
+        this.ctx.beginPath();
+        this.ctx.fillStyle = 'rgba(255,255,255, 0.15)';
+        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 3, 0, 2 * Math.PI, false);
+        this.ctx.fill();
+        this.ctx.fillStyle = 'rgba(255,255,255, 0.15)';
+        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 1.75, 0, 2 * Math.PI, false);
+        this.ctx.fill();
+        this.ctx.fillStyle = 'rgba(255,255,255, 0.15)';
+        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 1.25, 0, 2 * Math.PI, false);
+        this.ctx.fill();
+        //document.querySelector('.mapfield').scrollLeft = (this.canvas.offsetLeft + x + (this.tileSize / 2)) * scale;
+        //document.querySelector('.mapfield').scrollTop = (this.canvas.offsetTop + y + (this.tileSize / 2)) * scale;
+
+    }
+    removeHighlight(x, y, width, height) {
+
+        this.ctx.globalCompositeOperation = 'destination-out';
+        this.ctx.beginPath();
+        this.ctx.fillStyle = 'white';
+        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 1.25, 0, 2 * Math.PI, false);
+        this.ctx.fill();
+        this.ctx.globalCompositeOperation = 'source-over';
+        this.ctx.fillStyle = 'rgba(0,0,0, 0.5)';
+        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 1.25, 0, 2 * Math.PI, false);
+        this.ctx.fill();
+    }
+    renderSprite() {
+        this.removeHighlight(this.sprite.tile.x * this.tileSize, this.sprite.tile.y * this.tileSize, this.sprite.sprite.tilesPer * this.tileSize, this.sprite.sprite.tilesPer * this.tileSize);
+        this.renderHighlight(this.sprite.tile.x * this.tileSize, this.sprite.tile.y * this.tileSize, this.sprite.sprite.tilesPer * this.tileSize, this.sprite.sprite.tilesPer * this.tileSize);
+        this.sprite.draw(this.ctx, this.tileSize, this.sprite.sprite.tilesPer);
+    }
+    destroy() {
+        document.body.removeChild(this.canvas);
+    }
+    setRotation(rotation) {
+        this.sprite.tile.direction = rotation;
+        document.getElementById('tile_rotation_value').value = rotation;
+        this.renderSprite();
+    }
+    switchSprite(sprite) {
+        this.sprite = sprite;
+        this.canvas.width = sprite.tile.width;
+        this.canvas.height = sprite.tile.height;
+        this.canvas.style.top = sprite.tile.y * this.tileSize + 'px';
+        this.canvas.style.left = sprite.tile.x * this.tileSize + 'px';
+        this.render();
+    }
 }
 function arrayInstruments() {
     Array.prototype.shuffle = function () {
@@ -1590,26 +1690,3 @@ function arrayInstruments() {
     }
 }
 
-
-function rnd(ceil) {
-    return Math.floor(Math.random() * ceil);
-}
-const genbutton = document.getElementById("generate");
-genbutton.addEventListener("click", function () {
-    const map = new MapGenerator();
-    map.createWorld()
-});
-function enforceMinMax(el) {
-    if (el.value != "") {
-        if (parseInt(el.value) < parseInt(el.min)) {
-            el.value = el.min;
-            el.classList.add("warning");
-        }
-        else if (parseInt(el.value) > parseInt(el.max)) {
-            el.value = el.max;
-            el.classList.add("warning");
-        } else {
-            el.classList.remove("warning");
-        }
-    }
-}

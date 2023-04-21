@@ -142,7 +142,7 @@
 					<button type="button" class="btn stopedit">Stop Editing</button>
 				</div>
 				<div data-showif="edit" class="field">
-					<button type="button" class="btn save">Save</button>
+					<button type="button" onclick="map.mapEditor.saveTile()" class="btn save">Save</button>
 				</div>
 				<div data-showif="edit" class="field">
 					<label for="tile_sprite">Sprite</label>
@@ -183,10 +183,10 @@
 				</div>
 				<div data-showif="edit" class="field">
 					<label for="tile_rotation">Rotation<output id="tile_rotation_value" class="pull-right"></output></label>
-					<input type="range" value="0" min="0" max="360" id="tile_rotation" onchange="map.mapEditor.setRotation(this.value)" onblur="enforceMinMax(this)" />
+					<input type="range" value="0" min="0" max="360" id="tile_rotation" oninput="map.mapEditor.setRotation(this.value)" onblur="enforceMinMax(this)" />
 				</div>
 				<div data-showif="edit" class="field">
-					<button type="button" class="btn save">Save</button>
+					<button type="button" onclick="map.mapEditor.saveTile()" class="btn save">Save</button>
 				</div>
 			</div>
 		</div>

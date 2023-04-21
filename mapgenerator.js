@@ -3,10 +3,10 @@ class World {
         this.worldWidth = parseInt(width, 10);
         this.worldHeight = parseInt(height, 10);
         if (isNaN(this.worldWidth)) {
-            this.worldWidth = 10; 
+            this.worldWidth = 10;
         }
         if (isNaN(this.worldHeight)) {
-            this.worldHeight = 10; 
+            this.worldHeight = 10;
         }
 
         this.world = Array(this.worldWidth).fill().map(() => Array(this.worldHeight).fill(0));
@@ -605,8 +605,6 @@ class MapGenerator {
 
 
         arrayInstruments();
-        this.background = new Floor(loader.images['background']);
-        this.background.draw(this.ctx, this.canvas.width, this.canvas.height);
         this.genDungeon();
 
 
@@ -978,11 +976,16 @@ class MapGenerator {
     createWorld() {
         this.getValues();
         this.prepWorld();
+        this.drawWorld();
+    }
+    drawWorld() {
+
+        this.background = new Floor(loader.images['background']);
+        this.background.draw(this.ctx, this.canvas.width, this.canvas.height);
         this.drawWalls();
         this.drawObstacles();
         this.drawMonsters();
     }
-
     drawObstacles() {
         this.obstaclesprites.forEach(obst => obst.draw(this.ctx, this.tileSize));
         this.treasuresprites.forEach(treas => treas.draw(this.ctx, this.tileSize));
@@ -1018,10 +1021,21 @@ class MapGenerator {
         for (let i = 0; i < list.length; i++) {
             let obj = list[i];
             if (obj.tile.x === x && obj.tile.y === y) {
+                obj.idx = i;
                 return obj;
                 break;
             }
         }
+    }
+    updateObject(object, tile, idx) {
+        const types = ["none", "wall", "door", "obstacle", "treasure", "monster"];
+        const type = types[tile];
+        const list = type === "wall" ? "walls" : type === "door" ? this.doors : type === "obstacle" ? this.obstaclesprites : type === "treasure" ? this.treasuresprites : type === "monster" ? this.monstersprites : null;
+        if (list === "walls") this.walls[object.tile.x][object.tile.y] = object;
+        else
+            list[idx] = object;
+        this.drawWorld();
+
     }
     clicked(mousex, mousey) {
         const x = Math.floor(mousex / this.tileSize);
@@ -1029,19 +1043,19 @@ class MapGenerator {
         const canvas = document.createElement("canvas");
         document.body.appendChild(canvas);
         this.selectedObject = this.selectObject(this.world[x][y], x, y);
-        this.mapEditor = new MapEditor(this.selectedObject, this.tileSize, this.selectedObject ? this.selectedObject.tile.x : x, this.selectedObject ? this.selectedObject.tile.y : y);
-
+        this.mapEditor = new MapEditor(this.selectedObject, this.tileSize, this.selectedObject ? this.selectedObject.tile.x : x, this.selectedObject ? this.selectedObject.tile.y : y, this.world[x][y], this.selectedObject.idx || 0);
     }
     unedit() {
         this.mapEditor.destroy();
         this.selectedObject = this.selectObject(null);
         this.mapEditor.sprite = null;
         this.mapEditor = null;
+        showifs('view');
     }
 
 }
 class MapEditor {
-    constructor(sprite, tileSize, x, y) {
+    constructor(sprite, tileSize, x, y, type, idx) {
         this.highlightcanvas = this.createCanvas('highlight');
         this.canvas = this.createCanvas('sprite');
         this.hlctx = this.highlightcanvas.getContext('2d');
@@ -1053,6 +1067,8 @@ class MapEditor {
         this.canvas.style.position = 'absolute';
         this.startx = x;
         this.starty = y;
+        this.type = type;
+        this.idx = idx;
         this.init();
     }
     init() {
@@ -1198,6 +1214,11 @@ class MapEditor {
         this.canvas.style.top = sprite.tile.y * this.tileSize + 'px';
         this.canvas.style.left = sprite.tile.x * this.tileSize + 'px';
         this.render();
+    }
+    saveTile() {
+        map.updateObject(this.sprite, this.type, this.idx);
+        zoom(-2, 0, 0)
+        map.unedit();
     }
 }
 function arrayInstruments() {

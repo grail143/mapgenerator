@@ -18,34 +18,6 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-
-body {
-    line-height: 1;
-}
-
-ol, ul {
-    list-style: none;
-}
-
-blockquote, q {
-    quotes: none;
-}
-
-    blockquote:before, blockquote:after,
-    q:before, q:after {
-        content: '';
-        content: none;
-    }
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
 /*End of Reset*/
 :root {
     --color100: #fcfcfd;
@@ -176,11 +148,12 @@ body {
 .mapfield .zoomable {
     position: absolute;
     display: inline-block;
-    transition: all 1s linear;
     transform-style: preserve-3d;
     transform-origin: top left;
     top: 100px;
     left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
 }
 
 .field {
@@ -278,23 +251,43 @@ button {
         background-color: var(--color900);
         color: var(--color200);
     }
-/* width */
+
+    button.active {
+        background-color: var(--color1000);
+        color: var(--color200);
+    }
+
+.btn-group {
+    display: flex;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+    .btn-group > button {
+        border-radius: 0;
+        border: none;
+        border-right: 1px solid gray;
+        flex-grow: 1;
+    }
+
+        .btn-group > button:last-child {
+            border-right: none;
+        }
+
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background: var(--color1000);
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: var(--color800);
 }
 
-    /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: var(--color500);
     }

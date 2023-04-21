@@ -1,406 +1,12 @@
-const spritemap = {
-    "spritesheets": {
-        "obstacles": {
-            "settings": {
-                "types": [
-                    "barrel", //0
-                    "rock", //1
-                    "camping", //2
-                    "urns", //3
-                    "pillars", //4
-                    "fountains", //5
-                    "rubble", //6
-                    "crafting", //7
-                    "storage", //8
-                    "random" //9
-                ]
-            },
-            "sheets": [
-                {
-                    "filename": "sprites/sprite.png",
-                    "main_environment": "dungeon",
-                    "spritesize": 150,
-                    "maptilearea": 1,
-                    "piecemap": [
-                        {
-                            "type": 0,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 0
-                        },
-                        {
-                            "type": 0,
-                            "width": 150,
-                            "height": 150,
-                            "x": 150,
-                            "y": 0
-                        },
-                        {
-                            "type": 0,
-                            "width": 150,
-                            "height": 150,
-                            "x": 300,
-                            "y": 0
-                        },
-                        {
-                            "type": 1,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 0
-                        },
-                        {
-                            "type": 1,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 150
-                        },
-                        {
-                            "type": 1,
-                            "width": 150,
-                            "height": 150,
-                            "x": 150,
-                            "y": 150
-                        },
-                        {
-                            "type": 2,
-                            "width": 150,
-                            "height": 150,
-                            "x": 300,
-                            "y": 150
-                        },
-                        {
-                            "type": 2,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 150
-                        },
-                        {
-                            "type": 9,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 300
-                        },
-                        {
-                            "type": 3,
-                            "width": 150,
-                            "height": 150,
-                            "x": 150,
-                            "y": 300
-                        },
-                        {
-                            "type": 8,
-                            "width": 150,
-                            "height": 150,
-                            "x": 300,
-                            "y": 300
-                        },
-                        {
-                            "type": 4,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 300
-                        },
-                        {
-                            "type": 4,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 450
-                        },
-                        {
-                            "type": 4,
-                            "width": 150,
-                            "height": 150,
-                            "x": 150,
-                            "y": 450
-                        },
-                        {
-                            "type": 7,
-                            "width": 150,
-                            "height": 150,
-                            "x": 300,
-                            "y": 450
-                        },
-                        {
-                            "type": 5,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 450
-                        },
-                        {
-                            "type": 5,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 600
-                        },
-                        {
-                            "type": 5,
-                            "width": 150,
-                            "height": 150,
-                            "x": 150,
-                            "y": 600
-                        },
-                        {
-                            "type": 6,
-                            "width": 150,
-                            "height": 150,
-                            "x": 300,
-                            "y": 600
-                        },
-                        {
-                            "type": 6,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 600
-                        },
-                        {
-                            "type": 6,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 750
-                        },
-                        {
-                            "type": 6,
-                            "width": 150,
-                            "height": 150,
-                            "x": 150,
-                            "y": 750
-                        },
-                        {
-                            "type": 7,
-                            "width": 150,
-                            "height": 150,
-                            "x": 300,
-                            "y": 750
-                        },
-                        {
-                            "type": 7,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 750
-                        },
-                        {
-                            "type": 8,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 900
-                        },
-                        {
-                            "type": 8,
-                            "width": 150,
-                            "height": 150,
-                            "x": 150,
-                            "y": 900
-                        },
-                        {
-                            "type": 8,
-                            "width": 150,
-                            "height": 150,
-                            "x": 300,
-                            "y": 900
-                        },
-                        {
-                            "type": 8,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 900
-                        },
-                        {
-                            "type": 3,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 1050
-                        },
-                        {
-                            "type": 3,
-                            "width": 150,
-                            "height": 150,
-                            "x": 150,
-                            "y": 1050
-                        },
-                        {
-                            "type": 3,
-                            "width": 150,
-                            "height": 150,
-                            "x": 300,
-                            "y": 1050
-                        },
-                        {
-                            "type": 3,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 1050
-                        }
-                    ]
-                }
-            ]
-        },
-        "walls": {
-            "settings": {
-                "edgemap": [
-                    "transparent", // 0
-                    "flat", // 1
-                    "natural", // 2
-                    "blend" // 3
-                ],
-                "types": [
-                    "straight", // 0
-                    "beginning", // 1
-                    "ending", // 2
-                    "connector", // 3
-                    "t", // 4
-                    "corner", // 5
-                    "+", // 6
-                    "45", // 7
-                    "halfarch", // 8
-                    "arch", // 9
-                    "x" // 10
-                ]
-            },
-            "sheets": [
-                {
-                    "filename": "sprites/wallssprite2.png",
-                    "color": "stone_earthy",
-                    "main_environment": "dungeon",
-                    "spritesize": 100,
-                    "maptilearea": 1,
-                    "piecemap": [
-                        {
-                            "type": 0,
-                            "width": 100,
-                            "height": 100,
-                            "x": 0,
-                            "y": 0
-                        },
-                        {
-                            "type": 0,
-                            "width": 200,
-                            "height": 100,
-                            "x": 100,
-                            "y": 0
-                        },
-                        {
-                            "type": 5,
-                            "width": 100,
-                            "height": 100,
-                            "x": 300,
-                            "y": 0
-                        },
-                        {
-                            "type": 4,
-                            "width": 100,
-                            "height": 100,
-                            "x": 400,
-                            "y": 0
-                        },
-                        {
-                            "type": 6,
-                            "width": 100,
-                            "height": 100,
-                            "x": 500,
-                            "y": 0
-                        },
-                        {
-                            "type": 0,
-                            "width": 400,
-                            "height": 100,
-                            "x": 0,
-                            "y": 100
-                        },
-                        {
-                            "type": 1,
-                            "width": 100,
-                            "height": 100,
-                            "x": 400,
-                            "y": 100
-                        },
-                        {
-                            "type": 0,
-                            "width": 600,
-                            "height": 100,
-                            "x": 0,
-                            "y": 200
-                        }
-                    ]
-                }
-            ]
-        },
-        "doors": {
-            "settings": {
-                "types": [
-                    "single", // 0
-                    "double", // 1
-                    "hidden", // 2
-                    "none" // 3
-                ]
-            },
-            "sheets": [
-                {
-                    "filename": "sprites/doorsprites1.png",
-                    "color": "wood",
-                    "main_environment": "dungeon",
-                    "spritesize": 150,
-                    "maptilearea": 1,
-                    "piecemap": [
-                        {
-                            "type": 1,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 0
-                        },
-                        {
-                            "type": 2,
-                            "width": 300,
-                            "height": 150,
-                            "x": 150,
-                            "y": 0
-                        },
-                        {
-                            "type": 3,
-                            "width": 150,
-                            "height": 150,
-                            "x": 450,
-                            "y": 0
-                        },
-                        {
-                            "type": 4,
-                            "width": 150,
-                            "height": 150,
-                            "x": 0,
-                            "y": 150
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-}
-
 class World {
     constructor(width, height) {
         this.worldWidth = parseInt(width, 10);
         this.worldHeight = parseInt(height, 10);
         if (isNaN(this.worldWidth)) {
-            this.worldWidth = 10; // default value
+            this.worldWidth = 10; 
         }
         if (isNaN(this.worldHeight)) {
-            this.worldHeight = 10; // default value
+            this.worldHeight = 10; 
         }
 
         this.world = Array(this.worldWidth).fill().map(() => Array(this.worldHeight).fill(0));
@@ -565,7 +171,9 @@ class Sprite {
             y: 0,
             width: 0,
             height: 0,
-            direction: 0
+            direction: 0,
+            mirrorh: 1,
+            mirrorv: 1
         },
         sprite = {
             sheet: null,
@@ -592,29 +200,33 @@ class Sprite {
         return this.sprite.sheet;
     }
     draw(ctx, tileSize, tilesPer = 1) {
+        this.x = this.x || this.tile.x * tileSize;
+        this.y = this.y || this.tile.y * tileSize;
         ctx.save();
         this.rotate(ctx, tileSize, tilesPer);
-        ctx.drawImage(this.sprite.sheet,
-            this.sprite.x, this.sprite.y,
-            this.sprite.width, this.sprite.height,
+
+        ctx.drawImage(this.sprite.getCanvas(),
+            0, 0,
+            this.sprite.spriteWidth, this.sprite.spriteHeight,
             0, 0,
             this.tile.width, this.tile.height);
+
         ctx.restore();
     }
-    getTileAreaCenter(tilesPer) {
-        const centerX = (this.tile.height / tilesPer) / 2;
-        const centerY = (this.tile.height / tilesPer) / 2;
+    getTileAreaCenter() {
+        const centerX = this.tile.height / 2;
+        const centerY = this.tile.height / 2;
         return { 'centerX': centerX, 'centerY': centerY };
     }
     getBlockCenter(tilex, tiley) {
-        const centerX = tilex + (this.tile.height * (this.tilesPer || 1)) / 2;
-        const centerY = tiley + (this.tile.height * (this.tilesPer || 1)) / 2;
+        const centerX = tilex + this.tile.height / 2;
+        const centerY = tiley + this.tile.height / 2;
         return { 'centerX': centerX, 'centerY': centerY };
 
     }
     rotate(ctx, tileSize, tilesPer) {
-        const tilex = this.tile.x * tileSize;
-        const tiley = this.tile.y * tileSize;
+        const tilex = this.x;
+        const tiley = this.y;
         const angle = this.tile.direction * Math.PI / 180;
         const tileCenters = this.getTileAreaCenter(tilesPer);
         const centerX = tileCenters['centerX'];
@@ -625,7 +237,13 @@ class Sprite {
 
         ctx.translate(blockCenterX, blockCenterY);
         ctx.rotate(angle);
+        ctx.scale(this.tile.mirrorh || 1, this.tile.mirrorv || 1);
         ctx.translate(-centerX, -centerY);
+    }
+    clone() {
+        let tile = Object.assign(Object.create(Object.getPrototypeOf(this.tile)), this.tile);
+        let sprite = Object.assign(Object.create(Object.getPrototypeOf(this.sprite)), this.sprite);
+        return new Sprite(tile, sprite)
     }
 }
 
@@ -637,12 +255,14 @@ class Wall extends Sprite {
     }
 }
 class Door extends Sprite {
-    constructor(x, y, dir, sheet, tileSize, sheetInfo, double = false) {
+    constructor(x, y, dir, tileSize, sheet, double = false) {
         let tile = {
             x: x,
             y: y,
             width: double ? tileSize * 2 : tileSize,
-            height: tileSize
+            height: tileSize,
+            mirrorh: 1,
+            mirrorv: -1
         }
         let sprite = {
             sheet: sheet,
@@ -655,7 +275,6 @@ class Door extends Sprite {
             tilesPer: 0
         }
         super(tile, sprite);
-        this.sheetInfo = sheetInfo;
         this.tile.direction = this.setDirection(dir);
         this.setSprite();
     }
@@ -665,12 +284,10 @@ class Door extends Sprite {
     }
     setSprite() {
         let sprites, rand = Math.random(), sprite, spriteRatio = this.tile.height / this.tile.width;
-        sprites = this.sheetInfo.filter((sprite) => sprite.height / sprite.width == spriteRatio);
+        sprites = spriteSheets.door[0].spriteimages.filter((sprite) => sprite.spriteHeight / sprite.spriteWidth == spriteRatio);
         sprite = sprites[Math.floor(rand * sprites.length)];
-        const updateSprite = ['x', 'y', 'width', 'height'];
-        for (let val of updateSprite) {
-            this.sprite[val] = sprite[val];
-        }
+        this.sprite = sprite;
+        this.sprite.spritetype = 2;
     }
     setDouble(adjoiningdoors, double = true) {
         if (double) {
@@ -709,12 +326,8 @@ class MapGenerator {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext("2d");
-        this.spritesheet = null;
         this.background = null;
         this.loaded = false;
-        this.spriteWidth = 150;
-        this.spriteHeight = 150;
-        this.monsters = [];
         this.numOfSprites = 0;
         this.rooms = [];
         this.doors = [];
@@ -724,114 +337,10 @@ class MapGenerator {
         this.selectedMonster = null;
         this.mapEditor = null;
     }
-    prepImages() {
-        let imagesToLoad = {
-            spritesheet: "sprites/sprite.png",
-            background: "floor.png",
-            monsters_sm: "sprites/monsters_sm.png",
-            monsters_med: "sprites/monsters_med.png",
-            monsters_lg: "sprites/monsters_lg.png",
-            walls: "sprites/wallssprite2.png",
-            treasuresheet: "sprites/treasure.png",
-            doorsheet: "sprites/doorsprites1.png"
-        }
-
-        this.loadImages(imagesToLoad);
-    }
-    loadImages(imageSources) {
-        const images = {};
-        const totalImages = Object.keys(imageSources).length;
-        let imagesLoaded = 0;
-
-        const monstersData = [
-            { size: "sm", spriteSize: 150, tilesPerSprite: 1 },
-            { size: "med", spriteSize: 300, tilesPerSprite: 2 },
-            { size: "lg", spriteSize: 600, tilesPerSprite: 4 }
-        ];
-
-        for (const [key, src] of Object.entries(imageSources)) {
-            const img = new Image();
-            img.onload = () => {
-                images[key] = img;
-                imagesLoaded++;
-                if (imagesLoaded === totalImages) {
-                    this.background = new Floor(images.background);
-                    this.spritesheet = images.spritesheet;
-                    this.monsters = monstersData.map((monsterData) => {
-                        const monsterImg = images[`monsters_${monsterData.size}`];
-                        return {
-                            "img": monsterImg,
-                            "spriteImgWidth": monsterImg.width,
-                            "spriteImgHeight": monsterImg.height,
-                            "spriteColumns": monsterImg.width / monsterData.spriteSize,
-                            "spriteRows": monsterImg.height / monsterData.spriteSize,
-                            "spriteHeight": monsterData.spriteSize,
-                            "spriteWidth": monsterData.spriteSize,
-                            "numOfSprites": (monsterImg.width / monsterData.spriteSize) * (monsterImg.height / monsterData.spriteSize),
-                            "numOfTiles": (monsterImg.width / this.spriteWidth) * (monsterImg.height / this.spriteHeight),
-                            "tilesPerSprite": monsterData.tilesPerSprite
-
-                        };
-                    });
-                    this.wallsprites = {
-                        wallsImg: images['walls'],
-                        spriteSize: spritemap.spritesheets.walls.sheets[0].spritesize,
-                        spriteImgWidth: 0,
-                        spriteImgHeight: 0,
-                        spriteColumns: 0,
-                        spriteRows: 0,
-                        spriteHeight: 0,
-                        spriteWidth: 0,
-                        numOfSprites: spritemap.spritesheets.walls.sheets[0].piecemap.length,
-                        numOfTiles: 0,
-                        spriteInfo: spritemap.spritesheets.walls.sheets[0].piecemap,
-                        spriteSettings: spritemap.spritesheets.walls.sheets[0].settings
-                    };
-                    this.doorsprites = {
-                        img: images['doorsheet'],
-                        spriteSize: spritemap.spritesheets.doors.sheets[0].spritesize,
-                        spriteImgWidth: 0,
-                        spriteImgHeight: 0,
-                        spriteColumns: 0,
-                        spriteRows: 0,
-                        spriteHeight: 0,
-                        spriteWidth: 0,
-                        numOfSprites: spritemap.spritesheets.doors.sheets[0].piecemap.length,
-                        numOfTiles: 0,
-                        spriteInfo: spritemap.spritesheets.doors.sheets[0].piecemap,
-                        spriteSettings: spritemap.spritesheets.doors.sheets[0].settings
-                    };
-                    this.treasures = {
-                        treasureImg: images['treasuresheet'],
-                        spriteSize: 200,
-                        spriteImgWidth: images.treasuresheet.width,
-                        spriteImgHeight: images.treasuresheet.height,
-                        spriteColumns: images.treasuresheet.width / 200,
-                        spriteRows: images.treasuresheet.height / 200,
-                        spriteHeight: 200,
-                        spriteWidth: 200,
-                        numOfSprites: (images.treasuresheet.width / 200) * (images.treasuresheet.height / 200),
-                        numOfTiles: ((2 * images.treasuresheet.width) / 200) * ((2 * images.treasuresheet.height) / 200),
-                        tilesPerSprite: 2
-                    };
-                    this.spriteImgWidth = images.spritesheet.width;
-                    this.spriteImgHeight = images.spritesheet.height;
-                    this.spriteColumns = this.spriteImgWidth / this.spriteWidth;
-                    this.numOfSprites = (this.spriteImgWidth / this.spriteWidth) * (this.spriteImgHeight / this.spriteHeight);
-                    this.prepWorld();
-                    this.background.draw(this.ctx, this.canvas.width, this.canvas.height);
-                    this.drawWalls();
-                    this.drawObstacles();
-                    this.drawMonsters();
-                }
-            };
-            img.src = src;
-        }
-    }
-    getWallSpritePiece(type, length) {
-        let sprites = this.wallsprites.spriteInfo.filter((sprite) => sprite.type === type);
+    getWallSpritePiece(type, length, sheetidx = 0) {
+        let sprites = spriteSheets.wall[sheetidx].spriteimages.filter((sprite) => sprite.typeidx === type);
         if (type === 0) {
-            let longsprites = sprites.filter((sprite) => sprite.width <= (length * 100));
+            let longsprites = sprites.filter((sprite) => sprite.spriteWidth <= (length * spriteSheets.wall[sheetidx].spriteSize));
             if (longsprites.length)
                 return longsprites.reduce(function (prev, current) {
                     return (prev.width > current.width) ? prev : current
@@ -856,8 +365,8 @@ class MapGenerator {
                     if (walllengths[i].x == xtiles && walllengths[i].y == ytiles && walltiles[i].type === 0) {
                         const { x, y, length, direction } = walllengths[i];
                         const spritePiece = this.getWallSpritePiece(0, length);
-                        const spriteSheet = this.wallsprites.wallsImg;
-                        const spriteSize = this.wallsprites.spriteSize;
+                        const spriteSheet = spriteSheets.wall[0].img;
+                        const spriteSize = spriteSheets.wall[0].spriteSize;
                         let map = {
                             x: x,
                             y: y,
@@ -865,14 +374,7 @@ class MapGenerator {
                             height: this.tileSize,
                             direction: direction || 0
                         }
-                        let sprite = {
-                            sheet: spriteSheet,
-                            x: spritePiece.x,
-                            y: spritePiece.y,
-                            width: spritePiece.width,
-                            height: spritePiece.height,
-                            spritesize: spriteSize
-                        }
+                        let sprite = spritePiece;
                         let type = spritePiece.type;
 
                         wallSprites[walllengths[i].x] = wallSprites[walllengths[i].x] || {};
@@ -902,8 +404,6 @@ class MapGenerator {
                     if (walltiles[i].x == xtiles && walltiles[i].y == ytiles) {
                         const { x, y, direction } = walltiles[i];
                         const spritePiece = this.getWallSpritePiece(walltiles[i].type, 1);
-                        const spriteSheet = this.wallsprites.wallsImg;
-                        const spriteSize = this.wallsprites.spriteSize;
                         let map = {
                             x: x,
                             y: y,
@@ -911,15 +411,8 @@ class MapGenerator {
                             height: this.tileSize,
                             direction: direction || 0
                         }
-                        let sprite = {
-                            sheet: spriteSheet,
-                            x: spritePiece.x,
-                            y: spritePiece.y,
-                            width: spritePiece.width,
-                            height: spritePiece.height,
-                            spritesize: spriteSize
-                        }
-                        let type = spritePiece.type;
+                        let sprite = spritePiece;
+                        let type = spritePiece.typeidx;
                         wallSprites[walltiles[i].x] = wallSprites[walltiles[i].x] || {};
                         wallSprites[walltiles[i].x][walltiles[i].y] = new Wall(map, sprite, type);
                         tilesadded.push({ x: xtiles, y: ytiles });
@@ -1112,6 +605,8 @@ class MapGenerator {
 
 
         arrayInstruments();
+        this.background = new Floor(loader.images['background']);
+        this.background.draw(this.ctx, this.canvas.width, this.canvas.height);
         this.genDungeon();
 
 
@@ -1268,7 +763,7 @@ class MapGenerator {
             return { wall: walls[0], dir: dirs };
         }
     }
-    makeDoor(room1, room2, outer = false) {
+    makeDoor(room1, room2, outer = false, doorsheetidx = 0) {
         let walls = this.commonWalls(room1, room2);
         let goodwall = {};
         let found = walls ? this.foundDoors(walls) : 0;
@@ -1279,7 +774,7 @@ class MapGenerator {
             if (wallinfo) {
                 goodwall = wallinfo.wall;
                 const direction = wallinfo.dir.includes('S') ? 90 : 0;
-                let door = new Door(goodwall.x, goodwall.y, direction, this.doorsprites.img, this.tileSize, this.doorsprites.spriteInfo);
+                let door = new Door(goodwall.x, goodwall.y, direction, this.tileSize, spriteSheets.door[doorsheetidx].spriteInfo);
                 this.world[goodwall.x][goodwall.y] = door.getSpriteWorldInd();
                 this.doors.push(door);
                 return true;
@@ -1290,7 +785,7 @@ class MapGenerator {
             if (wallinfo) {
                 goodwall = wallinfo.wall;
                 const direction = wallinfo.dir.includes('S') ? 90 : 0;
-                let door = new Door(goodwall.x, goodwall.y, direction, this.doorsprites.img, this.tileSize, this.doorsprites.spriteInfo);
+                let door = new Door(goodwall.x, goodwall.y, direction, this.tileSize, spriteSheets.door[doorsheetidx].spriteInfo);
                 this.world[goodwall.x][goodwall.y] = door.getSpriteWorldInd();
                 this.doors.push(door);
             }
@@ -1348,6 +843,7 @@ class MapGenerator {
                 let spriteType = 0;
                 let rand = Math.random();
                 if (rand < obstacleProb && this.world[x][y] == 0) {
+                    const obstaclespriteidx = 0;
                     spriteIndex = Math.floor(Math.random() * (32 - 3) + 3);
                     if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
                         spriteIndex = 0;
@@ -1362,22 +858,15 @@ class MapGenerator {
                             height: this.tileSize,
                             direction: direction
                         };
-                        let tilesprite = {
-                            sheet: this.spritesheet,
-                            x: spriteXStart,
-                            y: spriteYStart,
-                            width: this.spriteWidth,
-                            height: this.spriteHeight,
-                            tilesPer: 1,
-                            spritesize: 1
-                        };
+                        let tilesprite = spriteSheets.obstacle[obstaclespriteidx].spriteimages[spriteIndex];
                         const obst = new Obstacle(tile, tilesprite);
 
                         this.obstaclesprites.push(obst);
                         spriteType = obst.sprite.spritetype;
                     }
                 } else if (rand < treasureProb && this.world[x][y] == 0) {
-                    let randnum = Math.floor(Math.random() * this.treasures.numOfSprites);
+                    const treasurespriteidx = 0;
+                    let randnum = Math.floor(Math.random() * spriteSheets.treasure[treasurespriteidx].numOfSprites);
                     spriteIndex = randnum % 2 ? randnum + 1 : randnum;
                     spriteWidth = 2;
                     spriteHeight = 2;
@@ -1385,8 +874,8 @@ class MapGenerator {
                         spriteIndex = 0;
                     else if (spriteIndex) {
 
-                        const spriteXStart = (spriteIndex % this.treasures.spriteColumns) * this.treasures.spriteWidth;
-                        const spriteYStart = Math.floor(spriteIndex / this.treasures.spriteColumns) * this.treasures.spriteHeight;
+                        const spriteXStart = (spriteIndex % spriteSheets.treasure[treasurespriteidx].spriteColumns) * spriteSheets.treasure[treasurespriteidx].spriteWidth;
+                        const spriteYStart = Math.floor(spriteIndex / spriteSheets.treasure[treasurespriteidx].spriteColumns) * spriteSheets.treasure[treasurespriteidx].spriteHeight;
                         let direction = Math.floor(Math.random() * 360);
                         let tile = {
                             x: x,
@@ -1396,15 +885,7 @@ class MapGenerator {
                             direction: direction
                         };
 
-                        let tilesprite = {
-                            sheet: this.treasures.treasureImg,
-                            x: spriteXStart,
-                            y: spriteYStart,
-                            width: this.treasures.spriteWidth,
-                            height: this.treasures.spriteHeight,
-                            tilesPer: 2,
-                            spritesize: 2
-                        };
+                        let tilesprite = spriteSheets.treasure[treasurespriteidx].spriteimages[spriteIndex];
                         const treasure = new Treasure(tile, tilesprite);
 
                         this.treasuresprites.push(treasure);
@@ -1437,27 +918,27 @@ class MapGenerator {
     }
     getMonster(x, y) {
         let totalmonstersprites = 0;
-        for (let i = 0; i < this.monsters.length; i++) {
-            totalmonstersprites += this.monsters[i].numOfSprites;
+        for (let i = 0; i < spriteSheets.monster.length; i++) {
+            totalmonstersprites += spriteSheets.monster[i].spriteimages.length;
         }
         let spriteIndex = Math.floor(Math.random() * totalmonstersprites);
         let monster;
         let spriteHeight = 1;
         let spriteWidth = 1;
         let spriteOnSheet = 0;
-        if (spriteIndex - 1 < this.monsters[0].numOfSprites) {
+        if (spriteIndex - 1 < spriteSheets.monster[0].spriteimages.length) {
             spriteOnSheet = spriteIndex;
-            monster = this.monsters[0];
-        } else if (spriteIndex - 1 < this.monsters[0].numOfSprites + this.monsters[1].numOfSprites) {
+            monster = spriteSheets.monster[0];
+        } else if (spriteIndex - 1 < spriteSheets.monster[0].spriteimages.length + spriteSheets.monster[1].spriteimages.length) {
             spriteWidth = 2;
             spriteHeight = 2;
-            spriteOnSheet = spriteIndex - this.monsters[0].numOfSprites;
-            monster = this.monsters[1];
-        } else if (spriteIndex - 1 < this.monsters[0].numOfSprites + this.monsters[1].numOfSprites + this.monsters[2].numOfSprites) {
+            spriteOnSheet = spriteIndex - spriteSheets.monster[0].spriteimages.length;
+            monster = spriteSheets.monster[1];
+        } else if (spriteIndex - 1 < spriteSheets.monster[0].spriteimages.length + spriteSheets.monster[1].spriteimages.length + spriteSheets.monster[2].spriteimages.length) {
             spriteWidth = 4;
             spriteHeight = 4;
-            spriteOnSheet = spriteIndex - 1 - this.monsters[0].numOfSprites - this.monsters[1].numOfSprites;
-            monster = this.monsters[2];
+            spriteOnSheet = spriteIndex - 1 - spriteSheets.monster[0].spriteimages.length - spriteSheets.monster[1].spriteimages.length;
+            monster = spriteSheets.monster[2];
         } else {
             spriteIndex = 0;
         }
@@ -1471,15 +952,7 @@ class MapGenerator {
                 height: this.tileSize * monster.tilesPerSprite,
                 direction: direction
             };
-            let tilesprite = {
-                sheet: monster.img,
-                x: (spriteOnSheet % monster.spriteColumns) * monster.spriteWidth,
-                y: Math.floor(spriteOnSheet / monster.spriteColumns) * (monster.spriteHeight),
-                width: monster.spriteWidth,
-                height: monster.spriteHeight,
-                tilesPer: monster.tilesPerSprite,
-                spritesize: monster.spriteWidth
-            };
+            let tilesprite = monster.spriteimages[spriteOnSheet];
             mon = { "tile": tile, "tilesprite": tilesprite };
         }
         return { "height": spriteHeight, "width": spriteWidth, "index": spriteIndex, "mon": mon };
@@ -1504,7 +977,10 @@ class MapGenerator {
 
     createWorld() {
         this.getValues();
-        this.prepImages();
+        this.prepWorld();
+        this.drawWalls();
+        this.drawObstacles();
+        this.drawMonsters();
     }
 
     drawObstacles() {
@@ -1533,96 +1009,186 @@ class MapGenerator {
     drawMonsters() {
         this.monstersprites.forEach(mon => mon.draw(this.ctx, this.tileSize));
     }
-    selectMonster(monster) {
-        this.selectedMonster = monster;
+    selectObject(tile, x = 0, y = 0) {
+        const types = ["none", "wall", "door", "obstacle", "treasure", "monster"];
+        const type = types[tile];
+        const list = type === "wall" ? "walls" : type === "door" ? this.doors : type === "obstacle" ? this.obstaclesprites : type === "treasure" ? this.treasuresprites : type === "monster" ? this.monstersprites : null;
+        if (!list) return false;
+        if (list === "walls") return this.walls[x][y];
+        for (let i = 0; i < list.length; i++) {
+            let obj = list[i];
+            if (obj.tile.x === x && obj.tile.y === y) {
+                return obj;
+                break;
+            }
+        }
     }
     clicked(mousex, mousey) {
         const x = Math.floor(mousex / this.tileSize);
         const y = Math.floor(mousey / this.tileSize);
         const canvas = document.createElement("canvas");
         document.body.appendChild(canvas);
-        if (this.world[x][y] === 5) {
-            for (let i = 0; i < this.monstersprites.length; i++) {
-                let monster = this.monstersprites[i];
-                if (monster.tile.x === x && monster.tile.y === y) {
-                    this.selectMonster(monster);
-                    break;
-                }
-            }
-        }
-        const editCanvas = document.createElement('canvas');
-        editCanvas.width = this.canvas.width;
-        editCanvas.height = this.canvas.height;
-        editCanvas.classList.add('zoomable');
-        this.mapEditor = new MapEditor(editCanvas, this.selectedMonster, this.tileSize, x, y);
+        this.selectedObject = this.selectObject(this.world[x][y], x, y);
+        this.mapEditor = new MapEditor(this.selectedObject, this.tileSize, this.selectedObject ? this.selectedObject.tile.x : x, this.selectedObject ? this.selectedObject.tile.y : y);
 
     }
     unedit() {
-        this.selectMonster(null);
+        this.mapEditor.destroy();
+        this.selectedObject = this.selectObject(null);
+        this.mapEditor.sprite = null;
         this.mapEditor = null;
     }
 
 }
 class MapEditor {
-    constructor(editCanvas, sprite, tileSize, x, y) {
-        this.sprite = sprite;
-        this.canvas = editCanvas;
+    constructor(sprite, tileSize, x, y) {
+        this.highlightcanvas = this.createCanvas('highlight');
+        this.canvas = this.createCanvas('sprite');
+        this.hlctx = this.highlightcanvas.getContext('2d');
         this.ctx = this.canvas.getContext('2d');
         this.tileSize = tileSize;
+        if (sprite)
+            this.setSprite(sprite);
+        this.spriteSize = this.sprite ? this.sprite.sprite.tilesPer * this.tileSize : this.tileSize;
         this.canvas.style.position = 'absolute';
         this.startx = x;
         this.starty = y;
+        this.init();
+    }
+    init() {
+        let tilecenter = { 'centerX': this.startx * this.tileSize, 'centerY': this.starty * this.tileSize };
+        if (this.sprite)
+            tilecenter = this.sprite.getBlockCenter(this.startx * this.tileSize, this.starty * this.tileSize);
+        document.querySelector('.mapfield').appendChild(this.highlightcanvas);
         document.querySelector('.mapfield').appendChild(this.canvas);
-        //zoom(5);
+
         this.renderOverlay();
-        if (this.sprite) this.renderSprite();
-        else this.renderHighlight(x * tileSize, y * tileSize, tileSize, tileSize);
+        this.renderHighlight(tilecenter['centerX'], tilecenter['centerY'], this.spriteSize, this.spriteSize);
+        if (this.sprite) this.setRotation(this.sprite.tile.direction);
+        this.handleUI();
+    }
+    handleUI() {
+        toggleNav('edittile', true);
+        zoom(2, this.startx * this.tileSize, this.starty * this.tileSize, this.tileSize);
+
+    }
+    setSprite(sprite) {
+        this.sprite = sprite.clone();
+    }
+    createCanvas(id) {
+        const newCanvas = document.createElement('canvas');
+        newCanvas.width = map.canvas.width;
+        newCanvas.height = map.canvas.height;
+        newCanvas.classList.add('zoomable', 'editcanvas');
+        newCanvas.id = id;
+        return newCanvas;
+
     }
     renderOverlay() {
-        this.ctx.globalCompositeOperation = 'source-over';
-        this.ctx.fillStyle = 'rgba(0,0,0, 0.5)';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.fill();
+        this.hlctx.globalCompositeOperation = 'source-over';
+        this.hlctx.fillStyle = 'rgba(0,0,0, 0.5)';
+        this.hlctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.hlctx.fill();
+    }
+    fillcircle(x, y, width, height, opacity, size) {
+        this.hlctx.fillStyle = `rgba(255,255,255, ${opacity})`;
+        this.hlctx.arc(x, y, (width + this.tileSize) / size, 0, 2 * Math.PI, false);
+        this.hlctx.fill();
     }
     renderHighlight(x, y, width, height) {
-
-        this.ctx.beginPath();
-        this.ctx.fillStyle = 'rgba(255,255,255, 0.15)';
-        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 3, 0, 2 * Math.PI, false);
-        this.ctx.fill();
-        this.ctx.fillStyle = 'rgba(255,255,255, 0.15)';
-        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 1.75, 0, 2 * Math.PI, false);
-        this.ctx.fill();
-        this.ctx.fillStyle = 'rgba(255,255,255, 0.15)';
-        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 1.25, 0, 2 * Math.PI, false);
-        this.ctx.fill();
-        //document.querySelector('.mapfield').scrollLeft = (this.canvas.offsetLeft + x + (this.tileSize / 2)) * scale;
-        //document.querySelector('.mapfield').scrollTop = (this.canvas.offsetTop + y + (this.tileSize / 2)) * scale;
-
+        this.hlctx.beginPath();
+        this.hlctx.globalCompositeOperation = 'destination-out';
+        this.fillcircle(x, y, width, height, 1, 3);
+        this.hlctx.globalCompositeOperation = 'source-over';
+        this.fillcircle(x, y, width, height, 0.15, 3);
+        this.fillcircle(x, y, width, height, 0.15, 1.75);
+        this.fillcircle(x, y, width, height, 0.15, 1.25);
     }
-    removeHighlight(x, y, width, height) {
-
-        this.ctx.globalCompositeOperation = 'destination-out';
-        this.ctx.beginPath();
-        this.ctx.fillStyle = 'white';
-        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 1.25, 0, 2 * Math.PI, false);
-        this.ctx.fill();
-        this.ctx.globalCompositeOperation = 'source-over';
-        this.ctx.fillStyle = 'rgba(0,0,0, 0.5)';
-        this.ctx.arc(x + (this.tileSize / 2), y + (this.tileSize / 2), (width + this.tileSize) / 1.25, 0, 2 * Math.PI, false);
-        this.ctx.fill();
+    reclaimCanvas(ctx = this.hlctx) {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = 'rgba(0,0,0, 0)';
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
     renderSprite() {
-        this.removeHighlight(this.sprite.tile.x * this.tileSize, this.sprite.tile.y * this.tileSize, this.sprite.sprite.tilesPer * this.tileSize, this.sprite.sprite.tilesPer * this.tileSize);
-        this.renderHighlight(this.sprite.tile.x * this.tileSize, this.sprite.tile.y * this.tileSize, this.sprite.sprite.tilesPer * this.tileSize, this.sprite.sprite.tilesPer * this.tileSize);
+        this.reclaimCanvas(this.ctx);
         this.sprite.draw(this.ctx, this.tileSize, this.sprite.sprite.tilesPer);
     }
     destroy() {
-        document.body.removeChild(this.canvas);
+        document.querySelector('.mapfield').removeChild(this.canvas);
+        document.querySelector('.mapfield').removeChild(this.highlightcanvas);
     }
     setRotation(rotation) {
-        this.sprite.tile.direction = rotation;
+        this.sprite.tile.direction = parseInt(rotation);
+        document.getElementById('tile_rotation').value = rotation;
         document.getElementById('tile_rotation_value').value = rotation;
+        this.renderSprite();
+    }
+    flipSprite(mir) {
+        if (mir === 'h') {
+            this.sprite.tile.mirrorh = -1 * (this.sprite.tile.mirrorh || 1);
+            document.querySelector('#flip_sprite_h').classList.toggle('active');
+        } else {
+            this.sprite.tile.mirrorv = -1 * (this.sprite.tile.mirrorv || 1);
+            document.querySelector('#flip_sprite_v').classList.toggle('active');
+        }
+        this.renderSprite();
+    }
+    nudgeSize(dir) {
+        switch (dir) {
+            case 1:
+                this.sprite.tile.width += .2 * this.tileSize;
+                this.sprite.tile.height += .2 * this.tileSize;
+                this.nudgeSprite('NW');
+                break;
+            case -1:
+                this.sprite.tile.width -= .2 * this.tileSize;
+                this.sprite.tile.height -= .2 * this.tileSize;
+                this.nudgeSprite('SE');
+                break;
+            default:
+                this.sprite.tile.width = this.tileSize * (this.sprite.sprite.tilesPer || 1);
+                this.sprite.tile.height = this.tileSize * (this.sprite.sprite.tilesPer || 1);
+                this.nudgeSprite('0');
+        }
+    }
+    nudgeSprite(dir) {
+        switch (dir) {
+            case 'NW':
+                this.sprite.x = this.sprite.x - .1 * this.tileSize;
+                this.sprite.y = this.sprite.y - .1 * this.tileSize;
+                break;
+            case 'N':
+                this.sprite.y = this.sprite.y - .1 * this.tileSize;
+                break;
+            case 'NE':
+                this.sprite.x = this.sprite.x + .1 * this.tileSize;
+                this.sprite.y = this.sprite.y - .1 * this.tileSize;
+                break;
+            case 'W':
+                this.sprite.x = this.sprite.x - .1 * this.tileSize;
+                break;
+            case 'E':
+                this.sprite.x = this.sprite.x + .1 * this.tileSize;
+                break;
+            case 'SW':
+                this.sprite.x = this.sprite.x - .1 * this.tileSize;
+                this.sprite.y = this.sprite.y + .1 * this.tileSize;
+                break;
+            case 'S':
+                this.sprite.y = this.sprite.y + .1 * this.tileSize;
+                break;
+            case 'SE':
+                this.sprite.x = this.sprite.x + .1 * this.tileSize;
+                this.sprite.y = this.sprite.y + .1 * this.tileSize;
+                break;
+            default:
+                this.sprite.x = this.sprite.tile.x * this.tileSize;
+                this.sprite.y = this.sprite.tile.y * this.tileSize;
+        }
         this.renderSprite();
     }
     switchSprite(sprite) {

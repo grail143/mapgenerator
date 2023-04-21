@@ -1,13 +1,15 @@
-function toggleNav(id) {
+function toggleNav(id, open = false) {
     const nav = document.getElementById("leftslidenav");
     const form = document.getElementById(id);
     const selected = document.querySelector('.controls.selected');
-    if (selected.id == id)
+    if (selected.id == id && !open)
         nav.classList.toggle('open');
-    else {
+    else if (selected.id != id) {
         nav.classList.add('open');
         selected.classList.remove('selected');
         form.classList.add('selected');
+    } else {
+        nav.classList.add('open');
     }
     document.querySelectorAll('.toggleBtns button').forEach(item => {
         item.classList.remove('active');
@@ -15,15 +17,14 @@ function toggleNav(id) {
     document.querySelector(`[data-form=${id}]`).classList.add('active');
 }
 
-var sheet = document.createElement('style');
-document.body.appendChild(sheet);
+var tempstylesheet = document.createElement('style');
+document.body.appendChild(tempstylesheet);
 
 function easeOutCuaic(t) { t--; return t * t * t + 1; }
-function zoom(scaleChange) {
-    //let newscale, prevscrollx, prevscrolly, offsetwidth, parentheight, clientheight, offsetheight;
-    //let canv = document.querySelector('canvas');
-    //prevscrollx = canv.offsetParent.scrollLeft;
-    //prevscrolly = canv.offsetParent.scrollTop;
+function zoom(scaleChange, x = 0, y = 0, tileSize = 32) {
+    let canv = document.querySelector('canvas');
+    const prevscrollx = x || (canv.offsetParent.scrollLeft / scale);
+    const prevscrolly = y || (canv.offsetParent.scrollTop / scale);
 
     const maxscale = 8, minscale = 0.2, tempscale = scale + scaleChange;
     if (scaleChange === 1 && scale < maxscale)
@@ -36,11 +37,11 @@ function zoom(scaleChange) {
         newscale = scaleChange;
     else
         return false;
-    sheet.innerHTML = `.zoomable{transform:scale(${newscale});}`;
-    //let Left = prevscrollx - (prevscrollx * (scale - newscale));
-    //let Top = prevscrolly - (prevscrolly * (scale - newscale));
-    //canv.offsetParent.scrollBy({ top: Top, left: Left, behavior: 'smooth' });
+    tempstylesheet.innerHTML = `.zoomable{transform:scale(${newscale});}`;
     scale = newscale;
+    const newscrollx = prevscrollx == x ? (x * scale) + tileSize / 2 - canv.offsetParent.clientWidth / 2 + canv.offsetLeft : prevscrollx * scale;
+    const newscrolly = prevscrolly == y ? (y * scale) + tileSize / 2 - canv.offsetParent.clientHeight / 2 + canv.offsetTop : prevscrolly * scale;
+    canv.parentNode.scrollTo(newscrollx, newscrolly);
 }
 
 function rnd(ceil) {
@@ -99,7 +100,7 @@ function showifs(cls) {
 
 }
 function handleMouseDown(event) {
-    const canvas = document.querySelector('canvas');
+    const canvas = document.querySelector('#gameCanvas');
     let canvasRect = canvas.getBoundingClientRect();
 
     const x = (event.clientX - canvasRect.left) / scale;

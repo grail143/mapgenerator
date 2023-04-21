@@ -27,15 +27,15 @@
 				</div>
 				<div data-showif="load" class="field">
 					<label for="worldWidth"># of Tiles Width</label>
-					<input type="number" value="10" min="10" max="100" id="worldWidth" onblur="enforceMinMax(this)" />
+					<input type="number" value="20" min="10" max="100" id="worldWidth" onblur="enforceMinMax(this)" />
 				</div>
 				<div data-showif="load" class="field">
 					<label for="worldHeight"># of Tiles Height</label>
-					<input type="number" value="10" min="10" max="100" id="worldHeight" onblur="enforceMinMax(this)" />
+					<input type="number" value="20" min="10" max="100" id="worldHeight" onblur="enforceMinMax(this)" />
 				</div>
 				<div data-showif="load" class="field">
 					<label for="tileWidth">Tile Width</label>
-					<input type="number" value="32" min="10" max="80" id="tileSize" onblur="enforceMinMax(this)" />
+					<input type="number" value="80" min="10" max="200" id="tileSize" onblur="enforceMinMax(this)" />
 				</div>
 				<div data-showif="load" class="field">
 					<label for="roomInterval">Avg Max Distance Between Room Centers</label>
@@ -149,6 +149,39 @@
 					<input type="number" value="0" min="0" max="360" id="tile_sprite" onchange="map.switchSprite()" onblur="enforceMinMax(this)" />
 				</div>
 				<div data-showif="edit" class="field">
+					<label for="flip_sprite">Flip</label>
+					<div class="btn-group">
+						<button id="flip_sprite_h" onmousedown="map.mapEditor.flipSprite('h', this)">--</button>
+						<button id="flip_sprite_v" onmousedown="map.mapEditor.flipSprite('v', this)">|</button>
+					</div>
+				</div>
+				<div data-showif="edit" class="field">
+					<label for="nudge_sprite">Nudge</label>
+					<div class="btn-group">
+						<button id="nudge_sprite_nw" onmousedown="map.mapEditor.nudgeSprite('NW', this)">NW</button>
+						<button id="nudge_sprite_n" onmousedown="map.mapEditor.nudgeSprite('N', this)">N</button>
+						<button id="nudge_sprite_ne" onmousedown="map.mapEditor.nudgeSprite('NE', this)">NE</button>
+					</div>
+					<div class="btn-group">
+						<button id="nudge_sprite_w" onmousedown="map.mapEditor.nudgeSprite('W', this)">W</button>
+						<button id="nudge_sprite_0" class="active" onmousedown="map.mapEditor.nudgeSprite('0', this)">O</button>
+						<button id="nudge_sprite_e" onmousedown="map.mapEditor.nudgeSprite('E', this)">E</button>
+					</div>
+					<div class="btn-group">
+						<button id="nudge_sprite_sw" onmousedown="map.mapEditor.nudgeSprite('SW', this)">SW</button>
+						<button id="nudge_sprite_s" onmousedown="map.mapEditor.nudgeSprite('S', this)">S</button>
+						<button id="nudge_sprite_se" onmousedown="map.mapEditor.nudgeSprite('SE', this)">SE</button>
+					</div>
+				</div>
+				<div data-showif="edit" class="field">
+					<label for="nudge_size">Size</label>
+					<div class="btn-group">
+						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, this)">-</button>
+						<button id="nudge_size_0" onmousedown="map.mapEditor.nudgeSize(0, this)">o</button>
+						<button id="nudge_size_up" onmousedown="map.mapEditor.nudgeSize(1, this)">+</button>
+					</div>
+				</div>
+				<div data-showif="edit" class="field">
 					<label for="tile_rotation">Rotation<output id="tile_rotation_value" class="pull-right"></output></label>
 					<input type="range" value="0" min="0" max="360" id="tile_rotation" onchange="map.mapEditor.setRotation(this.value)" onblur="enforceMinMax(this)" />
 				</div>
@@ -165,6 +198,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="menu.js"></script>
+	<script type="text/javascript" src="images.js"></script>
 	<script type="text/javascript" src="mapgenerator.js"></script>
 </body>
 </html>

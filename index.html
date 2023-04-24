@@ -146,44 +146,62 @@
 				</div>
 				<div data-showif="edit" class="field">
 					<label for="tile_sprite">Sprite</label>
-					<input type="number" value="0" min="0" max="360" id="tile_sprite" onchange="map.switchSprite()" onblur="enforceMinMax(this)" />
+					<div id="sheets" class="flex"></div>
+					<input type="number" value="0" min="0" max="360" id="tile_sprite" onchange="map.mapEditor.switchSprite(this.value)" onblur="enforceMinMax(this)" />
+					<div class="spritediv"></div>
 				</div>
 				<div data-showif="edit" class="field">
 					<label for="flip_sprite">Flip</label>
-					<div class="btn-group">
+					<div class="btn-group two">
 						<button id="flip_sprite_h" onmousedown="map.mapEditor.flipSprite('h', this)">--</button>
 						<button id="flip_sprite_v" onmousedown="map.mapEditor.flipSprite('v', this)">|</button>
 					</div>
 				</div>
 				<div data-showif="edit" class="field">
 					<label for="nudge_sprite">Nudge</label>
-					<div class="btn-group">
-						<button id="nudge_sprite_nw" onmousedown="map.mapEditor.nudgeSprite('NW', this)">NW</button>
-						<button id="nudge_sprite_n" onmousedown="map.mapEditor.nudgeSprite('N', this)">N</button>
-						<button id="nudge_sprite_ne" onmousedown="map.mapEditor.nudgeSprite('NE', this)">NE</button>
+					<div class="btn-group compass compass-top">
+						<button id="nudge_sprite_nw" class="a" onmousedown="map.mapEditor.nudgeSprite('NW', 2)">NW</button>
+						<button id="nudge_sprite_nw" class="b" onmousedown="map.mapEditor.nudgeSprite('NW', 1)">NW</button>
+						<button id="nudge_sprite_n" class="c" onmousedown="map.mapEditor.nudgeSprite('N', 2)">N</button>
+						<button id="nudge_sprite_n" class="d" onmousedown="map.mapEditor.nudgeSprite('N', 1)">N</button>
+						<button id="nudge_sprite_ne" class="e" onmousedown="map.mapEditor.nudgeSprite('NE', 1)">NE</button>
+						<button id="nudge_sprite_ne" class="f" onmousedown="map.mapEditor.nudgeSprite('NE', 2)">NE</button>
 					</div>
-					<div class="btn-group">
-						<button id="nudge_sprite_w" onmousedown="map.mapEditor.nudgeSprite('W', this)">W</button>
-						<button id="nudge_sprite_0" class="active" onmousedown="map.mapEditor.nudgeSprite('0', this)">O</button>
-						<button id="nudge_sprite_e" onmousedown="map.mapEditor.nudgeSprite('E', this)">E</button>
+					<div class="btn-group compass compass-center five">
+						<button id="nudge_sprite_w" class="a" onmousedown="map.mapEditor.nudgeSprite('W', 2)">W</button>
+						<button id="nudge_sprite_w" class="b" onmousedown="map.mapEditor.nudgeSprite('W', 1)">W</button>
+						<button id="nudge_sprite_0" class="c active" onmousedown="map.mapEditor.nudgeSprite('0')">O</button>
+						<button id="nudge_sprite_e" class="d" onmousedown="map.mapEditor.nudgeSprite('E', 1)">E</button>
+						<button id="nudge_sprite_e" class="e" onmousedown="map.mapEditor.nudgeSprite('E', 2)">E</button>
 					</div>
-					<div class="btn-group">
-						<button id="nudge_sprite_sw" onmousedown="map.mapEditor.nudgeSprite('SW', this)">SW</button>
-						<button id="nudge_sprite_s" onmousedown="map.mapEditor.nudgeSprite('S', this)">S</button>
-						<button id="nudge_sprite_se" onmousedown="map.mapEditor.nudgeSprite('SE', this)">SE</button>
+					<div class="btn-group compass compass-bottom">
+						<button id="nudge_sprite_sw" class="a" onmousedown="map.mapEditor.nudgeSprite('SW', 2)">SW</button>
+						<button id="nudge_sprite_sw" class="b" onmousedown="map.mapEditor.nudgeSprite('SW', 1)">SW</button>
+						<button id="nudge_sprite_s" class="c" onmousedown="map.mapEditor.nudgeSprite('S', 1)">S</button>
+						<button id="nudge_sprite_s" class="d" onmousedown="map.mapEditor.nudgeSprite('S', 2)">S</button>
+						<button id="nudge_sprite_se" class="e" onmousedown="map.mapEditor.nudgeSprite('SE', 1)">SE</button>
+						<button id="nudge_sprite_se" class="f" onmousedown="map.mapEditor.nudgeSprite('SE', 2)">SE</button>
 					</div>
 				</div>
 				<div data-showif="edit" class="field">
 					<label for="nudge_size">Size</label>
-					<div class="btn-group">
-						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, this)">-</button>
-						<button id="nudge_size_0" onmousedown="map.mapEditor.nudgeSize(0, this)">o</button>
-						<button id="nudge_size_up" onmousedown="map.mapEditor.nudgeSize(1, this)">+</button>
+					<div class="btn-group five">
+						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 2)">--</button>
+						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 1)">-</button>
+						<button id="nudge_size_0" onmousedown="map.mapEditor.nudgeSize(0)">o</button>
+						<button id="nudge_size_up" onmousedown="map.mapEditor.nudgeSize(1, 1)">+</button>
+						<button id="nudge_size_up" onmousedown="map.mapEditor.nudgeSize(1, 2)">++</button>
 					</div>
 				</div>
 				<div data-showif="edit" class="field">
-					<label for="tile_rotation">Rotation<output id="tile_rotation_value" class="pull-right"></output></label>
-					<input type="range" value="0" min="0" max="360" id="tile_rotation" oninput="map.mapEditor.setRotation(this.value)" onblur="enforceMinMax(this)" />
+					<label for="tile_rotation">Rotation - <span id="orig-rotation" class="text-act" onclick="map.mapEditor.resetRotation(this)"></span><input type="number" id="tile_rotation_value" class=" small pull-right" oninput="map.mapEditor.setRotation(this.value, true)" /></label>
+					<div class="btn-group five">
+						<button id="tile_rotation_big" onmousedown="map.mapEditor.setRotation(-15)">--</button>
+						<button id="tile_rotation_sm" onmousedown="map.mapEditor.setRotation(-1)">-</button>
+						<button id="tile_rotation_0" onmousedown="map.mapEditor.setRotation(0)">o</button>
+						<button id="tile_rotation_small" onmousedown="map.mapEditor.setRotation(1)">+</button>
+						<button id="tile_rotation_big" onmousedown="map.mapEditor.setRotation(15)">++</button>
+					</div>
 				</div>
 				<div data-showif="edit" class="field">
 					<button type="button" onclick="map.mapEditor.saveTile()" class="btn save">Save</button>
@@ -194,7 +212,7 @@
 		<button class="zoom reset" onclick="zoom(0)">@</button>
 		<button class="zoom out" onclick="zoom(-1)">-</button>
 		<div class="mapfield">
-			<canvas id="gameCanvas" class="zoomable" onclick="handleMouseDown(event)"></canvas>
+			<canvas id="gameCanvas" class="zoomable"></canvas>
 		</div>
 	</div>
 	<script type="text/javascript" src="menu.js"></script>

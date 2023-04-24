@@ -75,11 +75,6 @@ body {
     display: block;
 }
 
-.pull-right {
-    text-align: right;
-    float: right;
-}
-
 .sidebar {
     height: 100%;
     width: 320px;
@@ -163,6 +158,15 @@ body {
 label {
     display: block;
     width: 100%;
+    height: 32px;
+    line-height: 32px;
+}
+
+.text-act {
+    color: var(--color300);
+    background: var(--color900);
+    padding: 2px 5px;
+    border-radius: 5px;
 }
 
 .zoom {
@@ -258,15 +262,28 @@ button {
     }
 
 .btn-group {
-    display: flex;
+    display: grid;
+    grid-template:
+        "a b c d e" 42px / 2fr 0fr 1fr 0fr 2fr;
     overflow: hidden;
     border-radius: 4px;
 }
 
+    .btn-group.two {
+        grid-template:
+            "a b" 42px / 2fr 2fr;
+    }
+
+    .btn-group.five {
+        grid-template:
+            "a b c d e" 42px / 2fr 0fr 1fr 0fr 2fr;
+    }
+
     .btn-group > button {
         border-radius: 0;
         border: none;
-        border-right: 1px solid gray;
+        border-right: 1px solid var(--color600);
+        border-bottom: 1px solid var(--color600);
         flex-grow: 1;
     }
 
@@ -274,6 +291,85 @@ button {
             border-right: none;
         }
 
+    .btn-group:last-child > button:not(.c) {
+        border-bottom: none;
+    }
+
+    .btn-group.compass {
+        background-color: var(--color600);
+    }
+
+    .btn-group :nth-child(1) {
+        grid-area: a;
+    }
+
+    .btn-group :nth-child(2) {
+        grid-area: b;
+    }
+
+    .btn-group :nth-child(3) {
+        grid-area: c;
+    }
+
+    .btn-group :nth-child(4) {
+        grid-area: d;
+    }
+
+    .btn-group :nth-child(5) {
+        grid-area: e;
+    }
+
+    .btn-group :nth-child(6) {
+        grid-area: f;
+    }
+
+    .btn-group.compass.compass-top {
+        grid-template:
+            "a . c . f" 22px
+            "a b c e f" 10px
+            "a b d e f" 10px
+            ". b d e ." 22px / 2fr 0fr 1fr 0fr 2fr;
+        border-radius: 30px 30px 0 0;
+    }
+    /*
+        .btn-group {
+            grid-template:
+                "a b c d e" 42px / 2fr 0fr 1fr 0fr 2fr;
+        }*/
+
+    .btn-group.compass.compass-bottom {
+        grid-template:
+            ". b c e ." 22px
+            "a b c e f" 10px
+            "a b d e f" 10px
+            "a . d . f" 22px / 2fr 0fr 1fr 0fr 2fr;
+        border-radius: 0 0 30px 30px;
+    }
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.sheetbtn {
+    width: 30%;
+}
+
+.pull-right {
+    text-align: right;
+    float: right;
+}
+
+.small {
+    width: 75px !important;
+    display: inline-block !important;
+    padding: 0 !important;
+}
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -290,4 +386,16 @@ button {
 
     ::-webkit-scrollbar-thumb:hover {
         background: var(--color500);
+    }
+
+
+.spritediv {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+    .spritediv canvas {
+        flex: 0 0 auto;
+        height: 200px;
     }

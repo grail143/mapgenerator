@@ -200,6 +200,8 @@ class Sprite {
         return this.sprite.sheet;
     }
     draw(ctx, tileSize, tilesPer = 1) {
+        if (!this.sprite.tilesPer)
+            return false;
         this.x = this.x || this.tile.x * tileSize;
         this.y = this.y || this.tile.y * tileSize;
         ctx.save();
@@ -365,8 +367,6 @@ class MapGenerator {
                     if (walllengths[i].x == xtiles && walllengths[i].y == ytiles && walltiles[i].type === 0) {
                         const { x, y, length, direction } = walllengths[i];
                         const spritePiece = this.getWallSpritePiece(0, length);
-                        const spriteSheet = spriteSheets.wall[0].img;
-                        const spriteSize = spriteSheets.wall[0].spriteSize;
                         let map = {
                             x: x,
                             y: y,
@@ -706,7 +706,6 @@ class MapGenerator {
         for (let door = 0; door < removed.length; door++)
             removedind.push(this.doors.findIndex(i => removed[door].x == i.tile.x && removed[door].y == i.tile.y));
 
-        console.log(`onedoor: ${JSON.stringify(removedind)}`);
         removedind.sort().reverse();
         for (let i = 0; i < removedind.length; i++)
             this.doors.splice(removedind[i], 1);
@@ -846,8 +845,6 @@ class MapGenerator {
                     if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
                         spriteIndex = 0;
                     else if (spriteIndex) {
-                        const spriteXStart = (spriteIndex % this.spriteColumns) * this.spriteWidth;
-                        const spriteYStart = Math.floor(spriteIndex / this.spriteColumns) * this.spriteHeight;
                         let direction = Math.floor(Math.random() * 360);
                         let tile = {
                             x: x,
@@ -871,9 +868,6 @@ class MapGenerator {
                     if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
                         spriteIndex = 0;
                     else if (spriteIndex) {
-
-                        const spriteXStart = (spriteIndex % spriteSheets.treasure[treasurespriteidx].spriteColumns) * spriteSheets.treasure[treasurespriteidx].spriteWidth;
-                        const spriteYStart = Math.floor(spriteIndex / spriteSheets.treasure[treasurespriteidx].spriteColumns) * spriteSheets.treasure[treasurespriteidx].spriteHeight;
                         let direction = Math.floor(Math.random() * 360);
                         let tile = {
                             x: x,
@@ -990,9 +984,6 @@ class MapGenerator {
         this.obstaclesprites.forEach(obst => obst.draw(this.ctx, this.tileSize));
         this.treasuresprites.forEach(treas => treas.draw(this.ctx, this.tileSize));
     }
-    checkAdjoiningDoors(door) {
-
-    }
     drawWalls() {
         for (const xaxis in this.walls) {
             for (const yaxis in this.walls[xaxis]) {
@@ -1028,22 +1019,29 @@ class MapGenerator {
         }
     }
     updateObject(object, tile, idx) {
+        let type;
         const types = ["none", "wall", "door", "obstacle", "treasure", "monster"];
-        const type = types[tile];
+        if (!isNaN(tile) && !isNaN(parseFloat(tile))) {
+            type = types[tile];
+        }
+        else
+            type = tile;
         const list = type === "wall" ? "walls" : type === "door" ? this.doors : type === "obstacle" ? this.obstaclesprites : type === "treasure" ? this.treasuresprites : type === "monster" ? this.monstersprites : null;
         if (list === "walls") this.walls[object.tile.x][object.tile.y] = object;
-        else
+        else {
+            if (idx < 0)
+                idx = list.length;
             list[idx] = object;
+        }
+        this.world[object.tile.x][object.tile.y] = types.indexOf(type);
         this.drawWorld();
 
     }
     clicked(mousex, mousey) {
         const x = Math.floor(mousex / this.tileSize);
         const y = Math.floor(mousey / this.tileSize);
-        const canvas = document.createElement("canvas");
-        document.body.appendChild(canvas);
         this.selectedObject = this.selectObject(this.world[x][y], x, y);
-        this.mapEditor = new MapEditor(this.selectedObject, this.tileSize, this.selectedObject ? this.selectedObject.tile.x : x, this.selectedObject ? this.selectedObject.tile.y : y, this.world[x][y], this.selectedObject.idx || 0);
+        this.mapEditor = new MapEditor(this.selectedObject, this.tileSize, this.selectedObject ? this.selectedObject.tile.x : x, this.selectedObject ? this.selectedObject.tile.y : y, this.world[x][y], this.selectedObject && this.selectedObject.idx >= 0 ? this.selectedObject.idx : -1);
     }
     unedit() {
         this.mapEditor.destroy();
@@ -1056,40 +1054,101 @@ class MapGenerator {
 }
 class MapEditor {
     constructor(sprite, tileSize, x, y, type, idx) {
+        console.log(`WTF are you doing here??? ${tileSize} ${type} ${x} ${y}`);
         this.highlightcanvas = this.createCanvas('highlight');
         this.canvas = this.createCanvas('sprite');
         this.hlctx = this.highlightcanvas.getContext('2d');
         this.ctx = this.canvas.getContext('2d');
         this.tileSize = tileSize;
-        if (sprite)
-            this.setSprite(sprite);
-        this.spriteSize = this.sprite ? this.sprite.sprite.tilesPer * this.tileSize : this.tileSize;
-        this.canvas.style.position = 'absolute';
         this.startx = x;
         this.starty = y;
         this.type = type;
         this.idx = idx;
+        this.setSprite(sprite);
+        this.spriteSize = this.sprite ? this.sprite.sprite.tilesPer * this.tileSize : this.tileSize;
         this.init();
     }
     init() {
-        let tilecenter = { 'centerX': this.startx * this.tileSize, 'centerY': this.starty * this.tileSize };
-        if (this.sprite)
-            tilecenter = this.sprite.getBlockCenter(this.startx * this.tileSize, this.starty * this.tileSize);
+        let tilecenter = this.sprite.getBlockCenter(this.startx * this.tileSize, this.starty * this.tileSize);
         document.querySelector('.mapfield').appendChild(this.highlightcanvas);
         document.querySelector('.mapfield').appendChild(this.canvas);
-
         this.renderOverlay();
         this.renderHighlight(tilecenter['centerX'], tilecenter['centerY'], this.spriteSize, this.spriteSize);
-        if (this.sprite) this.setRotation(this.sprite.tile.direction);
+        if (this.sprite.sprite.tilesPer) this.setRotation(this.sprite.tile.direction, true);
         this.handleUI();
+    }
+    showSheets() {
+        const appdiv = document.querySelector('#sheets');
+        appdiv.innerHTML = '';
+        for (const [idx, type] of Object.entries(spriteSheets)) {
+            let group = document.createElement('h3');
+            group.classList.add('w-100');
+            group.innerHTML = idx;
+            appdiv.append(group);
+            for (const sheet in type) {
+                if (type.hasOwnProperty(sheet)) {
+                    let opt = document.createElement('button');
+                    opt.innerHTML = `${spriteSheets[idx][sheet].name}`;
+                    opt.dataset.type = idx;
+                    opt.dataset.sheet = sheet;
+                    opt.classList.add('sheetbtn')
+                    appdiv.append(opt);
+                    opt.addEventListener('click', () => {
+                        this.showSprites(spriteSheets[idx][sheet].spriteimages);
+                        this.selectedSheet = spriteSheets[idx][sheet];
+                    });
+                }
+            }
+        }
+    }
+    cloneSprite(sprite) {
+        var newCanvas = document.createElement('canvas');
+        var context = newCanvas.getContext('2d');
+        newCanvas.width = sprite.width;
+        newCanvas.height = sprite.height;
+        context.drawImage(sprite, 0, 0);
+        return newCanvas;
+    }
+    showSprites(images) {
+        document.querySelector('.spritediv').innerHTML = '';
+        for (const [idx, img] of Object.entries(images)) {
+            let orig_image = img.getCanvas();
+            let image = this.cloneSprite(orig_image);
+            image.addEventListener('click', () => {
+                this.sprite.sprite = this.selectedSheet.spriteimages[idx];
+                this.type = this.selectedSheet.type;
+                this.renderSprite();
+            });
+            document.querySelector('.spritediv').append(image);
+        }
     }
     handleUI() {
         toggleNav('edittile', true);
+        document.querySelector('#orig-rotation').innerHTML = this.sprite.tile.direction || 0;
         zoom(2, this.startx * this.tileSize, this.starty * this.tileSize, this.tileSize);
 
+        this.showSheets();
+        this.selectedSheet = spriteSheets['monster'][0];
+        if (this.sprite.sprite.tilesPer) {
+            this.selectedSheet = this.sprite.sprite.parent;
+        }
+        this.showSprites(this.selectedSheet.spriteimages);
     }
     setSprite(sprite) {
-        this.sprite = sprite.clone();
+        if (!sprite)
+            this.sprite = new Sprite(
+                {
+                    x: this.startx,
+                    y: this.starty,
+                    width: this.tileSize,
+                    height: this.tileSize,
+                    direction: 0,
+                    mirrorh: 1,
+                    mirrorv: 1
+
+                });
+        else
+            this.sprite = sprite.clone();
     }
     createCanvas(id) {
         const newCanvas = document.createElement('canvas');
@@ -1137,10 +1196,16 @@ class MapEditor {
         document.querySelector('.mapfield').removeChild(this.canvas);
         document.querySelector('.mapfield').removeChild(this.highlightcanvas);
     }
-    setRotation(rotation) {
-        this.sprite.tile.direction = parseInt(rotation);
-        document.getElementById('tile_rotation').value = rotation;
-        document.getElementById('tile_rotation_value').value = rotation;
+    resetRotation(elem) {
+        const orig = parseInt(elem.innerHTML);
+        this.setRotation(orig, true);
+    }
+    setRotation(rotation, raw = false) {
+        let direction = this.sprite.tile.direction;
+        direction = rotation && !raw ? direction + rotation : rotation;
+        direction = direction > 360 ? direction - 360 : direction < 0 ? direction + 360 : direction;
+        this.sprite.tile.direction = direction;
+        document.getElementById('tile_rotation_value').value = this.sprite.tile.direction;
         this.renderSprite();
     }
     flipSprite(mir) {
@@ -1153,17 +1218,18 @@ class MapEditor {
         }
         this.renderSprite();
     }
-    nudgeSize(dir) {
+    nudgeSize(dir, amt = 2) {
+        const nudgeamt = amt == 1 ? 2 : .2 * this.tileSize;
         switch (dir) {
             case 1:
-                this.sprite.tile.width += .2 * this.tileSize;
-                this.sprite.tile.height += .2 * this.tileSize;
-                this.nudgeSprite('NW');
+                this.sprite.tile.width += nudgeamt;
+                this.sprite.tile.height += nudgeamt;
+                this.nudgeSprite('NW', amt);
                 break;
             case -1:
-                this.sprite.tile.width -= .2 * this.tileSize;
-                this.sprite.tile.height -= .2 * this.tileSize;
-                this.nudgeSprite('SE');
+                this.sprite.tile.width -= nudgeamt;
+                this.sprite.tile.height -= nudgeamt;
+                this.nudgeSprite('SE', amt);
                 break;
             default:
                 this.sprite.tile.width = this.tileSize * (this.sprite.sprite.tilesPer || 1);
@@ -1171,35 +1237,36 @@ class MapEditor {
                 this.nudgeSprite('0');
         }
     }
-    nudgeSprite(dir) {
+    nudgeSprite(dir, amt = 2) {
+        const nudgeamt = amt == 1 ? 1 : .1 * this.tileSize;
         switch (dir) {
             case 'NW':
-                this.sprite.x = this.sprite.x - .1 * this.tileSize;
-                this.sprite.y = this.sprite.y - .1 * this.tileSize;
+                this.sprite.x = this.sprite.x - nudgeamt;
+                this.sprite.y = this.sprite.y - nudgeamt;
                 break;
             case 'N':
-                this.sprite.y = this.sprite.y - .1 * this.tileSize;
+                this.sprite.y = this.sprite.y - nudgeamt;
                 break;
             case 'NE':
-                this.sprite.x = this.sprite.x + .1 * this.tileSize;
-                this.sprite.y = this.sprite.y - .1 * this.tileSize;
+                this.sprite.x = this.sprite.x + nudgeamt;
+                this.sprite.y = this.sprite.y - nudgeamt;
                 break;
             case 'W':
-                this.sprite.x = this.sprite.x - .1 * this.tileSize;
+                this.sprite.x = this.sprite.x - nudgeamt;
                 break;
             case 'E':
-                this.sprite.x = this.sprite.x + .1 * this.tileSize;
+                this.sprite.x = this.sprite.x + nudgeamt;
                 break;
             case 'SW':
-                this.sprite.x = this.sprite.x - .1 * this.tileSize;
-                this.sprite.y = this.sprite.y + .1 * this.tileSize;
+                this.sprite.x = this.sprite.x - nudgeamt;
+                this.sprite.y = this.sprite.y + nudgeamt;
                 break;
             case 'S':
-                this.sprite.y = this.sprite.y + .1 * this.tileSize;
+                this.sprite.y = this.sprite.y + nudgeamt;
                 break;
             case 'SE':
-                this.sprite.x = this.sprite.x + .1 * this.tileSize;
-                this.sprite.y = this.sprite.y + .1 * this.tileSize;
+                this.sprite.x = this.sprite.x + nudgeamt;
+                this.sprite.y = this.sprite.y + nudgeamt;
                 break;
             default:
                 this.sprite.x = this.sprite.tile.x * this.tileSize;
@@ -1208,16 +1275,26 @@ class MapEditor {
         this.renderSprite();
     }
     switchSprite(sprite) {
-        this.sprite = sprite;
-        this.canvas.width = sprite.tile.width;
-        this.canvas.height = sprite.tile.height;
-        this.canvas.style.top = sprite.tile.y * this.tileSize + 'px';
-        this.canvas.style.left = sprite.tile.x * this.tileSize + 'px';
-        this.render();
+        this.sprite.sprite = this.sprite.sprite.parent.spriteimages[sprite];
+        this.renderSprite();
+    }
+    removeSprite() {
+        this.sprite.sprite = {
+            sheet: null,
+            x: 0,
+            y: 0,
+            width: 0,
+            height: 0,
+            spritesize: 0,
+            spritetype: 0,
+            tilesPer: 0
+        };
+        this.renderSprite();
+
     }
     saveTile() {
         map.updateObject(this.sprite, this.type, this.idx);
-        zoom(-2, 0, 0)
+        zoom(0, 0, 0)
         map.unedit();
     }
 }

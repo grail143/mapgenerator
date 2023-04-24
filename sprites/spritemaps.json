@@ -21,6 +21,7 @@
       },
       "sheets": [
         {
+          "name": "Small",
           "filename": "sprites/monsters_sm.png",
           "main_environment": "dungeon",
           "spritesize": 150,
@@ -365,6 +366,7 @@
           ]
         },
         {
+          "name": "Medium",
           "filename": "sprites/monsters_med.png",
           "main_environment": "dungeon",
           "spritesize": 300,
@@ -485,6 +487,7 @@
           ]
         },
         {
+          "name": "Large",
           "filename": "sprites/monsters_lg.png",
           "main_environment": "dungeon",
           "spritesize": 600,
@@ -567,6 +570,7 @@
       },
       "sheets": [
         {
+          "name": "Chests",
           "filename": "sprites/sprite.png",
           "main_environment": "dungeon",
           "spritesize": 150,
@@ -817,6 +821,7 @@
       },
       "sheets": [
         {
+          "name": "Random",
           "filename": "sprites/sprite.png",
           "main_environment": "dungeon",
           "spritesize": 150,
@@ -1074,6 +1079,7 @@
       },
       "sheets": [
         {
+          "name": "Earthy Stone",
           "filename": "sprites/wallssprite2.png",
           "color": "stone_earthy",
           "main_environment": "dungeon",
@@ -1151,6 +1157,7 @@
       },
       "sheets": [
         {
+          "name": "Earthy Stone",
           "filename": "sprites/doorsprites1.png",
           "color": "wood",
           "main_environment": "dungeon",

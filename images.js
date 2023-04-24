@@ -35,12 +35,14 @@ class ImageLoader {
     }
 }
 class SpriteSheets {
-    constructor(sheetInfo, sheetIdx) {
+    constructor(sheetInfo, sheetIdx, type) {
         let sheet = sheetInfo.sheets[sheetIdx];
         this.img = loader.getImage(sheet.filename);
         if (!this.img) {
             throw new Error(`Sprite sheet "${sheetIdx}" not found`);
         }
+        this.name = sheet.name;
+        this.type = type;
         this.spriteSize = sheet.spritesize;
         this.settings = sheetInfo.settings;
         this.piecemap = sheet.piecemap;
@@ -66,6 +68,7 @@ class SpriteSheets {
 class SpriteImage {
     constructor(spritesheet, spriteIndex) {
         const spriteInfo = spritesheet.piecemap[spriteIndex];
+        this.parent = spritesheet;
         this.spriteWidth = spriteInfo.width || spritesheet.spriteSize;
         this.spriteHeight = spriteInfo.height || spritesheet.spriteSize;
         this.tilesPer = spritesheet.tilesPerSprite || 1;
@@ -109,7 +112,7 @@ function prepImages() {
                 let sheets = spritemap.spritesheets[type].sheets;
                 spriteSheets[type] = [];
                 for (let i = 0; i < sheets.length; i++) {
-                    spriteSheets[type].push(new SpriteSheets(spritemap.spritesheets[type], i));
+                    spriteSheets[type].push(new SpriteSheets(spritemap.spritesheets[type], i, type));
                 }
             }
         }

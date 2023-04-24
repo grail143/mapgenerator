@@ -20,9 +20,8 @@ function toggleNav(id, open = false) {
 var tempstylesheet = document.createElement('style');
 document.body.appendChild(tempstylesheet);
 
-function easeOutCuaic(t) { t--; return t * t * t + 1; }
 function zoom(scaleChange, x = 0, y = 0, tileSize = 32) {
-    let canv = document.querySelector('canvas');
+    let canv = document.querySelector('#gameCanvas');
     const prevscrollx = x || (canv.offsetParent.scrollLeft / scale);
     const prevscrolly = y || (canv.offsetParent.scrollTop / scale);
 
@@ -71,9 +70,9 @@ const rembutton = document.querySelectorAll('.removemap').forEach(item => {
 const stopeditbutton = document.querySelectorAll('.stopedit').forEach(item => {
     item.addEventListener('click', event => {
         map.unedit();
-        const overlay = document.querySelector("canvas:not(#gameCanvas)");
-        if (overlay)
-            overlay.remove();
+        const overlay = document.querySelectorAll("canvas:not(#gameCanvas)");
+        overlay.forEach(canvas => { canvas.remove(); });
+
         showifs('view');
     })
 });
@@ -99,12 +98,13 @@ function showifs(cls) {
     mode = cls;
 
 }
-function handleMouseDown(event) {
-    const canvas = document.querySelector('#gameCanvas');
+
+document.getElementById('gameCanvas').addEventListener('click', event => {
+    const canvas = event.target;
     let canvasRect = canvas.getBoundingClientRect();
 
     const x = (event.clientX - canvasRect.left) / scale;
     const y = (event.clientY - canvasRect.top) / scale;
     map.clicked(x, y);
     showifs('edit');
-}
+});

@@ -1054,7 +1054,6 @@ class MapGenerator {
 }
 class MapEditor {
     constructor(sprite, tileSize, x, y, type, idx) {
-        console.log(`WTF are you doing here??? ${tileSize} ${type} ${x} ${y}`);
         this.highlightcanvas = this.createCanvas('highlight');
         this.canvas = this.createCanvas('sprite');
         this.hlctx = this.highlightcanvas.getContext('2d');
@@ -1125,7 +1124,7 @@ class MapEditor {
     handleUI() {
         toggleNav('edittile', true);
         document.querySelector('#orig-rotation').innerHTML = this.sprite.tile.direction || 0;
-        zoom(2, this.startx * this.tileSize, this.starty * this.tileSize, this.tileSize);
+        zoom(1.5, this.startx * this.tileSize, this.starty * this.tileSize, this.tileSize);
 
         this.showSheets();
         this.selectedSheet = spriteSheets['monster'][0];

@@ -70,10 +70,18 @@ const rembutton = document.querySelectorAll('.removemap').forEach(item => {
 const stopeditbutton = document.querySelectorAll('.stopedit').forEach(item => {
     item.addEventListener('click', event => {
         map.unedit();
-        const overlay = document.querySelectorAll("canvas:not(#gameCanvas)");
-        overlay.forEach(canvas => { canvas.remove(); });
-
+        console.log(`${JSON.stringify(map.mapEditor)}`);
         showifs('view');
+    })
+});
+const savetilebutton = document.querySelectorAll('.savetile').forEach(item => {
+    item.addEventListener('click', event => {
+        map.mapEditor.saveTile();
+    })
+});
+const remtilebutton = document.querySelectorAll('.remtile').forEach(item => {
+    item.addEventListener('click', event => {
+        map.mapEditor.removeSprite();
     })
 });
 function enforceMinMax(el) {
@@ -100,6 +108,9 @@ function showifs(cls) {
 }
 
 document.getElementById('gameCanvas').addEventListener('click', event => {
+    if (map.mapEditor) {
+        debugger;
+    }
     const canvas = event.target;
     let canvasRect = canvas.getBoundingClientRect();
 

@@ -59,11 +59,8 @@ const genbutton = document.querySelectorAll('.generate').forEach(item => {
 });
 const rembutton = document.querySelectorAll('.removemap').forEach(item => {
     item.addEventListener('click', event => {
-        zoom(0);
+        map.destroy();
         map = null;
-        const canvas = document.getElementById('gameCanvas');
-        const context = canvas.getContext('2d');
-        context.clearRect(0, 0, canvas.width, canvas.height);
         showifs('load');
     })
 });
@@ -106,16 +103,3 @@ function showifs(cls) {
     mode = cls;
 
 }
-
-document.getElementById('gameCanvas').addEventListener('click', event => {
-    if (map.mapEditor) {
-        debugger;
-    }
-    const canvas = event.target;
-    let canvasRect = canvas.getBoundingClientRect();
-
-    const x = (event.clientX - canvasRect.left) / scale;
-    const y = (event.clientY - canvasRect.top) / scale;
-    map.clicked(x, y);
-    showifs('edit');
-});

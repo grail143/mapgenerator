@@ -83,38 +83,6 @@ class Room {
         corners.push({ position: 'SE', x: this.x + this.width, y: this.y + this.height });
         return corners;
     }
-
-    randomCornerFills(room, fillCornerProb = 0.85) {
-        const minCornerFillSize = 1;
-        const maxCornerFillSize = 3;
-        const minRoomSizeForCornerFill = 30;
-        if (
-            fillCornerProb > Math.random() &&
-            room.width * room.height >= minRoomSizeForCornerFill
-        ) {
-            for (let corner of room.corners) {
-                const [dx, dy] = {
-                    NW: [1, 1],
-                    NE: [-1, 1],
-                    SW: [1, -1],
-                    SE: [-1, -1],
-                }[corner.position];
-
-                const cornerFillSize = Math.floor(
-                    Math.random() * (maxCornerFillSize - minCornerFillSize + 1) +
-                    minCornerFillSize
-                );
-
-                for (let x = 1; x <= cornerFillSize; x++) {
-                    for (let y = 1; y <= cornerFillSize; y++) {
-                        if (this.world[corner.x + dx * x][corner.y + dy * y] !== undefined) {
-                            this.world[corner.x + dx * x][corner.y + dy * y] = 1;
-                        }
-                    }
-                }
-            }
-        }
-    }
     perimeter(corners = false) {
         let per = new Array();
         for (let x = this.x; x < this.x + this.width; x++) {
@@ -148,11 +116,6 @@ class Room {
     }
 }
 
-class SpriteSheet {
-    constructor() {
-
-    }
-}
 class Floor {
     constructor(src) {
         this.img = src;
@@ -326,18 +289,46 @@ class Monster extends Sprite {
 }
 class MapGenerator {
     constructor() {
-        this.canvas = document.getElementById('gameCanvas');
-        this.ctx = this.canvas.getContext("2d");
         this.background = null;
         this.loaded = false;
         this.numOfSprites = 0;
         this.rooms = [];
         this.doors = [];
-        this.monstersprites = [];
-        this.obstaclesprites = [];
-        this.treasuresprites = [];
-        this.selectedMonster = null;
+        this.sprites = [];
+        this.selectedObject = null;
         this.mapEditor = null;
+        this.init();
+    }
+    init() {
+        this.bgcanvas = createCanvas('bgCanvas', ['zoomable'], 1, 1);
+        this.canvas = createCanvas('gameCanvas', ['zoomable'], 1, 1);
+        this.bgctx = this.bgcanvas.getContext("2d");
+        this.ctx = this.canvas.getContext("2d");
+        let mapfield = document.querySelector('.mapfield');
+        mapfield.append(this.bgcanvas);
+        mapfield.append(this.canvas);
+        this.attachMouseEvent();
+    }
+    destroy() {
+        document.querySelector('.mapfield').removeChild(this.canvas);
+        document.querySelector('.mapfield').removeChild(this.bgcanvas);
+        scale = 1;
+        mode = "load";
+        tempstylesheet.innerHTML = '';
+    }
+    attachMouseEvent() {
+        document.getElementById('gameCanvas').addEventListener('click', event => {
+            if (map.mapEditor) {
+                debugger;
+            }
+            const canvas = event.target;
+            let canvasRect = canvas.getBoundingClientRect();
+
+            const x = (event.clientX - canvasRect.left) / scale;
+            const y = (event.clientY - canvasRect.top) / scale;
+            map.clicked(x, y);
+            showifs('edit');
+        });
     }
     getWallSpritePiece(type, length, sheetidx = 0) {
         let sprites = spriteSheets.wall[sheetidx].spriteimages.filter((sprite) => sprite.typeidx === type);
@@ -598,6 +589,8 @@ class MapGenerator {
 
         this.canvas.width = this.worldWidth * this.tileSize;
         this.canvas.height = this.worldHeight * this.tileSize;
+        this.bgcanvas.width = this.worldWidth * this.tileSize;
+        this.bgcanvas.height = this.worldHeight * this.tileSize;
 
     }
     prepWorld() {
@@ -711,6 +704,8 @@ class MapGenerator {
             this.doors.splice(removedind[i], 1);
         this.placeObjectsInRooms(this.rooms);
         this.createWallTiles();
+
+        this.sprites = [...this.sprites, ...this.doors];
     }
     connectToOutside() {
         let room = new Room(1, 1, this.worldWidth - 2, this.worldHeight - 2);
@@ -856,7 +851,7 @@ class MapGenerator {
                         let tilesprite = spriteSheets.obstacle[obstaclespriteidx].spriteimages[spriteIndex];
                         const obst = new Obstacle(tile, tilesprite);
 
-                        this.obstaclesprites.push(obst);
+                        this.sprites.push(obst);
                         spriteType = obst.sprite.spritetype;
                     }
                 } else if (rand < treasureProb && this.world[x][y] == 0) {
@@ -880,7 +875,7 @@ class MapGenerator {
                         let tilesprite = spriteSheets.treasure[treasurespriteidx].spriteimages[spriteIndex];
                         const treasure = new Treasure(tile, tilesprite);
 
-                        this.treasuresprites.push(treasure);
+                        this.sprites.push(treasure);
                         spriteType = treasure.sprite.spritetype;
                     }
                 } else if (rand < monsterProb && this.world[x][y] == 0) {
@@ -894,7 +889,7 @@ class MapGenerator {
                     else if (spriteIndex) {
                         const mon = new Monster(monst.tile, monst.tilesprite);
 
-                        this.monstersprites.push(mon);
+                        this.sprites.push(mon);
                         spriteType = mon.getSpriteWorldInd();
                     }
                 }
@@ -973,16 +968,31 @@ class MapGenerator {
         this.drawWorld();
     }
     drawWorld() {
-
+        this.testworld = [];
         this.background = new Floor(loader.images['background']);
         this.background.draw(this.ctx, this.canvas.width, this.canvas.height);
+        this.bgctx.fillStyle = "#00ff00";
+        this.bgctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.bgctx.fillStyle = "#000000";
         this.drawWalls();
-        this.drawObstacles();
-        this.drawMonsters();
+        this.drawFromLists();
     }
-    drawObstacles() {
-        this.obstaclesprites.forEach(obst => obst.draw(this.ctx, this.tileSize));
-        this.treasuresprites.forEach(treas => treas.draw(this.ctx, this.tileSize));
+    drawFromLists() {
+        Object.keys(this.sprites).forEach(sprt => {
+            const sprite = this.sprites[sprt];
+            sprite.draw(this.bgctx, this.tileSize);
+            this.bgctx.fillRect(sprite.x, sprite.y, sprite.tile.width, sprite.tile.height);
+            this.testworld.push(
+                mapSprite(sprite.x,
+                    sprite.y,
+                    sprite.tile.width,
+                    sprite.tile.height,
+                    sprite.sprite.spritetype,
+                    sprt
+                )
+            );
+            sprite.draw(this.ctx, this.tileSize);
+        });
     }
     drawWalls() {
         for (const xaxis in this.walls) {
@@ -991,57 +1001,75 @@ class MapGenerator {
                     const x = parseInt(xaxis);
                     const y = parseInt(yaxis);
                     const wall = this.walls[x][y];
+                    wall.draw(this.bgctx, this.tileSize);
+                    this.testworld.push(
+                        mapSprite(wall.x,
+                            wall.y,
+                            wall.tile.width,
+                            wall.tile.height,
+                            "wall",
+                            `${x}.${y}`
+                        )
+                    );
                     wall.draw(this.ctx, this.tileSize);
                 }
             }
         }
-        for (let xd = 0; xd < this.doors.length; xd++) {
+    }
+    selectObject(x = 0, y = 0, tilex = 0, tiley = 0) {
+        if (!isSprite(x, y)) return false;
+        let test = this.testworld.filter(pxl => (
+            pxl.startx <= (x)
+            && pxl.endx >= (x)
+            && pxl.starty <= (y)
+            && pxl.endy >= (y)
+        ));
 
-            this.doors[xd].draw(this.ctx, this.tileSize);
-        }
+        if (!test.length) return false;
+        const type = test[0].type;
+        const list = type === "wall" ? "walls" : this.sprites;
+        if (list === "walls") return this.walls[tilex][tiley];
+        return Object.assign(list[test[0].idx], { 'idx': test[0].idx });
     }
-    drawMonsters() {
-        this.monstersprites.forEach(mon => mon.draw(this.ctx, this.tileSize));
-    }
-    selectObject(tile, x = 0, y = 0) {
-        const types = ["none", "wall", "door", "obstacle", "treasure", "monster"];
-        const type = types[tile];
-        const list = type === "wall" ? "walls" : type === "door" ? this.doors : type === "obstacle" ? this.obstaclesprites : type === "treasure" ? this.treasuresprites : type === "monster" ? this.monstersprites : null;
-        if (!list) return false;
-        if (list === "walls") return this.walls[x][y];
-        for (let i = 0; i < list.length; i++) {
-            let obj = list[i];
-            if (obj.tile.x === x && obj.tile.y === y) {
-                obj.idx = i;
-                return obj;
-                break;
-            }
-        }
-    }
-    updateObject(object, tile, idx) {
-        let type;
-        const types = ["none", "wall", "door", "obstacle", "treasure", "monster"];
-        if (!isNaN(tile) && !isNaN(parseFloat(tile))) {
-            type = types[tile];
-        }
+    removeObject(object) {
+        let type = object.sprite.spritetype;
+        let list = type === 1
+            ? this.walls : this.sprites;
+        if (list != this.walls)
+            this.sprites = list.filter(obj =>
+                !(obj.sprite.x == object.sprite.x
+                    && obj.sprite.y == object.sprite.y
+                    && obj.tile.x == object.tile.x
+                    && obj.tile.y == object.tile.y)
+            );
         else
-            type = tile;
-        const list = type === "wall" ? "walls" : type === "door" ? this.doors : type === "obstacle" ? this.obstaclesprites : type === "treasure" ? this.treasuresprites : type === "monster" ? this.monstersprites : null;
-        if (list === "walls") this.walls[object.tile.x][object.tile.y] = object;
-        else {
-            if (idx < 0)
-                idx = list.length;
-            list[idx] = object;
-        }
-        this.world[object.tile.x][object.tile.y] = types.indexOf(type);
-        this.drawWorld();
+            delete this.walls[object.tile.x][object.tile.y];
 
+    }
+    updateObject(oldobject, object) {
+        this.removeObject(oldobject);
+        let type = object.sprite.spritetype;
+        let list = type === 1
+            ? this.walls : this.sprites;
+        if (list != this.walls)
+            list.push(object);
+        else
+            this.walls[object.tile.x][object.tile.y] = object;
+        this.drawWorld();
     }
     clicked(mousex, mousey) {
-        const x = Math.floor(mousex / this.tileSize);
-        const y = Math.floor(mousey / this.tileSize);
-        this.selectedObject = this.selectObject(this.world[x][y], x, y);
-        this.mapEditor = new MapEditor(this.selectedObject, this.tileSize, this.selectedObject ? this.selectedObject.tile.x : x, this.selectedObject ? this.selectedObject.tile.y : y, this.world[x][y], this.selectedObject && this.selectedObject.idx >= 0 ? this.selectedObject.idx : -1);
+        const x = mousex;
+        const y = mousey;
+        const tilex = Math.floor(x / this.tileSize);
+        const tiley = Math.floor(y / this.tileSize);
+        this.selectedObject = this.selectObject(x, y, tilex, tiley);
+        this.mapEditor = new MapEditor(
+            this.selectedObject,
+            this.tileSize,
+            this.selectedObject ? this.selectedObject.tile.x : x,
+            this.selectedObject ? this.selectedObject.tile.y : y,
+            this.selectedObject ? this.selectedObject.sprite.spritetype : 0,
+            this.selectedObject && this.selectedObject.idx >= 0 ? this.selectedObject.idx : -1);
     }
     unedit() {
         this.mapEditor.destroy();
@@ -1054,8 +1082,10 @@ class MapGenerator {
 }
 class MapEditor {
     constructor(sprite, tileSize, x, y, type, idx) {
-        this.highlightcanvas = this.createCanvas('highlight');
-        this.canvas = this.createCanvas('sprite');
+        this.sprite = null;
+        this.origsprite = null;
+        this.highlightcanvas = createCanvas('highlight', ['zoomable', 'editcanvas'], map.canvas.width, map.canvas.height);
+        this.canvas = createCanvas('sprite', ['zoomable', 'editcanvas'], map.canvas.width, map.canvas.height);
         this.hlctx = this.highlightcanvas.getContext('2d');
         this.ctx = this.canvas.getContext('2d');
         this.tileSize = tileSize;
@@ -1100,7 +1130,7 @@ class MapEditor {
             }
         }
     }
-    cloneSprite(sprite) {
+    drawSprite(sprite) {
         var newCanvas = document.createElement('canvas');
         var context = newCanvas.getContext('2d');
         newCanvas.width = sprite.width;
@@ -1112,7 +1142,7 @@ class MapEditor {
         document.querySelector('.spritediv').innerHTML = '';
         for (const [idx, img] of Object.entries(images)) {
             let orig_image = img.getCanvas();
-            let image = this.cloneSprite(orig_image);
+            let image = this.drawSprite(orig_image);
             image.addEventListener('click', () => {
                 this.sprite.sprite = this.selectedSheet.spriteimages[idx];
                 this.type = this.selectedSheet.type;
@@ -1137,8 +1167,8 @@ class MapEditor {
         if (!sprite)
             this.sprite = new Sprite(
                 {
-                    x: this.startx,
-                    y: this.starty,
+                    x: this.startx / this.tileSize,
+                    y: this.starty / this.tileSize,
                     width: this.tileSize,
                     height: this.tileSize,
                     direction: 0,
@@ -1146,17 +1176,10 @@ class MapEditor {
                     mirrorv: 1
 
                 });
-        else
+        else {
+            this.origsprite = sprite.clone();
             this.sprite = sprite.clone();
-    }
-    createCanvas(id) {
-        const newCanvas = document.createElement('canvas');
-        newCanvas.width = map.canvas.width;
-        newCanvas.height = map.canvas.height;
-        newCanvas.classList.add('zoomable', 'editcanvas');
-        newCanvas.id = id;
-        return newCanvas;
-
+        }
     }
     renderOverlay() {
         this.hlctx.globalCompositeOperation = 'source-over';
@@ -1292,7 +1315,7 @@ class MapEditor {
 
     }
     saveTile() {
-        map.updateObject(this.sprite, this.type, this.idx);
+        map.updateObject(this.origsprite, this.sprite);
         zoom(0, 0, 0)
         map.unedit();
     }
@@ -1353,3 +1376,35 @@ function arrayInstruments() {
     }
 }
 
+
+function createCanvas(id, classes, width, height) {
+    const newCanvas = document.createElement('canvas');
+    newCanvas.width = width;
+    newCanvas.height = height;
+    classes.forEach(cls => newCanvas.classList.add(cls));
+    newCanvas.id = id;
+    return newCanvas;
+
+}
+
+function isSprite(x, y) {
+    let data = map.bgctx.getImageData(x, y, 1, 1).data;
+    let r = data[0];
+    let g = data[1];
+    let b = data[2];
+    if (r > 255 || g > 255 || b > 255)
+        throw "Invalid color component";
+    return !(r === 0 && g === 255 && b === 0);
+}
+
+function mapSprite(x, y, width, height, type, idx) {
+    let map = {
+        startx: x,
+        starty: y,
+        endx: x + width,
+        endy: y + height,
+        type: type,
+        idx: idx
+    };
+    return map;
+}

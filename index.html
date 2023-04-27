@@ -188,7 +188,25 @@
 				</div>
 				<div data-showif="edit" class="field">
 					<label for="nudge_size">Size</label>
+					<div class="flex nowrap">
+						<label>Lock x &amp; y?</label>
+						<div class="flex nowrap">
+							<input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio" checked>
+							<label for="toggle-on" class="toggle-btn">Locked</label>
+							<input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio">
+							<label for="toggle-off" class="toggle-btn">No</label>
+						</div>
+					</div>
+					<label for="nudge-x">X Axis</label>
 					<div class="btn-group five">
+						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 2)">--</button>
+						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 1)">-</button>
+						<button id="nudge_size_0" onmousedown="map.mapEditor.nudgeSize(0)">o</button>
+						<button id="nudge_size_up" onmousedown="map.mapEditor.nudgeSize(1, 1)">+</button>
+						<button id="nudge_size_up" onmousedown="map.mapEditor.nudgeSize(1, 2)">++</button>
+					</div>
+					<label for="nudge-y">Y Axis</label>
+					<div class="btn-group five disabled">
 						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 2)">--</button>
 						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 1)">-</button>
 						<button id="nudge_size_0" onmousedown="map.mapEditor.nudgeSize(0)">o</button>
@@ -214,9 +232,7 @@
 		<button class="zoom in" onclick="zoom(1)">+</button>
 		<button class="zoom reset" onclick="zoom(0)">@</button>
 		<button class="zoom out" onclick="zoom(-1)">-</button>
-		<div class="mapfield">
-			<canvas id="gameCanvas" class="zoomable"></canvas>
-		</div>
+		<div class="mapfield"></div>
 	</div>
 	<script type="text/javascript" src="menu.js"></script>
 	<script type="text/javascript" src="images.js"></script>

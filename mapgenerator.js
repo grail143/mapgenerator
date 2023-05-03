@@ -1032,6 +1032,7 @@ class MapGenerator {
         return Object.assign(list[test[0].idx], { 'idx': test[0].idx });
     }
     removeObject(object) {
+        if (!object) return;
         let type = object.sprite.spritetype;
         let list = type === 1
             ? this.walls : this.sprites;
@@ -1111,7 +1112,7 @@ class MapEditor {
         appdiv.innerHTML = '';
         for (const [idx, type] of Object.entries(spriteSheets)) {
             let group = document.createElement('h3');
-            group.classList.add('w-100');
+            group.classList.add('w_100');
             group.innerHTML = idx;
             appdiv.append(group);
             for (const sheet in type) {
@@ -1153,7 +1154,7 @@ class MapEditor {
     }
     handleUI() {
         toggleNav('edittile', true);
-        document.querySelector('#orig-rotation').innerHTML = this.sprite.tile.direction || 0;
+        document.querySelector('#orig_rotation').innerHTML = this.sprite.tile.direction || 0;
         zoom(1.5, this.startx * this.tileSize, this.starty * this.tileSize, this.tileSize);
 
         this.showSheets();
@@ -1240,18 +1241,21 @@ class MapEditor {
         }
         this.renderSprite();
     }
-    nudgeSize(dir, amt = 2) {
+    nudgeSize(size, amt = 0, dir = "x") {
         const nudgeamt = amt == 1 ? 2 : .2 * this.tileSize;
-        switch (dir) {
+        const nudgedir = xysizelock ? ['NW', 'SE'] : dir == 'x' ? ['W', 'E'] : ['N', 'S'];
+        const width = dir == "x" || xysizelock ? nudgeamt : 0;
+        const height = dir == "y" || xysizelock ? nudgeamt : 0;
+        switch (size) {
             case 1:
-                this.sprite.tile.width += nudgeamt;
-                this.sprite.tile.height += nudgeamt;
-                this.nudgeSprite('NW', amt);
+                this.sprite.tile.width += width;
+                this.sprite.tile.height += height;
+                this.nudgeSprite(nudgedir[0], amt);
                 break;
             case -1:
-                this.sprite.tile.width -= nudgeamt;
-                this.sprite.tile.height -= nudgeamt;
-                this.nudgeSprite('SE', amt);
+                this.sprite.tile.width -= width;
+                this.sprite.tile.height -= height;
+                this.nudgeSprite(nudgedir[1], amt);
                 break;
             default:
                 this.sprite.tile.width = this.tileSize * (this.sprite.sprite.tilesPer || 1);

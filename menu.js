@@ -97,9 +97,31 @@ function enforceMinMax(el) {
 }
 let scale = 1;
 let mode = "load";
+let xysizelock = true;
 function showifs(cls) {
     document.getElementById('leftslidenav').classList.remove('load', 'view', 'edit');
     document.getElementById('leftslidenav').classList.add(cls);
     mode = cls;
 
 }
+
+var lockxytoggle = document.querySelectorAll('.toggle').forEach(item => {
+    item.addEventListener('change', function () {
+        if (this.value === "true") {
+            document.querySelectorAll("#nudge_y button").forEach(button => {
+                button.disabled = true;
+                xysizelock = true;
+            })
+        } else {
+            document.querySelectorAll("#nudge_y button").forEach(button => {
+                button.disabled = false;
+                xysizelock = false;
+            })
+        }
+    });
+});
+document.querySelectorAll('h3.withSub').forEach(h3 => {
+    h3.addEventListener('click', function (ev) {
+        document.querySelector(`[data-sub=${ev.currentTarget.dataset.for}]`).classList.toggle('hide');
+    });
+});

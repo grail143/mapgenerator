@@ -576,7 +576,8 @@ class MapGenerator {
 
 
         arrayInstruments();
-        this.genDungeon();
+        if (!this.isBlank)
+            this.genDungeon();
 
 
     }
@@ -940,7 +941,8 @@ class MapGenerator {
         }
     }
 
-    createWorld() {
+    createWorld(isBlank = false) {
+        this.isBlank = isBlank;
         this.getValues();
         this.prepWorld();
         this.drawWorld();

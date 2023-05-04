@@ -46,37 +46,46 @@ function zoom(scaleChange, x = 0, y = 0, tileSize = 32) {
 function rnd(ceil) {
     return Math.floor(Math.random() * ceil);
 }
+function createWorld(isBlank) {
+    map = new MapGenerator();
+    map.createWorld(isBlank);
+    const canv = document.getElementById('gameCanvas');
+    canv.parentNode.scrollTop = canv.offsetTop;
+    canv.parentNode.scrollLeft = canv.offsetLeft;
+
+}
 let map;
-const genbutton = document.querySelectorAll('.generate').forEach(item => {
+document.querySelectorAll('.generate').forEach(item => {
     item.addEventListener('click', event => {
-        map = new MapGenerator();
-        map.createWorld();
-        const canv = document.getElementById('gameCanvas');
-        canv.parentNode.scrollTop = canv.offsetTop;
-        canv.parentNode.scrollLeft = canv.offsetLeft;
+        createWorld(false);
         showifs('view');
     })
 });
-const rembutton = document.querySelectorAll('.removemap').forEach(item => {
+document.querySelectorAll('.generateblank').forEach(item => {
+    item.addEventListener('click', event => {
+        createWorld(true);
+        showifs('view');
+    })
+});
+document.querySelectorAll('.removemap').forEach(item => {
     item.addEventListener('click', event => {
         map.destroy();
         map = null;
         showifs('load');
     })
 });
-const stopeditbutton = document.querySelectorAll('.stopedit').forEach(item => {
+document.querySelectorAll('.stopedit').forEach(item => {
     item.addEventListener('click', event => {
         map.unedit();
-        console.log(`${JSON.stringify(map.mapEditor)}`);
         showifs('view');
     })
 });
-const savetilebutton = document.querySelectorAll('.savetile').forEach(item => {
+document.querySelectorAll('.savetile').forEach(item => {
     item.addEventListener('click', event => {
         map.mapEditor.saveTile();
     })
 });
-const remtilebutton = document.querySelectorAll('.remtile').forEach(item => {
+document.querySelectorAll('.remtile').forEach(item => {
     item.addEventListener('click', event => {
         map.mapEditor.removeSprite();
     })

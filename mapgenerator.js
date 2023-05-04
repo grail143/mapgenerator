@@ -265,28 +265,6 @@ class Door extends Sprite {
     }
 }
 
-
-class Obstacle extends Sprite {
-    constructor(tile, sprite) {
-        super(tile, sprite);
-        this.sprite.spritetype = 3;
-    }
-
-}
-class Treasure extends Sprite {
-    constructor(tile, sprite) {
-        super(tile, sprite);
-        this.sprite.spritetype = 4;
-    }
-
-}
-class Monster extends Sprite {
-    constructor(tile, sprite) {
-        super(tile, sprite);
-        this.sprite.spritetype = 5;
-    }
-
-}
 class MapGenerator {
     constructor() {
         this.background = null;
@@ -849,7 +827,7 @@ class MapGenerator {
                             direction: direction
                         };
                         let tilesprite = spriteSheets.obstacle[obstaclespriteidx].spriteimages[spriteIndex];
-                        const obst = new Obstacle(tile, tilesprite);
+                        const obst = new Sprite(tile, tilesprite);
 
                         this.sprites.push(obst);
                         spriteType = obst.sprite.spritetype;
@@ -873,7 +851,7 @@ class MapGenerator {
                         };
 
                         let tilesprite = spriteSheets.treasure[treasurespriteidx].spriteimages[spriteIndex];
-                        const treasure = new Treasure(tile, tilesprite);
+                        const treasure = new Sprite(tile, tilesprite);
 
                         this.sprites.push(treasure);
                         spriteType = treasure.sprite.spritetype;
@@ -887,7 +865,7 @@ class MapGenerator {
                     if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
                         spriteIndex = 0;
                     else if (spriteIndex) {
-                        const mon = new Monster(monst.tile, monst.tilesprite);
+                        const mon = new Sprite(monst.tile, monst.tilesprite);
 
                         this.sprites.push(mon);
                         spriteType = mon.getSpriteWorldInd();
@@ -1163,6 +1141,8 @@ class MapEditor {
             this.selectedSheet = this.sprite.sprite.parent;
         }
         this.showSprites(this.selectedSheet.spriteimages);
+
+        this.checkFlip();
     }
     setSprite(sprite) {
         if (!sprite)
@@ -1231,14 +1211,24 @@ class MapEditor {
         document.getElementById('tile_rotation_value').value = this.sprite.tile.direction;
         this.renderSprite();
     }
+    checkFlip() {
+        if (this.sprite.tile.mirrorh == -1)
+            document.querySelector('#flip_sprite_h').classList.add('active');
+        else
+            document.querySelector('#flip_sprite_h').classList.remove('active');
+
+        if (this.sprite.tile.mirrorv == -1)
+            document.querySelector('#flip_sprite_v').classList.add('active');
+        else
+            document.querySelector('#flip_sprite_v').classList.remove('active');
+    }
     flipSprite(mir) {
         if (mir === 'h') {
             this.sprite.tile.mirrorh = -1 * (this.sprite.tile.mirrorh || 1);
-            document.querySelector('#flip_sprite_h').classList.toggle('active');
         } else {
             this.sprite.tile.mirrorv = -1 * (this.sprite.tile.mirrorv || 1);
-            document.querySelector('#flip_sprite_v').classList.toggle('active');
         }
+        this.checkFlip();
         this.renderSprite();
     }
     nudgeSize(size, amt = 0, dir = "x") {

@@ -20,10 +20,13 @@
 					You are editing a tile!
 				</div>
 				<div data-showif="view" class="field">
-					<button type="button" class="removemap btn">Remove World?</button>
+					<button type="button" class="removemap btn dk">Remove World?</button>
 				</div>
 				<div data-showif="load" class="field">
-					<button type="button" class="generate btn">New World</button>
+					<button type="button" class="generateblank btn dk">Blank World</button>
+				</div>
+				<div data-showif="load" class="field">
+					<button type="button" class="generate btn dk">New World</button>
 				</div>
 				<div data-showif="load" class="field">
 					<label for="worldWidth"># of Tiles Width</label>
@@ -94,7 +97,7 @@
 					</label>
 				</div>
 				<div data-showif="load" class="field">
-					<button type="button" id="generate">New World</button>
+					<button type="button" class="generate btn dk">New World</button>
 				</div>
 			</div>
 			<div class="controls" id="editmap">
@@ -105,7 +108,7 @@
 					You are editing a tile. Come back when you're done!
 				</div>
 				<div data-showif="view" class="field">
-					<button type="button" class="btn save">Save</button>
+					<button type="button" class="btn save dk">Save</button>
 				</div>
 				<div data-showif="view" class="field">
 					<label for="worldWidth"># of Tiles Width</label>
@@ -139,13 +142,13 @@
 					Please click a tile to edit.
 				</div>
 				<div data-showif="edit" class="field">
-					<button type="button" class="btn stopedit">Stop Editing</button>
+					<button type="button" class="btn stopedit dk">Stop Editing</button>
 				</div>
 				<div data-showif="edit" class="field">
-					<button type="button" class="btn savetile">Save</button>
+					<button type="button" class="btn savetile dk">Save</button>
 				</div>
 				<div data-showif="edit" class="field">
-					<button type="button" class="btn remtile">Remove Tile</button>
+					<button type="button" class="btn remtile dk">Remove Tile</button>
 				</div>
 				<div data-showif="edit" class="field">
 					<h3 class="withSub" data-for="sprite">Sprite</h3>
@@ -232,7 +235,7 @@
 					</div>
 				</div>
 				<div data-showif="edit" class="field">
-					<button type="button" onclick="map.mapEditor.saveTile()" class="btn save">Save</button>
+					<button type="button" onclick="map.mapEditor.saveTile()" class="btn save dk">Save</button>
 				</div>
 			</div>
 		</div>

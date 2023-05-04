@@ -114,6 +114,10 @@ body {
         background: var(--color700);
     }
 
+.btn.dk {
+    background: var(--color900);
+}
+
 .withSub {
     cursor: pointer;
     background: var(--color1000);

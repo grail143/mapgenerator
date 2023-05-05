@@ -110,8 +110,13 @@ let xysizelock = true;
 function showifs(cls) {
     document.getElementById('leftslidenav').classList.remove('load', 'view', 'edit');
     document.getElementById('leftslidenav').classList.add(cls);
+    document.getElementById('rightdragnav').classList.remove('load', 'view', 'edit');
+    document.getElementById('rightdragnav').classList.add(cls);
     mode = cls;
-
+    if (mode != 'edit')
+        hidedrag(true);
+    else
+        hidedrag(false);
 }
 
 var lockxytoggle = document.querySelectorAll('.toggle').forEach(item => {
@@ -134,3 +139,53 @@ document.querySelectorAll('h3.withSub').forEach(h3 => {
         document.querySelector(`[data-sub=${ev.currentTarget.dataset.for}]`).classList.toggle('hide');
     });
 });
+
+const dragel = document.getElementById("rightdragnav");
+dragElement(dragel);
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.querySelector(`${elmnt.id} h3`)) {
+        document.getElementById(`${elmnt.id} h3`).onmousedown = dragMouseDown;
+    } else {
+        elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+
+function hidedrag(hide = true) {
+    if (hide) {
+        dragel.style.top = 0;
+        dragel.style.left = '-500px';
+        document.querySelectorAll('.drag .collapsible').forEach(item => {
+            item.classList.add('hide');
+        });
+    }
+    else {
+        dragel.style.top = 0;
+        dragel.style.left = 'calc( 100vw - 230px )';
+    }
+}

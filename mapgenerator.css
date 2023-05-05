@@ -30,6 +30,7 @@ time, mark, audio, video {
     --color800: #484c7a;
     --color900: #36395a;
     --color1000: #23263b;
+    --color1100: #010419;
     --colorwarn: #fcbc73;
     --sizesm: 2px;
     --sizem: 5px;
@@ -163,10 +164,31 @@ h3.withSub:has(+.collapsible.hide):after {
     height: inherit;
     overflow-x: hidden;
     display: none;
+    padding: 10px;
 }
 
     .controls.selected {
         display: block;
+    }
+
+.drag {
+    position: absolute;
+    z-index: 9;
+    left: -500px;
+    width: 230px;
+    background-color: var(--color1100);
+    border-radius: var(--sizexl);
+    padding-bottom: var(--sizexl);
+}
+
+    .drag.edit {
+        left: calc( 100vw - 230px );
+    }
+
+    .drag h2 {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
     }
 
 .mapfield {

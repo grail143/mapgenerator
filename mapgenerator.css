@@ -533,3 +533,28 @@ button {
         margin: 5px;
         background: var(--color500);
     }
+
+.thisspritediv {
+    height: 230px;
+}
+
+    .thisspritediv .canvas {
+        width: fit-content;
+        background: var(--color400);
+        overflow: visible;
+        margin: 0 auto;
+    }
+
+        .thisspritediv .canvas:hover {
+            z-index: 11;
+            position: relative;
+        }
+
+        .thisspritediv .canvas canvas {
+            max-width: 100%;
+        }
+
+        .thisspritediv .canvas:hover canvas {
+            max-width: unset;
+            width: auto;
+        }

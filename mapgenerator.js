@@ -280,7 +280,7 @@ class MapGenerator {
     init() {
         this.bgcanvas = createCanvas('bgCanvas', ['zoomable'], 1, 1);
         this.canvas = createCanvas('gameCanvas', ['zoomable'], 1, 1);
-        this.bgctx = this.bgcanvas.getContext("2d");
+        this.bgctx = this.bgcanvas.getContext("2d", { willReadFrequently: true });
         this.ctx = this.canvas.getContext("2d");
         let mapfield = document.querySelector('.mapfield');
         mapfield.append(this.bgcanvas);
@@ -1119,6 +1119,13 @@ class MapEditor {
         context.drawImage(sprite, 0, 0);
         return newCanvas;
     }
+    showThisSprite() {
+        let canvdiv = document.querySelector('.thisspritediv .canvas');
+        canvdiv.innerHTML = '';
+        let orig_image = this.sprite.sprite.getCanvas();
+        let image = this.drawSprite(orig_image);
+        canvdiv.append(image);
+    }
     showSprites(images) {
         document.querySelector('.spritediv').innerHTML = '';
         for (const [idx, img] of Object.entries(images)) {
@@ -1196,6 +1203,7 @@ class MapEditor {
     renderSprite() {
         this.reclaimCanvas(this.ctx);
         this.sprite.draw(this.ctx, this.tileSize, this.sprite.sprite.tilesPer);
+        this.showThisSprite();
     }
     destroy() {
         document.querySelector('.mapfield').removeChild(this.canvas);

@@ -1029,6 +1029,10 @@ class MapGenerator {
     }
     updateObject(oldobject, object) {
         this.removeObject(oldobject);
+        if (!object.sprite.canvas) {
+            this.drawWorld();
+            return;
+        }
         let type = object.sprite.spritetype;
         let list = type === 1
             ? this.walls : this.sprites;
@@ -1047,8 +1051,8 @@ class MapGenerator {
         this.mapEditor = new MapEditor(
             this.selectedObject,
             this.tileSize,
-            this.selectedObject ? this.selectedObject.tile.x : x,
-            this.selectedObject ? this.selectedObject.tile.y : y,
+            this.selectedObject ? this.selectedObject.tile.x : tilex,
+            this.selectedObject ? this.selectedObject.tile.y : tiley,
             this.selectedObject ? this.selectedObject.sprite.spritetype : 0,
             this.selectedObject && this.selectedObject.idx >= 0 ? this.selectedObject.idx : -1);
     }
@@ -1122,6 +1126,8 @@ class MapEditor {
     showThisSprite() {
         let canvdiv = document.querySelector('.thisspritediv .canvas');
         canvdiv.innerHTML = '';
+        if (!this.sprite.sprite.tilesPer)
+            return false;
         let orig_image = this.sprite.sprite.getCanvas();
         let image = this.drawSprite(orig_image);
         canvdiv.append(image);
@@ -1151,14 +1157,15 @@ class MapEditor {
         }
         this.showSprites(this.selectedSheet.spriteimages);
 
+        this.showThisSprite();
         this.checkFlip();
     }
     setSprite(sprite) {
         if (!sprite)
             this.sprite = new Sprite(
                 {
-                    x: this.startx / this.tileSize,
-                    y: this.starty / this.tileSize,
+                    x: this.startx,
+                    y: this.starty,
                     width: this.tileSize,
                     height: this.tileSize,
                     direction: 0,
@@ -1203,7 +1210,6 @@ class MapEditor {
     renderSprite() {
         this.reclaimCanvas(this.ctx);
         this.sprite.draw(this.ctx, this.tileSize, this.sprite.sprite.tilesPer);
-        this.showThisSprite();
     }
     destroy() {
         document.querySelector('.mapfield').removeChild(this.canvas);
@@ -1298,10 +1304,6 @@ class MapEditor {
                 this.sprite.x = this.sprite.tile.x * this.tileSize;
                 this.sprite.y = this.sprite.tile.y * this.tileSize;
         }
-        this.renderSprite();
-    }
-    switchSprite(sprite) {
-        this.sprite.sprite = this.sprite.sprite.parent.spriteimages[sprite];
         this.renderSprite();
     }
     removeSprite() {

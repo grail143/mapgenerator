@@ -339,7 +339,7 @@ class MapGenerator {
                         let map = {
                             x: x,
                             y: y,
-                            width: length * this.tileSize,
+                            width: spritePiece.spriteWidth / 100 * this.tileSize,
                             height: this.tileSize,
                             direction: direction || 0
                         }
@@ -348,7 +348,7 @@ class MapGenerator {
 
                         wallSprites[walllengths[i].x] = wallSprites[walllengths[i].x] || {};
                         wallSprites[walllengths[i].x][walllengths[i].y] = new Wall(map, sprite, type);
-                        for (let j = 0; j < spritePiece.width; j += 100) {
+                        jloop: for (let j = 0; j < spritePiece.spriteWidth; j += 100) {
                             let a, b;
                             if (direction == 0 || direction == 180) {
                                 a = x + (j / 100);
@@ -361,13 +361,15 @@ class MapGenerator {
                                 if (walltiles[k].x == a && walltiles[k].y === b) {
                                     if (walltiles[k].type === 0)
                                         tilesadded.push({ x: a, y: b });
-                                    else
-                                        continue yloop;
+                                    continue jloop;
                                 }
                             }
                         }
                         continue yloop;
                     }
+                }
+                if (tilesadded.filter((coords) => coords.x === xtiles && coords.y === ytiles).length) {
+                    continue;
                 }
                 for (let i = 0; i < walltiles.length; i++) {
                     if (walltiles[i].x == xtiles && walltiles[i].y == ytiles) {

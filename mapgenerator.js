@@ -996,6 +996,12 @@ class MapGenerator {
             }
         }
     }
+    selectWall(obj, x, y) {
+        let coords = obj.idx.split('.');
+        if (coords.length != 2)
+            return this.walls[x][y];
+        return this.walls[coords[0]][coords[1]];
+    }
     selectObject(x = 0, y = 0, tilex = 0, tiley = 0) {
         if (!isSprite(x, y)) return false;
         let test = this.testworld.filter(pxl => (
@@ -1008,7 +1014,7 @@ class MapGenerator {
         if (!test.length) return false;
         const type = test[0].type;
         const list = type === "wall" ? "walls" : this.sprites;
-        if (list === "walls") return this.walls[tilex][tiley];
+        if (list === "walls") return this.selectWall(test[0], tilex, tiley);
         return Object.assign(list[test[0].idx], { 'idx': test[0].idx });
     }
     removeObject(object) {

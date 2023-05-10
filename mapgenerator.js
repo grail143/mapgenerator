@@ -179,15 +179,19 @@ class Sprite {
         ctx.restore();
     }
     getTileAreaCenter() {
-        const centerX = this.tile.height / 2;
+        const centerX = this.tile.width / 2;
         const centerY = this.tile.height / 2;
         return { 'centerX': centerX, 'centerY': centerY };
     }
     getBlockCenter(tilex, tiley) {
-        const centerX = tilex + this.tile.height / 2;
+        const centerX = tilex + this.tile.width / 2;
         const centerY = tiley + this.tile.height / 2;
         return { 'centerX': centerX, 'centerY': centerY };
-
+    }
+    getHLCenter(tilex, tiley) {
+        const centerX = tilex + this.tile.width / 2;
+        const centerY = tiley + this.tile.height / 2;
+        return { 'centerX': centerX, 'centerY': centerY };
     }
     rotate(ctx, tileSize, tilesPer) {
         const tilex = this.x;
@@ -208,7 +212,14 @@ class Sprite {
     clone() {
         let tile = Object.assign(Object.create(Object.getPrototypeOf(this.tile)), this.tile);
         let sprite = Object.assign(Object.create(Object.getPrototypeOf(this.sprite)), this.sprite);
-        return new Sprite(tile, sprite)
+        switch (this.sprite.spritetype) {
+            case 1:
+                return new Wall(tile, sprite);
+            case 2:
+                return new Door(tile, sprite);
+            default:
+                return new Sprite(tile, sprite);
+        }
     }
 }
 
@@ -217,6 +228,20 @@ class Wall extends Sprite {
         super(tile, sprite);
         this.walltype = type;
         this.sprite.spritetype = 1;
+        this.tile.width = this.sprite.spriteWidth / 100 * map.tileSize;
+        this.tile.height = this.sprite.spriteHeight / 100 * map.tileSize;
+    }
+    getTileAreaCenter() {
+        const centerX = [90, 270].includes(this.tile.direction) ? this.tile.height / 2 : this.tile.width / 2;
+        const centerY = [0, 180].includes(this.tile.direction) ? this.tile.width / 2 : this.tile.height / 2;
+        console.log(`This tile has a center at ${centerX}, ${centerY} a width of ${this.tile.width} or is it ${this.sprite.spriteWidth} with a direction of ${this.tile.direction}`);
+        return { 'centerX': centerX, 'centerY': centerY };
+    }
+    getBlockCenter(tilex, tiley) {
+        const centerX = [90, 270].includes(this.tile.direction) ? tilex + this.tile.height / 2 : tilex + this.tile.width / 2;
+        const centerY = [0, 180].includes(this.tile.direction) ? tiley + this.tile.width / 2 : tiley + this.tile.height / 2;
+        console.log(`This tile is a centered at ${centerX}, ${centerY} on the map with a direction of ${this.tile.direction}`);
+        return { 'centerX': centerX, 'centerY': centerY };
     }
 }
 class Door extends Sprite {
@@ -340,7 +365,7 @@ class MapGenerator {
                             x: x,
                             y: y,
                             width: spritePiece.spriteWidth / 100 * this.tileSize,
-                            height: this.tileSize,
+                            height: spritePiece.spriteHeight / 100 * this.tileSize,
                             direction: direction || 0
                         }
                         let sprite = spritePiece;
@@ -557,9 +582,15 @@ class MapGenerator {
             this.getValue(id, fieldtype);
         }
 
-        this.maxouterdoors = this.maxouterdoors < this.worldHeight / 2 || this.maxouterdoors < this.worldWidth / 2 ? this.maxouterdoors : Math.min(this.worldHeight, this.worldWidth) / 4;
-        this.roomInterval = this.roomInterval < this.worldWidth && this.roomInterval < this.worldHeight ? this.roomInterval : Math.min(this.worldWidth, this.worldHeight);
-        this.minRoom = this.minRoom < this.roomInterval - 2 && this.minRoom > 0 ? this.minRoom : this.roomInterval - 2;
+        this.maxouterdoors = this.maxouterdoors < this.worldHeight / 2 || this.maxouterdoors < this.worldWidth / 2
+            ? this.maxouterdoors
+            : Math.min(this.worldHeight, this.worldWidth) / 4;
+        this.roomInterval = this.roomInterval < this.worldWidth && this.roomInterval < this.worldHeight
+            ? this.roomInterval
+            : Math.min(this.worldWidth, this.worldHeight);
+        this.minRoom = this.minRoom < this.roomInterval - 2 && this.minRoom > 0
+            ? this.minRoom
+            : this.roomInterval - 2;
         this.extraDoors = Math.random() * (this.roomInterval * 2) || 2;
 
         const updates = ['roomInterval', 'minRoom', 'maxouterdoors'];
@@ -987,8 +1018,8 @@ class MapGenerator {
                     this.testworld.push(
                         mapSprite(wall.x,
                             wall.y,
-                            wall.tile.width,
-                            wall.tile.height,
+                            [0, 180].includes(wall.tile.direction) ? wall.sprite.spriteWidth / 100 * this.tileSize : this.tileSize,
+                            [90, 270].includes(wall.tile.direction) ? wall.sprite.spriteWidth / 100 * this.tileSize : this.tileSize,
                             "wall",
                             `${x}.${y}`
                         )
@@ -1091,11 +1122,11 @@ class MapEditor {
         this.init();
     }
     init() {
-        let tilecenter = this.sprite.getBlockCenter(this.startx * this.tileSize, this.starty * this.tileSize);
+        let tilecenter = this.sprite.getHLCenter(this.startx * this.tileSize, this.starty * this.tileSize);
         document.querySelector('.mapfield').appendChild(this.highlightcanvas);
         document.querySelector('.mapfield').appendChild(this.canvas);
         this.renderOverlay();
-        this.renderHighlight(tilecenter['centerX'], tilecenter['centerY'], this.spriteSize, this.spriteSize);
+        this.renderHighlight(tilecenter['centerX'], tilecenter['centerY'], this.sprite.tile.width, this.sprite.tile.height);
         if (this.sprite.sprite.tilesPer) this.setRotation(this.sprite.tile.direction, true);
         this.handleUI();
     }
@@ -1194,7 +1225,7 @@ class MapEditor {
     }
     fillcircle(x, y, width, height, opacity, size) {
         this.hlctx.fillStyle = `rgba(255,255,255, ${opacity})`;
-        this.hlctx.arc(x, y, (width + this.tileSize) / size, 0, 2 * Math.PI, false);
+        this.hlctx.ellipse(x, y, (width + this.tileSize) / size, (height + this.tileSize) / size, this.sprite.tile.direction * (Math.PI / 180), 0, 2 * Math.PI, false);
         this.hlctx.fill();
     }
     renderHighlight(x, y, width, height) {

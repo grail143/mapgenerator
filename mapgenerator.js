@@ -188,9 +188,15 @@ class Sprite {
         const centerY = tiley + this.tile.height / 2;
         return { 'centerX': centerX, 'centerY': centerY };
     }
-    getHLCenter(tilex, tiley) {
-        const centerX = tilex + this.tile.width / 2;
-        const centerY = tiley + this.tile.height / 2;
+    getHLCenter(tilex, tiley, rotatedwall = false) {
+        let centerX, centerY;
+        if (rotatedwall) {
+            centerX = tilex + this.tile.height / 2;
+            centerY = tiley + this.tile.width / 2;
+        } else {
+            centerX = tilex + this.tile.width / 2;
+            centerY = tiley + this.tile.height / 2;
+        }
         return { 'centerX': centerX, 'centerY': centerY };
     }
     rotate(ctx, tileSize, tilesPer) {
@@ -1122,7 +1128,7 @@ class MapEditor {
         this.init();
     }
     init() {
-        let tilecenter = this.sprite.getHLCenter(this.startx * this.tileSize, this.starty * this.tileSize);
+        let tilecenter = this.sprite.getHLCenter(this.startx * this.tileSize, this.starty * this.tileSize, this.sprite.sprite.spritetype == 1 && [90, 270].includes(this.sprite.tile.direction));
         document.querySelector('.mapfield').appendChild(this.highlightcanvas);
         document.querySelector('.mapfield').appendChild(this.canvas);
         this.renderOverlay();

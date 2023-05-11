@@ -207,7 +207,7 @@
 							<label for="toggle_off" class="toggle_btn">No</label>
 						</div>
 					</div>
-					<label for="nudge_x">X Axis<input type="number" id="nudge_x_value" class=" small pull_right" oninput="map.mapEditor.setRotation(this.value, true)" /></label>
+					<label for="nudge_x">X Axis<input type="number" id="nudge_x_value" class=" small pull_right" step="1" oninput="map.mapEditor.nudge('x', this.value)" value="120" /></label>
 					<div class="btn_group five">
 						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 2, 'x')">--</button>
 						<button id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 1, 'x')">-</button>
@@ -215,7 +215,7 @@
 						<button id="nudge_size_up" onmousedown="map.mapEditor.nudgeSize(1, 1, 'x')">+</button>
 						<button id="nudge_size_up" onmousedown="map.mapEditor.nudgeSize(1, 2, 'x')">++</button>
 					</div>
-					<label for="nudge_y">Y Axis<input type="number" id="nudge_y_value" class="small pull_right" oninput="map.mapEditor.setRotation(this.value, true)" /></label>
+					<label for="nudge_y">Y Axis<input type="number" id="nudge_y_value" class="small pull_right" step="1" oninput="map.mapEditor.nudge('y', this.value)" /></label>
 					<div class="btn_group five" id="nudge_y">
 						<button disabled id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 2, 'y')">--</button>
 						<button disabled id="nudge_size_down" onmousedown="map.mapEditor.nudgeSize(-1, 1, 'y')">-</button>

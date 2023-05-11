@@ -1204,6 +1204,8 @@ class MapEditor {
 
         this.showThisSprite();
         this.checkFlip();
+        document.getElementById('nudge_x_value').value = this.sprite.tile.width;
+        document.getElementById('nudge_y_value').value = this.sprite.tile.height;
     }
     setSprite(sprite) {
         if (!sprite)
@@ -1292,8 +1294,16 @@ class MapEditor {
         this.checkFlip();
         this.renderSprite();
     }
+    nudge(dir, val) {
+        let size = dir == 'x' ? this.sprite.tile.width : this.sprite.tile.height;
+        const newsize = parseInt(val);
+        if (newsize > size)
+            this.nudgeSize(1, newsize - size, dir);
+        else if (newsize < size)
+            this.nudgeSize(-1, size - newsize, dir);
+    }
     nudgeSize(size, amt = 0, dir = "x") {
-        const nudgeamt = amt == 1 ? 2 : .2 * this.tileSize;
+        const nudgeamt = amt == 1 ? 1 : .2 * this.tileSize;
         const nudgedir = xysizelock ? ['NW', 'SE'] : dir == 'x' ? ['W', 'E'] : ['N', 'S'];
         const width = dir == "x" || xysizelock ? nudgeamt : 0;
         const height = dir == "y" || xysizelock ? nudgeamt : 0;
@@ -1313,6 +1323,8 @@ class MapEditor {
                 this.sprite.tile.height = this.tileSize * (this.sprite.sprite.tilesPer || 1);
                 this.nudgeSprite('0');
         }
+        document.getElementById('nudge_x_value').value = this.sprite.tile.width;
+        document.getElementById('nudge_y_value').value = this.sprite.tile.height;
     }
     nudgeSprite(dir, amt = 2) {
         const nudgeamt = amt == 1 ? 1 : .1 * this.tileSize;

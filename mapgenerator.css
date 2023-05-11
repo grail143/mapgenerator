@@ -228,6 +228,7 @@ label {
     width: 100%;
     height: 32px;
     line-height: 32px;
+    margin-top: var(--sizem);
 }
 
 .text_act {
@@ -268,6 +269,7 @@ input:not([type="radio"]):not([type="checkbox"]) {
     display: block;
     width: calc(100% - (2*var(--sizem)));
     padding: var(--sizem);
+    margin-top: var(--sizesm);
     outline: none;
 }
 

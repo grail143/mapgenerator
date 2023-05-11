@@ -107,6 +107,7 @@ function enforceMinMax(el) {
 let scale = 1;
 let mode = "load";
 let xysizelock = true;
+let tilesnap = false;
 function showifs(cls) {
     document.getElementById('leftslidenav').classList.remove('load', 'view', 'edit');
     document.getElementById('leftslidenav').classList.add(cls);
@@ -119,18 +120,27 @@ function showifs(cls) {
         hidedrag(false);
 }
 
-var lockxytoggle = document.querySelectorAll('.toggle').forEach(item => {
+var tilesnaptoggle = document.querySelectorAll('.tilesnap .toggle').forEach(item => {
+    item.addEventListener('change', function () {
+        if (this.value === "true") {
+            tilesnap = true;
+        } else {
+            tilesnap = false;
+        }
+    });
+});
+var lockxytoggle = document.querySelectorAll('.lockxy .toggle').forEach(item => {
     item.addEventListener('change', function () {
         if (this.value === "true") {
             document.querySelectorAll("#nudge_y button").forEach(button => {
                 button.disabled = true;
-                xysizelock = true;
-            })
+            });
+            xysizelock = true;
         } else {
             document.querySelectorAll("#nudge_y button").forEach(button => {
                 button.disabled = false;
-                xysizelock = false;
-            })
+            });
+            xysizelock = false;
         }
     });
 });

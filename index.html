@@ -200,11 +200,20 @@
 				<div class="collapsible hide" data-sub="size">
 					<div class="flex nowrap">
 						<label>Lock x &amp; y?</label>
-						<div class="flex nowrap">
-							<input id="toggle_on" class="toggle toggle_left" name="toggle" value="true" type="radio" checked>
-							<label for="toggle_on" class="toggle_btn">Locked</label>
-							<input id="toggle_off" class="toggle toggle_right" name="toggle" value="false" type="radio">
-							<label for="toggle_off" class="toggle_btn">No</label>
+						<div class="flex nowrap lockxy">
+							<input id="xy_lock" class="toggle toggle_left" name="toggle" value="true" type="radio" checked>
+							<label for="xy_lock" class="toggle_btn">Locked</label>
+							<input id="xy_unlock" class="toggle toggle_right" name="toggle" value="false" type="radio">
+							<label for="xy_unlock" class="toggle_btn">No</label>
+						</div>
+					</div>
+					<div class="flex nowrap">
+						<label>Snap To Tile?</label>
+						<div class="flex nowrap tilesnap">
+							<input id="tile_snap_on" class="toggle toggle_left" name="toggle" value="true" type="radio">
+							<label for="tile_snap_on" class="toggle_btn">Snap</label>
+							<input id="tile_snap_off" class="toggle toggle_right" name="toggle" value="false" type="radio" checked>
+							<label for="tile_snap_off" class="toggle_btn">Free</label>
 						</div>
 					</div>
 					<label for="nudge_x">X Axis<input type="number" id="nudge_x_value" class=" small pull_right" step="1" oninput="map.mapEditor.nudge('x', this.value)" value="120" /></label>

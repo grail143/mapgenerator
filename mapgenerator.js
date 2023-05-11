@@ -1303,7 +1303,7 @@ class MapEditor {
             this.nudgeSize(-1, size - newsize, dir);
     }
     nudgeSize(size, amt = 0, dir = "x") {
-        const nudgeamt = amt == 1 ? 1 : .2 * this.tileSize;
+        const nudgeamt = amt == 1 && !tilesnap ? 1 : !tilesnap ? .2 * this.tileSize : amt == 1 ? map.tileSize : map.tileSize * 2;
         const nudgedir = xysizelock ? ['NW', 'SE'] : dir == 'x' ? ['W', 'E'] : ['N', 'S'];
         const width = dir == "x" || xysizelock ? nudgeamt : 0;
         const height = dir == "y" || xysizelock ? nudgeamt : 0;
@@ -1322,6 +1322,10 @@ class MapEditor {
                 this.sprite.tile.width = this.tileSize * (this.sprite.sprite.tilesPer || 1);
                 this.sprite.tile.height = this.tileSize * (this.sprite.sprite.tilesPer || 1);
                 this.nudgeSprite('0');
+        }
+        if (tilesnap) {
+            this.sprite.tile.width = Math.floor(this.sprite.tile.width / map.tileSize) * map.tileSize
+            this.sprite.tile.height = Math.floor(this.sprite.tile.height / map.tileSize) * map.tileSize
         }
         document.getElementById('nudge_x_value').value = this.sprite.tile.width;
         document.getElementById('nudge_y_value').value = this.sprite.tile.height;

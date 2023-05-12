@@ -125,6 +125,9 @@ body {
     padding: var(--sizexl);
 }
 
+.hide {
+    display: none;
+}
 
 h3.withSub:has(+.collapsible):after {
     content: "-";
@@ -494,6 +497,16 @@ button {
     width: 30%;
 }
 
+.small_inner h4 {
+    margin-top: 0.8em;
+}
+
+.small_inner label {
+    font-size: .7em;
+    line-height: .8em;
+    height: 0.8em;
+}
+
 .pull_right {
     text-align: right;
     float: right;
@@ -503,6 +516,10 @@ button {
     width: 75px !important;
     display: inline-block !important;
     padding: 0 !important;
+}
+
+.choosespriteinfo {
+    padding-left: var(--sizem);
 }
 
 ::-webkit-scrollbar {

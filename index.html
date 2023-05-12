@@ -154,8 +154,7 @@
 					<h3 class="withSub" data-for="sprite">Sprite</h3>
 					<div class="collapsible hide" data-sub="sprite">
 						<div id="sheets" class="flex"></div>
-						<input type="number" value="0" min="0" max="360" id="tile_sprite" onchange="map.mapEditor.switchSprite(this.value)" onblur="enforceMinMax(this)" />
-						<div class="spritediv"></div>
+						<div class="spritediv small_inner"></div>
 					</div>
 				</div>
 			</div>
@@ -165,6 +164,23 @@
 			<div data-showif="edit" class="field">
 				<div class="thisspritediv">
 					<div class="canvas"></div>
+				</div>
+			</div>
+			<div data-showif="edit" class="field">
+				<h3 class="withSub" data-for="spriteinfo">Info</h3>
+				<div id="spriteinfo" class="collapsible hide small_inner" data-sub="spriteinfo">
+					<h4>Sheet</h4>
+					<label id="spritesheet_type">Type: <span class="pull_right"></span></label>
+					<label id="spritesheet_name">Name: <span class="pull_right"></span></label>
+					<label id="spritesheet_main_environment">Environment: <span class="pull_right"></span></label>
+					<label id="spritesheet_spriteSize">Pixels Per Sprite Height: <span class="pull_right"></span></label>
+					<label id="spritesheet_tilesPerSprite">Intended Tile Area: <span class="pull_right"></span></label>
+
+					<h4>Piece</h4>
+					<label id="spritepiece_typename">Type: <span class="pull_right"></span></label>
+					<label id="spritepiece_spriteWidth">Width: <span class="pull_right"></span></label>
+					<label id="spritepiece_spriteHeight">Height: <span class="pull_right"></span></label>
+
 				</div>
 			</div>
 			<div data-showif="edit" class="field">

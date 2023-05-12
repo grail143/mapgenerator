@@ -240,13 +240,11 @@ class Wall extends Sprite {
     getTileAreaCenter() {
         const centerX = [90, 270].includes(this.tile.direction) ? this.tile.height / 2 : this.tile.width / 2;
         const centerY = [0, 180].includes(this.tile.direction) ? this.tile.width / 2 : this.tile.height / 2;
-        console.log(`This tile has a center at ${centerX}, ${centerY} a width of ${this.tile.width} or is it ${this.sprite.spriteWidth} with a direction of ${this.tile.direction}`);
         return { 'centerX': centerX, 'centerY': centerY };
     }
     getBlockCenter(tilex, tiley) {
         const centerX = [90, 270].includes(this.tile.direction) ? tilex + this.tile.height / 2 : tilex + this.tile.width / 2;
         const centerY = [0, 180].includes(this.tile.direction) ? tiley + this.tile.width / 2 : tiley + this.tile.height / 2;
-        console.log(`This tile is a centered at ${centerX}, ${centerY} on the map with a direction of ${this.tile.direction}`);
         return { 'centerX': centerX, 'centerY': centerY };
     }
 }
@@ -1168,6 +1166,30 @@ class MapEditor {
         context.drawImage(sprite, 0, 0);
         return newCanvas;
     }
+    showSpriteInfo() {
+        const spanpararr = ['type', 'name', 'main_environment', 'spriteSize', 'tilesPerSprite'];
+        const spanpiearr = ['typename', 'spriteWidth', 'spriteHeight'];
+        spanpararr.forEach(attr => {
+            let label = document.querySelector(`#spriteinfo #spritesheet_${attr}`);
+            let span = document.querySelector(`#spriteinfo #spritesheet_${attr} span`);
+            label.classList.remove('hide');
+            let text = this.sprite.sprite.parent[attr];
+            if (text)
+                span.innerHTML = text;
+            else
+                label.classList.add('hide');
+        });
+        spanpiearr.forEach(attr => {
+            let label = document.querySelector(`#spriteinfo #spritepiece_${attr}`);
+            let span = document.querySelector(`#spriteinfo #spritepiece_${attr} span`);
+            label.classList.remove('hide');
+            let text = this.sprite.sprite[attr];
+            if (text)
+                span.innerHTML = text;
+            else
+                label.classList.add('hide');
+        });
+    }
     showThisSprite() {
         let canvdiv = document.querySelector('.thisspritediv .canvas');
         canvdiv.innerHTML = '';
@@ -1178,8 +1200,10 @@ class MapEditor {
         canvdiv.append(image);
     }
     showSprites(images) {
-        document.querySelector('.spritediv').innerHTML = '';
+        const spritediv = document.querySelector('.spritediv');
+        spritediv.innerHTML = '';
         for (const [idx, img] of Object.entries(images)) {
+            let canvdiv = document.createElement('div');
             let orig_image = img.getCanvas();
             let image = this.drawSprite(orig_image);
             image.addEventListener('click', () => {
@@ -1187,7 +1211,17 @@ class MapEditor {
                 this.type = this.selectedSheet.type;
                 this.renderSprite();
             });
-            document.querySelector('.spritediv').append(image);
+            canvdiv.append(image);
+            let info = document.createElement('div');
+            info.classList.add('choosespriteinfo');
+            let text = `
+                <label>Tile Type: ${img.typename}</label>
+                <label>Intended Tiles: ${img.parent.tilesPerSprite}</label>
+                <label>Size: ${img.spriteWidth}x${img.spriteHeight}</label>
+            `;
+            info.innerHTML = text;
+            canvdiv.append(info);
+            spritediv.append(canvdiv);
         }
     }
     handleUI() {
@@ -1203,6 +1237,7 @@ class MapEditor {
         this.showSprites(this.selectedSheet.spriteimages);
 
         this.showThisSprite();
+        this.showSpriteInfo();
         this.checkFlip();
         document.getElementById('nudge_x_value').value = this.sprite.tile.width;
         document.getElementById('nudge_y_value').value = this.sprite.tile.height;

@@ -518,6 +518,10 @@ button {
     padding: 0 !important;
 }
 
+.choosespriteinfo {
+    padding-left: var(--sizem);
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;

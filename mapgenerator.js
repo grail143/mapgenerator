@@ -1200,8 +1200,10 @@ class MapEditor {
         canvdiv.append(image);
     }
     showSprites(images) {
-        document.querySelector('.spritediv').innerHTML = '';
+        const spritediv = document.querySelector('.spritediv');
+        spritediv.innerHTML = '';
         for (const [idx, img] of Object.entries(images)) {
+            let canvdiv = document.createElement('div');
             let orig_image = img.getCanvas();
             let image = this.drawSprite(orig_image);
             image.addEventListener('click', () => {
@@ -1209,7 +1211,17 @@ class MapEditor {
                 this.type = this.selectedSheet.type;
                 this.renderSprite();
             });
-            document.querySelector('.spritediv').append(image);
+            canvdiv.append(image);
+            let info = document.createElement('div');
+            info.classList.add('choosespriteinfo');
+            let text = `
+                <label>Tile Type: ${img.typename}</label>
+                <label>Intended Tiles: ${img.parent.tilesPerSprite}</label>
+                <label>Size: ${img.spriteWidth}x${img.spriteHeight}</label>
+            `;
+            info.innerHTML = text;
+            canvdiv.append(info);
+            spritediv.append(canvdiv);
         }
     }
     handleUI() {

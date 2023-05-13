@@ -1,0 +1,1269 @@
+{
+  "categories": [
+    "grass",     
+    "stone",     
+    "indoor",    
+    "sand/dirt", 
+    "liquid",    
+    "other"      
+  ],
+  "files": [
+    {
+      "filename": "backgrounds/BG_0001.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0002.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0003.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0004.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0005.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0006.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0007.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0008.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0009.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0010.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0011.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0012.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0013.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0014.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0015.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0016.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0017.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0018.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0019.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0020.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0021.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0022.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0023.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0024.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0025.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0026.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0027.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0028.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0029.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0030.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0031.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0032.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0033.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0034.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0035.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0036.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0037.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0038.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0039.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0040.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0041.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0042.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0043.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0044.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0045.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0046.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0047.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0048.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0049.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0050.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0051.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0052.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0053.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0054.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0055.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0056.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0057.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0058.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0059.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0060.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0061.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0062.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0063.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0064.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0065.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0066.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0067.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0068.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0069.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0070.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0071.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0072.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0073.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0074.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0075.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0076.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0077.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0078.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0079.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0080.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0081.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0082.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0083.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0084.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0085.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0086.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0087.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0088.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0089.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0090.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0091.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0092.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0093.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0094.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0095.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0096.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0097.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0098.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0099.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0100.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0101.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0102.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0103.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0104.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0105.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0106.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0107.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0108.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0109.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0110.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0111.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0112.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0113.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0114.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0115.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0116.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0117.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0118.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0119.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0120.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0121.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0122.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0123.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0124.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0125.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0126.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0127.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0128.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0129.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0130.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0131.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0132.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0133.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0134.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0135.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0136.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0137.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0138.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0139.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0140.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0141.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0142.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0143.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0144.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0145.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0146.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0147.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0148.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0149.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0150.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0151.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0152.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0153.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0154.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0155.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0156.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0157.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0158.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0159.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0160.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0161.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0162.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0163.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0164.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0165.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0166.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0167.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0168.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0169.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0170.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0171.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0172.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0173.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0174.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0175.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0176.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0177.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0178.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0179.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0180.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0181.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0182.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0183.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0184.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0185.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0186.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0187.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0188.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0189.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0190.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0191.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0192.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0193.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0194.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0195.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0196.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0197.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0198.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0199.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0200.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0201.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0202.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0203.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0204.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0205.jpg",
+      "category": 4
+    },
+    {
+      "filename": "backgrounds/BG_0206.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0207.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0208.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0209.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0210.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0211.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0212.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0213.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0214.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0215.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0216.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0217.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0218.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0219.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0220.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0221.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0222.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0223.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0224.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0225.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0226.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0227.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0228.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0229.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0230.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0231.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0232.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0233.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0234.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0235.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0236.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0237.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0238.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0239.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0240.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0241.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0242.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0243.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0244.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0245.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0246.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0247.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0248.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0249.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0250.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0251.jpg",
+      "category": 3
+    },
+    {
+      "filename": "backgrounds/BG_0252.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0253.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0254.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0255.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0256.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0257.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0258.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0259.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0260.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0261.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0262.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0263.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0264.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0265.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0266.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0267.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0268.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0269.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0270.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0271.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0272.jpg",
+      "category": 2
+    },
+    {
+      "filename": "backgrounds/BG_0273.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0274.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0275.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0276.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0277.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0278.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0279.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0280.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0281.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0282.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0283.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0284.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0285.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0286.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0287.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0288.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0289.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0290.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0291.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0292.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0293.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0294.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0295.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0296.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0297.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0298.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0299.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0300.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0301.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0302.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0303.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0304.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0305.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0306.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0307.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0308.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0309.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0310.jpg",
+      "category": 5
+    },
+    {
+      "filename": "backgrounds/BG_0311.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0312.jpg",
+      "category": 1
+    },
+    {
+      "filename": "backgrounds/BG_0313.jpg",
+      "category": 0
+    },
+    {
+      "filename": "backgrounds/BG_0314.jpg",
+      "category": 3
+    }
+
+  ]  
+}

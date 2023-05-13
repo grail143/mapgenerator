@@ -117,8 +117,8 @@ class Room {
 }
 
 class Floor {
-    constructor(src) {
-        this.img = src;
+    constructor(info) {
+        this.img = info.img;
     }
     draw(ctx, width, height) {
         const ptrn = ctx.createPattern(this.img, 'repeat');
@@ -299,6 +299,7 @@ class MapGenerator {
         this.background = null;
         this.loaded = false;
         this.numOfSprites = 0;
+        this.bg = 85;
         this.rooms = [];
         this.doors = [];
         this.sprites = [];
@@ -986,7 +987,7 @@ class MapGenerator {
     }
     drawWorld() {
         this.testworld = [];
-        this.background = new Floor(loader.images['background']);
+        this.background = new Floor(bgFloors[this.bg]);
         this.background.draw(this.ctx, this.canvas.width, this.canvas.height);
         this.bgctx.fillStyle = "#00ff00";
         this.bgctx.fillRect(0, 0, this.canvas.width, this.canvas.height);

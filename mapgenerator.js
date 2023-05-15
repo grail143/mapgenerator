@@ -338,8 +338,9 @@ class MapGenerator {
         this.attachMouseEvent();
     }
     destroy() {
-        document.querySelector('.mapfield').removeChild(this.canvas);
-        document.querySelector('.mapfield').removeChild(this.bgcanvas);
+        document.querySelectorAll('.mapfield canvas').forEach(item => {
+            document.querySelector('.mapfield').removeChild(item);
+        });
         scale = 1;
         mode = "load";
         tempstylesheet.innerHTML = '';
@@ -1005,17 +1006,24 @@ class MapGenerator {
         this.prepWorld();
         this.drawWorld();
     }
+    clearCanvases() {
+        document.querySelectorAll('.mapfield canvas').forEach(canvas => {
+            const context = canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        });
+    }
     drawWorld() {
+        this.clearCanvases();
         this.testworld = [];
         this.background = new Floor();
+        let gamcanv = document.getElementById('gameCanvas');
+        let mapfield = document.querySelector('.mapfield');
+        mapfield.insertBefore(this.background.getFloor(), gamcanv);
         this.bgctx.fillStyle = "#00ff00";
         this.bgctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         this.bgctx.fillStyle = "#000000";
         this.drawWalls();
         this.drawFromLists();
-        let gamcanv = document.getElementById('gameCanvas');
-        let mapfield = document.querySelector('.mapfield');
-        mapfield.insertBefore(this.background.getFloor(), gamcanv);
     }
     drawFromLists() {
         Object.keys(this.sprites).forEach(sprt => {

@@ -46,13 +46,44 @@ function zoom(scaleChange, x = 0, y = 0, tileSize = 32) {
 function rnd(ceil) {
     return Math.floor(Math.random() * ceil);
 }
+function drawSingleCanvas(img, width = 0, height = 0) {
+    var newCanvas = document.createElement('canvas');
+    var context = newCanvas.getContext('2d');
+    newCanvas.width = width || img.width;
+    newCanvas.height = height || img.height;
+    context.drawImage(img, 0, 0);
+    return newCanvas;
+}
+function setUpEditMap() {
+    const bgdiv = document.querySelector('.bgdiv');
+    bgdiv.innerHTML = '';
+    for (const [idx, img] of Object.entries(bgFloors)) {
+        let canvdiv = document.createElement('div');
+        let orig_image = img.getCanvas();
+        let image = drawSingleCanvas(orig_image);
+        image.addEventListener('click', () => {
+            map.background.setFloor(idx);
+            map.background.getFloor();
+        });
+        canvdiv.append(image);
+        let info = document.createElement('div');
+        info.classList.add('choosespriteinfo');
+        let text = `
+                <label>Category: ${img.cat}</label>
+                <label>Size: ${img.bgWidth}x${img.bgHeight}</label>
+            `;
+        info.innerHTML = text;
+        canvdiv.append(info);
+        bgdiv.append(canvdiv);
+    }
+}
 function createWorld(isBlank) {
     map = new MapGenerator();
     map.createWorld(isBlank);
     const canv = document.getElementById('gameCanvas');
     canv.parentNode.scrollTop = canv.offsetTop;
     canv.parentNode.scrollLeft = canv.offsetLeft;
-
+    setUpEditMap();
 }
 let map;
 document.querySelectorAll('.generate').forEach(item => {
@@ -148,6 +179,10 @@ document.querySelectorAll('h3.withSub').forEach(h3 => {
     h3.addEventListener('click', function (ev) {
         document.querySelector(`[data-sub=${ev.currentTarget.dataset.for}]`).classList.toggle('hide');
     });
+});
+document.querySelector('#backgroundPatternSize').addEventListener('change', function (event) {
+    map.background.setPatternSize(event.currentTarget.value);
+    map.background.getFloor();
 });
 
 const dragel = document.getElementById("rightdragnav");

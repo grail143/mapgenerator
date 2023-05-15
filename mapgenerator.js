@@ -117,14 +117,35 @@ class Room {
 }
 
 class Floor {
-    constructor(src) {
-        this.img = src;
+    constructor() {
+        this.setFloor(0);
+        this.width = map.canvas.width;
+        this.height = map.canvas.height;
+        this.canvas = createCanvas('floor', ['zoomable'], this.width, this.height);
+        this.ctx = this.canvas.getContext("2d");
+        this.setPatternSize(200);
     }
-    draw(ctx, width, height) {
-        const ptrn = ctx.createPattern(this.img, 'repeat');
+    setPatternSize(size) {
+        this.patternSize = size;
+    }
+    setFloor(idx) {
+        this.idx = idx;
+        this.img = bgFloors[idx];
+    }
+    createPattern() {
+        this.patternctx = this.pattern.getContext("2d");
+        this.patternctx.drawImage(this.img.img, 0, 0, this.img.img.width, this.img.img.height, 0, 0, this.patternSize, this.patternSize);
+    }
+    draw(img, ctx, width, height) {
+        const ptrn = ctx.createPattern(img, 'repeat');
         ctx.fillStyle = ptrn;
         ctx.fillRect(0, 0, width, height);
-        ctx.fill();
+    }
+    getFloor() {
+        this.pattern = createCanvas('pattern', [], this.patternSize, this.patternSize);
+        this.createPattern();
+        this.draw(this.pattern, this.ctx, this.width, this.height);
+        return this.canvas;
     }
 }
 class Sprite {
@@ -317,8 +338,9 @@ class MapGenerator {
         this.attachMouseEvent();
     }
     destroy() {
-        document.querySelector('.mapfield').removeChild(this.canvas);
-        document.querySelector('.mapfield').removeChild(this.bgcanvas);
+        document.querySelectorAll('.mapfield canvas').forEach(item => {
+            document.querySelector('.mapfield').removeChild(item);
+        });
         scale = 1;
         mode = "load";
         tempstylesheet.innerHTML = '';
@@ -984,10 +1006,19 @@ class MapGenerator {
         this.prepWorld();
         this.drawWorld();
     }
+    clearCanvases() {
+        document.querySelectorAll('.mapfield canvas').forEach(canvas => {
+            const context = canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        });
+    }
     drawWorld() {
+        this.clearCanvases();
         this.testworld = [];
-        this.background = new Floor(loader.images['background']);
-        this.background.draw(this.ctx, this.canvas.width, this.canvas.height);
+        this.background = new Floor();
+        let gamcanv = document.getElementById('gameCanvas');
+        let mapfield = document.querySelector('.mapfield');
+        mapfield.insertBefore(this.background.getFloor(), gamcanv);
         this.bgctx.fillStyle = "#00ff00";
         this.bgctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         this.bgctx.fillStyle = "#000000";
@@ -1173,7 +1204,7 @@ class MapEditor {
             let label = document.querySelector(`#spriteinfo #spritesheet_${attr}`);
             let span = document.querySelector(`#spriteinfo #spritesheet_${attr} span`);
             label.classList.remove('hide');
-            let text = this.sprite.sprite.parent[attr];
+            let text = !!this.sprite.sprite.parent ? this.sprite.sprite.parent[attr] : '';
             if (text)
                 span.innerHTML = text;
             else

@@ -1,11 +1,21 @@
-let spritemap, loader, spriteSheets = {};
-fetch('sprites/spritemaps.json')
+let spritemap, loader, floormap, spriteSheets = {}, bgFloors = [];
+
+const fetchSpritemap = fetch('sprites/spritemaps.json')
     .then((response) => response.json())
     .then((json) => {
         spritemap = json;
-        prepImages();
     });
 
+const fetchFloormap = fetch('backgrounds/floormap.json')
+    .then((response) => response.json())
+    .then((json) => {
+        floormap = json;
+    });
+
+Promise.all([fetchSpritemap, fetchFloormap])
+    .then(() => {
+        prepImages();
+    });
 
 class ImageLoader {
     constructor(imagePaths) {
@@ -89,7 +99,30 @@ class SpriteImage {
         return this.canvas;
     }
 }
-
+class BackgroundImage {
+    constructor(imageInfo, imageIndex) {
+        let bg = imageInfo[imageIndex];
+        this.img = loader.getImage(bg.filename);
+        if (!this.img) {
+            throw new Error(`Background "${imageIndex}" not found`);
+        }
+        this.catidx = bg.category;
+        this.cat = floormap.categories[this.catidx];
+        this.bgWidth = this.img.width;
+        this.bgHeight = this.img.height;
+        this.createBGs();
+    }
+    createBGs() {
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = this.bgWidth;
+        this.canvas.height = this.bgHeight;
+        this.ctx = this.canvas.getContext('2d');
+        this.ctx.drawImage(this.img, 0, 0, this.bgHeight, this.bgHeight);
+    }
+    getCanvas() {
+        return this.canvas;
+    }
+}
 function prepImages() {
     let objTypes = ["monster", "treasure", "obstacle", "wall", "door", "floor"];
     let imagePaths = {};
@@ -102,7 +135,11 @@ function prepImages() {
             }
         }
         else if (type == "floor") {
-            imagePaths["background"] = "floor.png";
+            let backgrounds = floormap.files;
+            for (let i = 0; i < backgrounds.length; i++) {
+                background = backgrounds[i];
+                imagePaths[background.filename] = background.filename;
+            }
         }
     }
     loader = new ImageLoader(imagePaths);
@@ -113,6 +150,12 @@ function prepImages() {
                 spriteSheets[type] = [];
                 for (let i = 0; i < sheets.length; i++) {
                     spriteSheets[type].push(new SpriteSheets(spritemap.spritesheets[type], i, type));
+                }
+            }
+            else if (type == "floor") {
+                let backgrounds = floormap.files;
+                for (let i = 0; i < backgrounds.length; i++) {
+                    bgFloors.push(new BackgroundImage(backgrounds, i));
                 }
             }
         }

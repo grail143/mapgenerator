@@ -489,6 +489,17 @@ button {
             max-width: 50%;
         }
 
+.bgdiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+    .bgdiv div canvas, .bgdiv div .choosespriteinfo {
+        width: 100px;
+        height: 100px;
+    }
+
 .w_100 {
     width: 100%;
 }
@@ -503,8 +514,9 @@ button {
 
 .small_inner label {
     font-size: .7em;
-    line-height: .8em;
-    height: 0.8em;
+    line-height: 1.2em;
+    height: auto;
+    text-align: center;
 }
 
 .pull_right {

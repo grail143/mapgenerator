@@ -111,24 +111,13 @@
 					<button type="button" class="btn save dk">Save</button>
 				</div>
 				<div data-showif="view" class="field">
-					<label for="worldWidth"># of Tiles Width</label>
-					<input type="number" value="10" min="10" max="100" id="worldWidth" onblur="enforceMinMax(this)" />
+					<label for="backgroundPatternSize"></label>
+					<input type="number" value="200" min="20" max="1000" id="backgroundPatternSize" onblur="enforceMinMax(this)" />
 				</div>
 				<div data-showif="view" class="field">
-					<label for="worldHeight"># of Tiles Height</label>
-					<input type="number" value="10" min="10" max="100" id="worldHeight" onblur="enforceMinMax(this)" />
-				</div>
-				<div data-showif="view" class="field">
-					<label for="tileWidth">Tile Width</label>
-					<input type="number" value="32" min="10" max="80" id="tileSize" onblur="enforceMinMax(this)" />
-				</div>
-				<div data-showif="view" class="field">
-					<label for="roomInterval">Avg Max Distance Between Room Centers</label>
-					<input type="number" value="8" min="3" max="80" id="roomInterval" onblur="enforceMinMax(this)" />
-				</div>
-				<div data-showif="view" class="field">
-					<label for="minRoom">Minimum Room Size</label>
-					<input type="number" value="3" min="1" max="78" id="minRoom" onblur="enforceMinMax(this)" />
+					<label for="backgroundFile"></label>
+					<div class="bgcatdiv"></div>
+					<div class="bgdiv small_inner"></div>
 				</div>
 				<div data-showif="view" class="field">
 					<button type="button" class="btn save">Save</button>

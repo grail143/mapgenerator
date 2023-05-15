@@ -144,7 +144,7 @@ h3.withSub:has(+.collapsible.hide):after {
 .collapsible {
     transition: all 2s;
     visibility: visible;
-    max-height: 1000px;
+    max-height: 10000vh;
     overflow: hidden;
 }
 
@@ -495,9 +495,14 @@ button {
     justify-content: space-around;
 }
 
-    .bgdiv div canvas, .bgdiv div .choosespriteinfo {
+    .bgdiv canvas {
         width: 100px;
         height: 100px;
+    }
+
+    .bgdiv .choosespriteinfo {
+        width: 100px;
+        height: 50px;
     }
 
 .w_100 {

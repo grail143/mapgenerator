@@ -1,4 +1,4 @@
-let spritemap, loader, floormap, spriteSheets = {}, bgFloors = [];
+let spritemap, loader, floormap, spriteSheets = {}, bgFloors = [], allSprites = [];
 
 const fetchSpritemap = fetch('sprites/spritemaps.json')
     .then((response) => response.json())
@@ -66,7 +66,9 @@ class SpriteSheets {
         const spriteimages = [];
         const spriteCount = this.piecemap.length;
         for (let i = 0; i < spriteCount; i++) {
-            spriteimages.push(new SpriteImage(this, i));
+            let img = new SpriteImage(this, i)
+            spriteimages.push(img);
+            allSprites.push(img);
         }
         return spriteimages;
     }
@@ -85,6 +87,8 @@ class SpriteImage {
         this.x = spriteInfo.x;
         this.y = spriteInfo.y;
         this.typeidx = spriteInfo.type;
+        this.environment = spritesheet['main_environment'] ? spritesheet.main_environment : null;
+        this.name = spriteInfo['name'] ? spriteInfo.name : null;
         this.typename = spritesheet.settings.types[this.typeidx];
         this.canvas = document.createElement('canvas');
         this.canvas.width = this.spriteWidth;

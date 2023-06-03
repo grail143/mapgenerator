@@ -299,7 +299,7 @@ class Door extends Sprite {
     }
     setSprite() {
         let sprites, rand = Math.random(), sprite, spriteRatio = this.tile.height / this.tile.width;
-        sprites = spriteSheets.door[0].spriteimages.filter((sprite) => sprite.spriteHeight / sprite.spriteWidth == spriteRatio);
+        sprites = spriteSheets.door[0].spriteimages.filter((sprite) => spriteRatio == 1 ? sprite.typeidx == 1 : sprite.typeidx == 2);
         sprite = sprites[Math.floor(rand * sprites.length)];
         this.sprite = sprite;
         this.sprite.spritetype = 2;

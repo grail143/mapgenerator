@@ -5047,7 +5047,10 @@
           "45",
           "halfarch",
           "arch",
-          "x"
+          "x",
+          "opening",
+          "doorhiddendm",
+          "doorhiddenp"
         ]
       },
       "sheets": [
@@ -5062,6 +5065,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5069,6 +5074,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5076,6 +5083,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5083,6 +5092,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5090,6 +5101,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5097,6 +5110,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5104,6 +5119,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5111,10 +5128,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5129,6 +5175,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5136,6 +5184,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5143,6 +5193,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5150,6 +5202,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5157,6 +5211,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5164,6 +5220,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5171,6 +5229,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5178,10 +5238,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5196,6 +5285,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5203,6 +5294,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5210,6 +5303,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5217,6 +5312,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5224,6 +5321,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5231,6 +5330,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5238,6 +5339,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5245,10 +5348,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5263,6 +5395,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5270,6 +5404,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5277,6 +5413,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5284,6 +5422,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5291,6 +5431,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5298,6 +5440,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5305,6 +5449,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5312,10 +5458,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5330,6 +5505,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5337,6 +5514,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5344,6 +5523,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5351,6 +5532,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5358,6 +5541,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5365,6 +5550,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5372,6 +5559,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5379,10 +5568,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5397,6 +5615,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5404,6 +5624,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5411,6 +5633,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5418,6 +5642,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5425,6 +5651,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5432,6 +5660,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5439,6 +5669,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5446,10 +5678,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5464,6 +5725,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5471,6 +5734,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5478,6 +5743,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5485,6 +5752,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5492,6 +5761,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5499,6 +5770,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5506,6 +5779,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5513,10 +5788,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5531,6 +5835,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5538,6 +5844,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5545,6 +5853,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5552,6 +5862,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5559,6 +5871,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5566,6 +5880,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5573,6 +5889,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5580,10 +5898,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5598,6 +5945,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5605,6 +5954,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5612,6 +5963,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5619,6 +5972,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5626,6 +5981,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5633,6 +5990,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5640,6 +5999,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5647,10 +6008,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5665,6 +6055,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5672,6 +6064,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5679,6 +6073,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5686,6 +6082,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5693,6 +6091,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5700,6 +6100,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5707,6 +6109,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5714,10 +6118,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5732,6 +6165,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5739,6 +6174,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5746,6 +6183,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5753,6 +6192,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5760,6 +6201,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5767,6 +6210,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5774,6 +6219,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5781,10 +6228,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5799,6 +6275,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5806,6 +6284,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5813,6 +6293,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5820,6 +6302,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5827,6 +6311,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5834,6 +6320,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5841,6 +6329,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5848,10 +6338,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5866,6 +6385,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5873,6 +6394,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5880,6 +6403,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5887,6 +6412,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5894,6 +6421,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5901,6 +6430,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5908,6 +6439,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5915,10 +6448,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -5933,6 +6495,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -5940,6 +6504,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -5947,6 +6513,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -5954,6 +6522,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5961,6 +6531,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -5968,6 +6540,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -5975,6 +6549,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -5982,10 +6558,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -6000,6 +6605,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -6007,6 +6614,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -6014,6 +6623,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -6021,6 +6632,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6028,6 +6641,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -6035,6 +6650,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -6042,6 +6659,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6049,10 +6668,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -6067,6 +6715,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -6074,6 +6724,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -6081,6 +6733,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -6088,6 +6742,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6095,6 +6751,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -6102,6 +6760,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -6109,6 +6769,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6116,10 +6778,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -6134,6 +6825,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -6141,6 +6834,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -6148,6 +6843,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -6155,6 +6852,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6162,6 +6861,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -6169,6 +6870,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -6176,6 +6879,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6183,10 +6888,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -6201,6 +6935,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -6208,6 +6944,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -6215,6 +6953,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -6222,6 +6962,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6229,6 +6971,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -6236,6 +6980,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -6243,6 +6989,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6250,10 +6998,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         },
@@ -6268,6 +7045,8 @@
           "piecemap": [
             {
               "type": 0,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 0,
@@ -6275,6 +7054,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 4,
+              "tileheight": 2,
               "width": 200,
               "height": 100,
               "x": 100,
@@ -6282,6 +7063,8 @@
             },
             {
               "type": 5,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 300,
@@ -6289,6 +7072,8 @@
             },
             {
               "type": 4,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6296,6 +7081,8 @@
             },
             {
               "type": 6,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 500,
@@ -6303,6 +7090,8 @@
             },
             {
               "type": 0,
+              "tilewidth": 8,
+              "tileheight": 2,
               "width": 400,
               "height": 100,
               "x": 0,
@@ -6310,6 +7099,8 @@
             },
             {
               "type": 1,
+              "tilewidth": 2,
+              "tileheight": 2,
               "width": 100,
               "height": 100,
               "x": 400,
@@ -6317,10 +7108,39 @@
             },
             {
               "type": 0,
+              "tilewidth": 12,
+              "tileheight": 2,
               "width": 600,
               "height": 100,
               "x": 0,
               "y": 200
+            },
+            {
+              "type": 13,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "type": 11,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "type": 12,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
             }
           ]
         }
@@ -6329,48 +7149,830 @@
     "door": {
       "settings": {
         "types": [
+          "gate",
           "single",
-          "double",
-          "hidden",
-          "none"
+          "double"
+        ],
+        "colors": [
+          "light",
+          "dark",
+          "ashen",
+          "gray",
+          "earthy",
+          "rusty",
+          "sandstone",
+          "slate"
+        ],
+        "materials": [
+          "wood",
+          "metal",
+          "stone"
+        ],
+        "environments": [
+          "outdoors",
+          "indoors",
+          "dungeon"
         ]
       },
       "sheets": [
         {
-          "name": "Earthy Stone",
-          "filename": "sprites/doorsprites1.png",
-          "color": "wood",
-          "main_environment": "dungeon",
-          "spritesize": 150,
+          "name": "Doors",
+          "filename": "sprites/doorsprites.png",
+          "spritesize": 100,
           "maptilearea": 1,
           "piecemap": [
             {
-              "type": 1,
-              "width": 150,
-              "height": 150,
-              "x": 0,
-              "y": 0
-            },
-            {
-              "type": 2,
+              "name": "Gate Single Open",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 0 ],
+              "type": 0,
+              "tilewidth": 6,
+              "tileheight": 2,
               "width": 300,
-              "height": 150,
-              "x": 150,
-              "y": 0
-            },
-            {
-              "type": 3,
-              "width": 150,
-              "height": 150,
-              "x": 450,
-              "y": 0
-            },
-            {
-              "type": 4,
-              "width": 150,
-              "height": 150,
+              "height": 100,
               "x": 0,
-              "y": 150
+              "y": 0
+            },
+            {
+              "name": "Gate Double Open",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 0 ],
+              "type": 0,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 0
+            },
+            {
+              "name": "Gate Double Closed",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 0 ],
+              "type": 0,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 0
+            },
+            {
+              "name": "Gate Double Closed",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 0 ],
+              "type": 0,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 0
+            },
+            {
+              "name": "Door Planked",
+              "color": [ 3 ],
+              "material": [ 1 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 100
+            },
+            {
+              "name": "Door Riveted",
+              "color": [ 3 ],
+              "material": [ 1 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 100
+            },
+            {
+              "name": "Door Riveted w/ Knocker",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 100
+            },
+            {
+              "name": "Door Slats",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 100
+            },
+            {
+              "name": "Door Riveted Ring Pulls",
+              "color": [ 5 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 200
+            },
+            {
+              "name": "Door Slats",
+              "color": [ 5 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 200
+            },
+            {
+              "name": "Door Riveted",
+              "color": [ 5 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 200
+            },
+            {
+              "name": "Door Slats Riveted Knocker",
+              "color": [ 5 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 200
+            },
+            {
+              "name": "Door Planks Handle",
+              "color": [ 4 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 300
+            },
+            {
+              "name": "Door Thick Slab",
+              "color": [ 4 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 300
+            },
+            {
+              "name": "Door Slab Handles",
+              "color": [ 4 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 300
+            },
+            {
+              "name": "Door Planks Riveted",
+              "color": [ 4 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 300
+            },
+            {
+              "name": "Door Planks Handles",
+              "color": [ 6 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 400
+            },
+            {
+              "name": "Door Thick Slabs",
+              "color": [ 6 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 400
+            },
+            {
+              "name": "Door Slab Handles",
+              "color": [ 6 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 400
+            },
+            {
+              "name": "Door Planks Riveted Hinge",
+              "color": [ 6 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 400
+            },
+            {
+              "name": "Door Planks Riveted",
+              "color": [ 7 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 500
+            },
+            {
+              "name": "Door Slab w/ Handle",
+              "color": [ 7 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 500
+            },
+            {
+              "name": "Door Thick Slabs",
+              "color": [ 7 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 500
+            },
+            {
+              "name": "Door Planked w/ Handles",
+              "color": [ 7 ],
+              "material": [ 2 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 500
+            },
+            {
+              "name": "Door Planked w/ Handles",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 600
+            },
+            {
+              "name": "Door Slab w/ Handles",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 600
+            },
+            {
+              "name": "Door Planks Handle",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 600
+            },
+            {
+              "name": "Door Planked w/ Handles",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 600
+            },
+            {
+              "name": "Door ",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 600
+            },
+            {
+              "name": "Door ",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 600
+            },
+            {
+              "name": "Door ",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 600
+            },
+            {
+              "name": "Door Thick Slab Riveted w/ Hinges",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 700
+            },
+            {
+              "name": "Door Beveled Slab",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 700
+            },
+            {
+              "name": "Door Thin Planks",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 700
+            },
+            {
+              "name": "Door Beamed w/ Handles",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 700
+            },
+            {
+              "name": "Door Planks Riveted",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 800
+            },
+            {
+              "name": "Door Planks on Slab w/ Handle",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 800
+            },
+            {
+              "name": "Door Planks on Metal Core w/ Handles",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 800
+            },
+            {
+              "name": "Door Planks w/ Grated Window",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 800
+            },
+            {
+              "name": "Door Planked Barred",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 900
+            },
+            {
+              "name": "Door Thin Slab on Planks Rivetted Hinged",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 900
+            },
+            {
+              "name": "Door Beams w/ Handles",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 900
+            },
+            {
+              "name": "Door Slab w/ Handles",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 900
+            },
+            {
+              "name": "Door Planks Metal Core w/ Handles",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 1000
+            },
+            {
+              "name": "Door Slab Riveted Prison",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 1000
+            },
+            {
+              "name": "Door Slab w/ Handles",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 1000
+            },
+            {
+              "name": "Door Planks on Slab w/ Handle",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 1000
+            },
+            {
+              "name": "Door Wood with Metal Trim Priveted",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 0,
+              "y": 1100
+            },
+            {
+              "name": "Door Planked Barred",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 300,
+              "y": 1100
+            },
+            {
+              "name": "Door Beams w/ Handles",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 600,
+              "y": 1100
+            },
+            {
+              "name": "Door Beveled Slab",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 1,
+              "tilewidth": 6,
+              "tileheight": 2,
+              "width": 300,
+              "height": 100,
+              "x": 900,
+              "y": 1100
+            },
+            {
+              "name": "Door Riveted Slabs on Plank Core",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 0,
+              "y": 1200
+            },
+            {
+              "name": "Door Riveted Planks w/ Knocker",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 600,
+              "y": 1200
+            },
+            {
+              "name": "Door Riveted Planks w/ Knocker",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 0,
+              "y": 1300
+            },
+            {
+              "name": "Door Riveted Slabs on Plank Core",
+              "color": [ 1 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 300,
+              "y": 1300
+            },
+            {
+              "name": "Door Planks w/ Riveted Metal Trim & Loop Handles",
+              "color": [ 0 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 0,
+              "y": 1400
+            },
+            {
+              "name": "Door Riveted Planks w/ Knocker",
+              "color": [ 2 ],
+              "material": [ 0 ],
+              "environment": [ 1, 2 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 300,
+              "y": 1400
+            },
+            {
+              "name": "Door Portcullis",
+              "color": [ 3, 0 ],
+              "material": [ 0, 1 ],
+              "environment": [ 1, 2, 3 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 0,
+              "y": 1500
+            },
+            {
+              "name": "Door Portcullis",
+              "color": [ 3 ],
+              "material": [ 1 ],
+              "environment": [ 1, 2, 3 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 600,
+              "y": 1500
+            },
+            {
+              "name": "Door Portcullis",
+              "color": [ 2, 5 ],
+              "material": [ 0, 1 ],
+              "environment": [ 1, 2, 3 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 0,
+              "y": 1600
+            },
+            {
+              "name": "Door Portcullis",
+              "color": [ 3, 1 ],
+              "material": [ 0, 1 ],
+              "environment": [ 1, 2, 3 ],
+              "type": 2,
+              "tilewidth": 12,
+              "tileheight": 2,
+              "width": 600,
+              "height": 100,
+              "x": 300,
+              "y": 1600
             }
           ]
         }

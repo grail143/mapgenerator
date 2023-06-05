@@ -81,14 +81,13 @@ class SpriteImage {
     constructor(spritesheet, spriteIndex) {
         const spriteInfo = spritesheet.piecemap[spriteIndex];
         this.parent = spritesheet;
-        this.spriteWidth = spriteInfo.width || spritesheet.spriteSize;
-        this.spriteHeight = spriteInfo.height || spritesheet.spriteSize;
+        Object.keys(spriteInfo).forEach(attr => {
+            this[attr] = spriteInfo[attr];
+        });
+        this.spriteWidth = this.width || spritesheet.spriteSize;
+        this.spriteHeight = this.height || spritesheet.spriteSize;
         this.tilesPer = spritesheet.tilesPerSprite || 1;
-        this.x = spriteInfo.x;
-        this.y = spriteInfo.y;
         this.typeidx = spriteInfo.type;
-        this.environment = spritesheet['main_environment'] ? spritesheet.main_environment : null;
-        this.name = spriteInfo['name'] ? spriteInfo.name : null;
         this.typename = spritesheet.settings.types[this.typeidx];
         this.canvas = document.createElement('canvas');
         this.canvas.width = this.spriteWidth;

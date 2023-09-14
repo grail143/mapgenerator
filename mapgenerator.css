@@ -144,7 +144,7 @@ h3.withSub:has(+.collapsible.hide):after {
 .collapsible {
     transition: all 2s;
     visibility: visible;
-    max-height: 1000px;
+    max-height: 10000vh;
     overflow: hidden;
 }
 
@@ -228,10 +228,12 @@ h3.withSub:has(+.collapsible.hide):after {
 
 label {
     display: block;
-    width: 100%;
+    width: calc( 100% - 10px );
     height: 32px;
     line-height: 32px;
     margin-top: var(--sizem);
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .text_act {
@@ -495,9 +497,14 @@ button {
     justify-content: space-around;
 }
 
-    .bgdiv div canvas, .bgdiv div .choosespriteinfo {
+    .bgdiv canvas {
         width: 100px;
         height: 100px;
+    }
+
+    .bgdiv .choosespriteinfo {
+        width: 100px;
+        height: 50px;
     }
 
 .w_100 {
@@ -516,7 +523,7 @@ button {
     font-size: .7em;
     line-height: 1.2em;
     height: auto;
-    text-align: center;
+    margin-left: var(--sizesm);
 }
 
 .pull_right {
@@ -531,7 +538,8 @@ button {
 }
 
 .choosespriteinfo {
-    padding-left: var(--sizem);
+    padding: 0 var(--sizexl);
+    align-self: end;
 }
 
 ::-webkit-scrollbar {
@@ -558,11 +566,23 @@ button {
     overflow-x: auto;
 }
 
+    .spritediv > div {
+        display: grid;
+        flex-flow: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        border: 1px solid var(--color1100);
+        background: var(--color1000);
+        align-items: center;
+    }
+
     .spritediv canvas {
         flex: 0 0 auto;
-        height: 200px;
-        margin: 5px;
+        max-height: 200px;
+        margin: 5px auto;
         background: var(--color500);
+        border: 1px solid var(--color1100);
+        display: block;
     }
 
 .thisspritediv {

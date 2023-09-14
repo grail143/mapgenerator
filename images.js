@@ -1,4 +1,4 @@
-let spritemap, loader, floormap, spriteSheets = {}, bgFloors = [];
+let spritemap, loader, floormap, spriteSheets = {}, bgFloors = [], allSprites = [];
 
 const fetchSpritemap = fetch('sprites/spritemaps.json')
     .then((response) => response.json())
@@ -66,7 +66,9 @@ class SpriteSheets {
         const spriteimages = [];
         const spriteCount = this.piecemap.length;
         for (let i = 0; i < spriteCount; i++) {
-            spriteimages.push(new SpriteImage(this, i));
+            let img = new SpriteImage(this, i)
+            spriteimages.push(img);
+            allSprites.push(img);
         }
         return spriteimages;
     }
@@ -79,11 +81,12 @@ class SpriteImage {
     constructor(spritesheet, spriteIndex) {
         const spriteInfo = spritesheet.piecemap[spriteIndex];
         this.parent = spritesheet;
-        this.spriteWidth = spriteInfo.width || spritesheet.spriteSize;
-        this.spriteHeight = spriteInfo.height || spritesheet.spriteSize;
+        Object.keys(spriteInfo).forEach(attr => {
+            this[attr] = spriteInfo[attr];
+        });
+        this.spriteWidth = this.width || spritesheet.spriteSize;
+        this.spriteHeight = this.height || spritesheet.spriteSize;
         this.tilesPer = spritesheet.tilesPerSprite || 1;
-        this.x = spriteInfo.x;
-        this.y = spriteInfo.y;
         this.typeidx = spriteInfo.type;
         this.typename = spritesheet.settings.types[this.typeidx];
         this.canvas = document.createElement('canvas');
@@ -97,6 +100,11 @@ class SpriteImage {
     }
     getCanvas() {
         return this.canvas;
+    }
+    getRatiod(tileSize) {
+        let width = tileSize * this.tilewidth * this.parent.spriteSize;
+        let height = tileSize * this.tileheight * this.parent.spriteSize;
+        return { width: width, height: height };
     }
 }
 class BackgroundImage {

@@ -111,13 +111,14 @@
 					<button type="button" class="btn save dk">Save</button>
 				</div>
 				<div data-showif="view" class="field">
-					<label for="backgroundPatternSize"></label>
-					<input type="number" value="200" min="20" max="1000" id="backgroundPatternSize" onblur="enforceMinMax(this)" />
-				</div>
-				<div data-showif="view" class="field">
-					<label for="backgroundFile"></label>
-					<div class="bgcatdiv"></div>
-					<div class="bgdiv small_inner"></div>
+					<h3 class="withSub" data-for="floor">Map Floor</h3>
+					<div class="collapsible hide" data-sub="floor">
+						<label for="backgroundPatternSize">Pattern Size</label>
+						<input type="number" value="200" min="20" max="1000" id="backgroundPatternSize" onblur="enforceMinMax(this)" />
+						<label for="backgroundFile">Pattern</label>
+						<div class="bgcatdiv"></div>
+						<div class="bgdiv small_inner"></div>
+					</div>
 				</div>
 				<div data-showif="view" class="field">
 					<button type="button" class="btn save">Save</button>

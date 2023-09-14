@@ -61,9 +61,11 @@ function setUpEditMap() {
         let canvdiv = document.createElement('div');
         let orig_image = img.getCanvas();
         let image = drawSingleCanvas(orig_image);
-        image.addEventListener('click', () => {
+        image.contentEditable = true;
+        image.addEventListener('focusin', () => {
             map.background.setFloor(idx);
             map.background.getFloor();
+            document.querySelectorAll('.bgdiv > div')[idx].scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
         });
         canvdiv.append(image);
         let info = document.createElement('div');
@@ -145,6 +147,8 @@ function showifs(cls) {
     document.getElementById('rightdragnav').classList.remove('load', 'view', 'edit');
     document.getElementById('rightdragnav').classList.add(cls);
     mode = cls;
+    if (mode == 'view')
+        toggleNav('editmap');
     if (mode != 'edit')
         hidedrag(true);
     else

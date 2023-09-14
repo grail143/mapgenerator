@@ -118,7 +118,7 @@ class Room {
 
 class Floor {
     constructor() {
-        this.setFloor(0);
+        this.setFloor(38);
         this.width = map.canvas.width;
         this.height = map.canvas.height;
         this.canvas = createCanvas('floor', ['zoomable'], this.width, this.height);
@@ -189,7 +189,7 @@ class Sprite {
         this.x = this.x || this.tile.x * tileSize;
         this.y = this.y || this.tile.y * tileSize;
         ctx.save();
-        this.rotate(ctx, tileSize, tilesPer);
+        this.rotate(ctx);
 
         ctx.drawImage(this.sprite.getCanvas(),
             0, 0,
@@ -220,11 +220,11 @@ class Sprite {
         }
         return { 'centerX': centerX, 'centerY': centerY };
     }
-    rotate(ctx, tileSize, tilesPer) {
+    rotate(ctx) {
         const tilex = this.x;
         const tiley = this.y;
         const angle = this.tile.direction * Math.PI / 180;
-        const tileCenters = this.getTileAreaCenter(tilesPer);
+        const tileCenters = this.getTileAreaCenter();
         const centerX = tileCenters['centerX'];
         const centerY = tileCenters['centerY'];
         const blockCenters = this.getBlockCenter(tilex, tiley);
@@ -255,8 +255,9 @@ class Wall extends Sprite {
         super(tile, sprite);
         this.walltype = type;
         this.sprite.spritetype = 1;
-        this.tile.width = this.sprite.spriteWidth / 100 * map.tileSize;
-        this.tile.height = this.sprite.spriteHeight / 100 * map.tileSize;
+        let ratiod = this.sprite.getRatiod(map.tileSize);
+        this.tile.width = ratiod.width;
+        this.tile.height = ratiod.height;
     }
     getTileAreaCenter() {
         const centerX = [90, 270].includes(this.tile.direction) ? this.tile.height / 2 : this.tile.width / 2;
@@ -270,46 +271,32 @@ class Wall extends Sprite {
     }
 }
 class Door extends Sprite {
-    constructor(x, y, dir, tileSize, sheet, double = false) {
-        let tile = {
-            x: x,
-            y: y,
-            width: double ? tileSize * 2 : tileSize,
-            height: tileSize,
-            mirrorh: 1,
-            mirrorv: -1
-        }
-        let sprite = {
-            sheet: sheet,
-            x: 0,
-            y: 0,
-            width: 150,
-            height: 150,
-            spritesize: 150,
-            spritetype: 2,
-            tilesPer: 0
-        }
+    constructor(tile = null, sprite = null, x = null, y = null, dir = 0, double = false) {
+        tile = tile || { x: x, y: y };
         super(tile, sprite);
+        this.double = double;
         this.tile.direction = this.setDirection(dir);
-        this.setSprite();
+        if (!sprite || !sprite.parent) this.setSprite();
     }
     setDirection(dir) {
         const rand = Math.floor(Math.random() * 2);
         return dir ? [90, 270][rand] : [0, 180][rand];
     }
     setSprite() {
-        let sprites, rand = Math.random(), sprite, spriteRatio = this.tile.height / this.tile.width;
-        sprites = spriteSheets.door[0].spriteimages.filter((sprite) => sprite.spriteHeight / sprite.spriteWidth == spriteRatio);
+        let sprites, rand = Math.random(), sprite;
+        sprites = spriteSheets.door[0].spriteimages.filter((sprite) => !this.double ? sprite.typeidx == 1 : sprite.typeidx == 2);
         sprite = sprites[Math.floor(rand * sprites.length)];
         this.sprite = sprite;
         this.sprite.spritetype = 2;
+        let ratiod = this.sprite.getRatiod(map.tileSize);
+        this.tile.width = ratiod.width;
+        this.tile.height = ratiod.height;
     }
     setDouble(adjoiningdoors, double = true) {
         if (double) {
-            this.tile.width = this.tile.height * 2;
+            this.double = true;
             this.tile.direction = adjoiningdoors.includes('S') ? 90 : 0;
-        } else
-            this.tile.width = this.tile.height;
+        }
         this.setSprite();
         return adjoiningdoors.includes('S') ? { x: this.tile.x, y: this.tile.y + 1 } : { x: this.tile.x + 1, y: this.tile.y }
     }
@@ -359,7 +346,7 @@ class MapGenerator {
             showifs('edit');
         });
     }
-    getWallSpritePiece(type, length, sheetidx = 0) {
+    getWallSpritePiece(type, length, sheetidx = 1) {
         let sprites = spriteSheets.wall[sheetidx].spriteimages.filter((sprite) => sprite.typeidx === type);
         if (type === 0) {
             let longsprites = sprites.filter((sprite) => sprite.spriteWidth <= (length * spriteSheets.wall[sheetidx].spriteSize));
@@ -390,8 +377,8 @@ class MapGenerator {
                         let map = {
                             x: x,
                             y: y,
-                            width: spritePiece.spriteWidth / 100 * this.tileSize,
-                            height: spritePiece.spriteHeight / 100 * this.tileSize,
+                            width: spritePiece.tilewidth * this.tileSize,
+                            height: spritePiece.tileheight * this.tileSize,
                             direction: direction || 0
                         }
                         let sprite = spritePiece;
@@ -781,46 +768,63 @@ class MapGenerator {
         }
         return false;
     }
-    checkDoorSuitable(walls) {
-        if (!walls.length)
+    checkDoorSuitable(walls, doorSize) {
+        if (!walls.length) {
             return false;
-        let dirs = this.checkSurrounding(walls[0].x, walls[0].y);
+        }
 
-        if (this.world[walls[0].x][walls[0].y] == 2 || dirs.length != 2 || !(['N', 'S'].every(dir => dirs.includes(dir)) || ['W', 'E'].every(dir => dirs.includes(dir)))) {
+        const wall = walls[0];
+        const dirs = this.checkSurrounding(wall.x, wall.y);
+
+        if (
+            this.world[wall.x][wall.y] === 2 ||
+            dirs.length !== doorSize ||
+            (
+                doorSize === 1 &&
+                !['N', 'S'].every(dir => dirs.includes(dir)) &&
+                !['W', 'E'].every(dir => dirs.includes(dir))
+            ) ||
+            (
+                doorSize > 1 &&
+                !dirs.includes('N') && !dirs.includes('S') && !dirs.includes('W') && !dirs.includes('E')
+            )
+        ) {
             walls.shift();
-            this.checkDoorSuitable(walls);
+            return this.checkDoorSuitable(walls, doorSize);
         } else {
-            return { wall: walls[0], dir: dirs };
+            return { wall, dir: dirs };
         }
     }
-    makeDoor(room1, room2, outer = false, doorsheetidx = 0) {
-        let walls = this.commonWalls(room1, room2);
-        let goodwall = {};
-        let found = walls ? this.foundDoors(walls) : 0;
-        let wallinfo = {};
-        if (!outer && walls && !found) {
+
+    makeDoor(room1, room2, outer = false, doorSize = 3, doorsheetidx = 0) {
+        const walls = this.commonWalls(room1, room2);
+
+        if (!outer && walls && walls.length && !this.foundDoors(walls)) {
             walls.shuffle();
-            wallinfo = this.checkDoorSuitable(walls);
+            const wallinfo = this.checkDoorSuitable(walls, doorSize);
+
             if (wallinfo) {
-                goodwall = wallinfo.wall;
-                const direction = wallinfo.dir.includes('S') ? 90 : 0;
-                let door = new Door(goodwall.x, goodwall.y, direction, this.tileSize, spriteSheets.door[doorsheetidx].spriteInfo);
-                this.world[goodwall.x][goodwall.y] = door.getSpriteWorldInd();
-                this.doors.push(door);
+                const { wall, dir } = wallinfo;
+                const direction = dir.includes('S') ? 90 : 0;
+                const door = new Door(null, null, wall.x, wall.y, direction, doorSize);
+                this.placeDoor(door);
                 return true;
-            } else return false;
-        } else if (outer && walls && found < this.maxouterdoors) {
-            walls.shuffle();
-            wallinfo = this.checkDoorSuitable(walls);
-            if (wallinfo) {
-                goodwall = wallinfo.wall;
-                const direction = wallinfo.dir.includes('S') ? 90 : 0;
-                let door = new Door(goodwall.x, goodwall.y, direction, this.tileSize, spriteSheets.door[doorsheetidx].spriteInfo);
-                this.world[goodwall.x][goodwall.y] = door.getSpriteWorldInd();
-                this.doors.push(door);
+            } else {
+                return false;
             }
+        } else if (outer && walls && walls.length && this.foundDoors(walls) < this.maxouterdoors) {
+            walls.shuffle();
+            const wallinfo = this.checkDoorSuitable(walls, doorSize);
+
+            if (wallinfo) {
+                const { wall, dir } = wallinfo;
+                const direction = dir.includes('S') ? 90 : 0;
+                const door = new Door(null, null, wall.x, wall.y, direction, doorSize);
+                this.placeDoor(door);
+            }
+
             if (this.doors.length < this.outerDoors) {
-                this.makeDoor(room1, room2, true);
+                this.makeDoor(room1, room2, true, doorSize);
             } else {
                 return true;
             }
@@ -828,13 +832,27 @@ class MapGenerator {
             return false;
         }
     }
+
     foundDoors(walls) {
         let found = 0;
-        for (let wall of walls) {
-            if (this.world[wall.x][wall.y] == 2)
+
+        for (const wall of walls) {
+            if (this.world[wall.x][wall.y] === 2) {
                 found++;
+            }
         }
+
         return found;
+    }
+
+    placeDoor(door) {
+        const doorTiles = door.sprite.tilewidth;
+
+        for (let tile = 0; tile < doorTiles; tile++) {
+            this.world[door.tile.x + tile][door.tile.y + tile] = door.getSpriteWorldInd();
+        }
+
+        this.doors.push(door);
     }
     testClearArea(initialspace, xspacerequired, yspacerequired) {
         let unclearspot = 0;
@@ -873,48 +891,60 @@ class MapGenerator {
                 let spriteType = 0;
                 let rand = Math.random();
                 if (rand < obstacleProb && this.world[x][y] == 0) {
-                    const obstaclespriteidx = 0;
-                    spriteIndex = Math.floor(Math.random() * (32 - 3) + 3);
-                    if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
+                    let obstsprites = allSprites.filter(sprite => (
+                        sprite.typeidx != 9 &&
+                        sprite.parent.type == "obstacle"
+                    ));
+                    spriteIndex = Math.floor(Math.random() * obstsprites.length);
+                    spriteWidth = obstsprites[spriteIndex].tilewidth;
+                    spriteHeight = obstsprites[spriteIndex].tileheight;
+                    let ratiod = obstsprites[spriteIndex].getRatiod(map.tileSize);
+                    obstsprites[spriteIndex].width = ratiod.width;
+                    obstsprites[spriteIndex].height = ratiod.height;
+                    if (!this.testClearArea({ x: x, y: y }, spriteWidth * obstsprites[spriteIndex].parent.spriteSize, spriteHeight * obstsprites[spriteIndex].parent.spriteSize))
                         spriteIndex = 0;
                     else if (spriteIndex) {
                         let direction = Math.floor(Math.random() * 360);
                         let tile = {
                             x: x,
                             y: y,
-                            width: this.tileSize,
-                            height: this.tileSize,
+                            width: ratiod.width,
+                            height: ratiod.height,
                             direction: direction
                         };
-                        let tilesprite = spriteSheets.obstacle[obstaclespriteidx].spriteimages[spriteIndex];
+                        let tilesprite = obstsprites[spriteIndex];
                         const obst = new Sprite(tile, tilesprite);
 
                         this.sprites.push(obst);
                         spriteType = obst.sprite.spritetype;
                     }
                 } else if (rand < treasureProb && this.world[x][y] == 0) {
-                    const treasurespriteidx = 0;
-                    let randnum = Math.floor(Math.random() * spriteSheets.treasure[treasurespriteidx].numOfSprites);
-                    spriteIndex = randnum % 2 ? randnum + 1 : randnum;
-                    spriteWidth = 2;
-                    spriteHeight = 2;
-                    if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
+                    let treasuresprites = allSprites.filter(sprite => (
+                        sprite.typeidx == 9
+                    ));
+                    let spriteIndex = Math.floor(Math.random() * treasuresprites.length);
+                    spriteWidth = treasuresprites[spriteIndex].tilewidth;
+                    spriteHeight = treasuresprites[spriteIndex].tileheight;
+                    let ratiod = treasuresprites[spriteIndex].getRatiod(map.tileSize);
+                    treasuresprites[spriteIndex].width = ratiod.width;
+                    treasuresprites[spriteIndex].height = ratiod.height;
+                    if (!this.testClearArea({ x: x, y: y }, spriteWidth * treasuresprites[spriteIndex].parent.spriteSize, spriteHeight * treasuresprites[spriteIndex].parent.spriteSize))
                         spriteIndex = 0;
                     else if (spriteIndex) {
                         let direction = Math.floor(Math.random() * 360);
                         let tile = {
                             x: x,
                             y: y,
-                            width: spriteWidth * this.tileSize,
-                            height: spriteHeight * this.tileSize,
+                            width: ratiod.width,
+                            height: ratiod.height,
                             direction: direction
                         };
 
-                        let tilesprite = spriteSheets.treasure[treasurespriteidx].spriteimages[spriteIndex];
+                        let tilesprite = treasuresprites[spriteIndex];
                         const treasure = new Sprite(tile, tilesprite);
 
                         this.sprites.push(treasure);
-                        spriteType = treasure.sprite.spritetype;
+                        spriteType = treasure.sprite.spritetype = 4;
                     }
                 } else if (rand < monsterProb && this.world[x][y] == 0) {
                     let monster = this.getMonster(x, y);
@@ -922,7 +952,7 @@ class MapGenerator {
                     spriteWidth = monster.width;
                     spriteIndex = monster.index;
                     let monst = monster.mon;
-                    if (!this.testClearArea({ x: x, y: y }, spriteWidth, spriteHeight))
+                    if (!this.testClearArea({ x: x, y: y }, spriteWidth * monst.tilesprite.parent.spriteSize, spriteHeight * monst.tilesprite.parent.spriteSize))
                         spriteIndex = 0;
                     else if (spriteIndex) {
                         const mon = new Sprite(monst.tile, monst.tilesprite);
@@ -952,12 +982,12 @@ class MapGenerator {
         let spriteWidth = 1;
         let spriteOnSheet = 0;
         if (spriteIndex - 1 < spriteSheets.monster[0].spriteimages.length) {
-            spriteOnSheet = spriteIndex;
+            spriteOnSheet = spriteIndex - 1;
             monster = spriteSheets.monster[0];
         } else if (spriteIndex - 1 < spriteSheets.monster[0].spriteimages.length + spriteSheets.monster[1].spriteimages.length) {
             spriteWidth = 2;
             spriteHeight = 2;
-            spriteOnSheet = spriteIndex - spriteSheets.monster[0].spriteimages.length;
+            spriteOnSheet = spriteIndex - 1 - spriteSheets.monster[0].spriteimages.length;
             monster = spriteSheets.monster[1];
         } else if (spriteIndex - 1 < spriteSheets.monster[0].spriteimages.length + spriteSheets.monster[1].spriteimages.length + spriteSheets.monster[2].spriteimages.length) {
             spriteWidth = 4;
@@ -969,15 +999,18 @@ class MapGenerator {
         }
         let mon;
         if (spriteIndex) {
+            let tilesprite = monster.spriteimages[spriteOnSheet];
+            let ratiod = tilesprite.getRatiod(this.tileSize);
+            let width = ratiod.width;
+            let height = ratiod.height;
             let direction = Math.floor(Math.random() * 360);
             let tile = {
                 x: x,
                 y: y,
-                width: this.tileSize * monster.tilesPerSprite,
-                height: this.tileSize * monster.tilesPerSprite,
+                width: width,
+                height: height,
                 direction: direction
             };
-            let tilesprite = monster.spriteimages[spriteOnSheet];
             mon = { "tile": tile, "tilesprite": tilesprite };
         }
         return { "height": spriteHeight, "width": spriteWidth, "index": spriteIndex, "mon": mon };
@@ -1053,8 +1086,8 @@ class MapGenerator {
                     this.testworld.push(
                         mapSprite(wall.x,
                             wall.y,
-                            [0, 180].includes(wall.tile.direction) ? wall.sprite.spriteWidth / 100 * this.tileSize : this.tileSize,
-                            [90, 270].includes(wall.tile.direction) ? wall.sprite.spriteWidth / 100 * this.tileSize : this.tileSize,
+                            [0, 180].includes(wall.tile.direction) ? wall.sprite.tilewidth * this.tileSize : wall.sprite.tileheight * this.tileSize,
+                            [90, 270].includes(wall.tile.direction) ? wall.sprite.tilewidth * this.tileSize : wall.sprite.tileheight * this.tileSize,
                             "wall",
                             `${x}.${y}`
                         )

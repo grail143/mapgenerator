@@ -101,6 +101,11 @@ class SpriteImage {
     getCanvas() {
         return this.canvas;
     }
+    getRatiod(tileSize) {
+        let width = tileSize * this.tilewidth * this.parent.spriteSize;
+        let height = tileSize * this.tileheight * this.parent.spriteSize;
+        return { width: width, height: height };
+    }
 }
 class BackgroundImage {
     constructor(imageInfo, imageIndex) {
